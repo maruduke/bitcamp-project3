@@ -30,12 +30,6 @@ public class QTaskProgress extends EntityPathBase<TaskProgress> {
 
     public final EnumPath<com.example.backend.entity.maria.enumData.DocState> state = createEnum("state", com.example.backend.entity.maria.enumData.DocState.class);
 
-    public final StringPath title = createString("title");
-
-    public final EnumPath<com.example.backend.entity.maria.enumData.DocType> type = createEnum("type", com.example.backend.entity.maria.enumData.DocType.class);
-
-    public final QUser writer;
-
     public QTaskProgress(String variable) {
         this(TaskProgress.class, forVariable(variable), INITS);
     }
@@ -55,7 +49,6 @@ public class QTaskProgress extends EntityPathBase<TaskProgress> {
     public QTaskProgress(Class<? extends TaskProgress> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.ref_user_id = inits.isInitialized("ref_user_id") ? new QUser(forProperty("ref_user_id")) : null;
-        this.writer = inits.isInitialized("writer") ? new QUser(forProperty("writer")) : null;
     }
 
 }

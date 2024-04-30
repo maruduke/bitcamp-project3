@@ -2,6 +2,7 @@ package com.example.backend.entity.mongo;
 
 import com.example.backend.entity.maria.enumData.DocType;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Document(collection = "template")
+@Getter
 public class Template<T> {
 
     

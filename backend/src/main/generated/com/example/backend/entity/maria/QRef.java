@@ -30,10 +30,6 @@ public class QRef extends EntityPathBase<Ref> {
 
     public final EnumPath<com.example.backend.entity.maria.enumData.DocState> state = createEnum("state", com.example.backend.entity.maria.enumData.DocState.class);
 
-    public final StringPath title = createString("title");
-
-    public final EnumPath<com.example.backend.entity.maria.enumData.DocType> type = createEnum("type", com.example.backend.entity.maria.enumData.DocType.class);
-
     public QRef(String variable) {
         this(Ref.class, forVariable(variable), INITS);
     }
