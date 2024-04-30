@@ -16,11 +16,8 @@ public class Ref {
     @Column(name="ref_id")
     private Long refId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name="document_id")
     private String documentId;
-
-    @Column(nullable = false)
-    private DocType type;
 
     @Column(nullable = false)
     private DocState state;
@@ -29,6 +26,4 @@ public class Ref {
     @JoinColumn(name="ref_user_id")
     private User ref_user_id;
 
-    @Column(nullable = false)
-    private String title;
 }
