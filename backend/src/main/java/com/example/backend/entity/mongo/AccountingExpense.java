@@ -1,8 +1,14 @@
 package com.example.backend.entity.mongo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
-public class Expense {
+@Getter
+@Setter
+
+public class AccountingExpense {
 
     private String title;
     private String category;
