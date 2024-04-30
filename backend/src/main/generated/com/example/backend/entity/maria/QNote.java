@@ -14,7 +14,7 @@ import com.querydsl.core.types.dsl.PathInits;
  * QNote is a Querydsl query type for Note
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QNote extends EntityPathBase<Note> {
+public class QNote extends EntityPathBase<Message> {
 
     private static final long serialVersionUID = -1570935446L;
 
@@ -41,10 +41,10 @@ public class QNote extends EntityPathBase<Note> {
     public final StringPath title = createString("title");
 
     public QNote(String variable) {
-        this(Note.class, forVariable(variable), INITS);
+        this(Message.class, forVariable(variable), INITS);
     }
 
-    public QNote(Path<? extends Note> path) {
+    public QNote(Path<? extends Message> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
@@ -53,10 +53,10 @@ public class QNote extends EntityPathBase<Note> {
     }
 
     public QNote(PathMetadata metadata, PathInits inits) {
-        this(Note.class, metadata, inits);
+        this(Message.class, metadata, inits);
     }
 
-    public QNote(Class<? extends Note> type, PathMetadata metadata, PathInits inits) {
+    public QNote(Class<? extends Message> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.receiverId = inits.isInitialized("receiverId") ? new QUser(forProperty("receiverId")) : null;
         this.senderId = inits.isInitialized("senderId") ? new QUser(forProperty("senderId")) : null;
