@@ -20,13 +20,6 @@ public class TaskProgress {
     @Column(nullable = false)
     private String documentId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="writer")
-    private User writer;
-
-    @Column(nullable = false)
-    private DocType type;
-
     @Column(nullable = false)
     private DocState state;
 
@@ -34,6 +27,4 @@ public class TaskProgress {
     @JoinColumn(name = "ref_user_id")
     private User ref_user_id;
 
-    @Column(nullable = false)
-    private String title;
 }
