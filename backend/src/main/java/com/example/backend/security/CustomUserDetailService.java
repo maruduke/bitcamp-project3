@@ -22,16 +22,10 @@ public class CustomUserDetailService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> result = userRepository.findByEmail(email);
+    public User loadUserByUsername(String email) {
 
-        User user = result.orElseThrow(() -> new UsernameNotFoundException("해당 유저를 찾을 수 없습니다."));
-
-        LoginDto loginDTO = new LoginDto(
-                user.getEmail(),
-                user.getPassword());
-
-
-        return null;
+        User user = userRepository.findByEmail(email).orElseThrow(()-> new UsernameNotFoundException(email));
+        log.info(user.toString());
+        return user;
     }
 }

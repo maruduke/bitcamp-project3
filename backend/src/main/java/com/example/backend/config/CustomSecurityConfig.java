@@ -6,15 +6,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @RequiredArgsConstructor
-public class CustomSecurityConfig {
+public class CustomSecurityConfig  {
 
     private final CustomUserDetailService customUserDetailService;
 
@@ -25,24 +29,23 @@ public class CustomSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http.csrf(CsrfConfigurer::disable)
                 .cors(CorsConfigurer::disable)
                 .authorizeHttpRequests((authorizeRequests)->
                         authorizeRequests
-                                .requestMatchers("/swagger-ui/**", "/login/**", "/join/**").permitAll()
-                                .requestMatchers("/admin/**").hasAuthority(Authority.ADMIN.name())
+                                .requestMatchers("/**").permitAll()
+                                .requestMatchers("/join/**").hasAuthority(Authority.ADMIN.name())
                                 .anyRequest().authenticated())
                 .formLogin((formLogin) ->
                     formLogin
                             .loginPage("/login")
                             .usernameParameter("email")
                             .passwordParameter("password")
-                            .loginProcessingUrl("/login")
                             .defaultSuccessUrl("/")
-                            .failureUrl("/login?error=true")
+                            .failureUrl("/login")
+
                 )
-                .logout((logoutConfig)-> logoutConfig.logoutSuccessUrl("/")
+                .logout((logoutConfig)-> logoutConfig.logoutSuccessUrl("/swagger-ui/**")
         ).userDetailsService(customUserDetailService);
         return http.build();
     }

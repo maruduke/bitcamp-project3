@@ -19,20 +19,20 @@ class BackendApplicationTests {
     void contextLoads() {
     }
 
-    @Test
-    public void testInsertUser(){
-        User user = new User().builder()
-                .name("서주원")
-                .email("sgw0816@naver.com")
-                .password("1234")
-                .dept("인사과")
-                .position("대리")
-                .birthDay(LocalDate.of(1996, 8, 16))
-                .authority(Authority.ADMIN)
-                .tel("010-5456-4973")
-                .build();
-
-        userRepository.save(user);
-    }
+//    @Test
+//    public void testInsertUser(){
+//        User user = new User().builder()
+//                .name("서주원")
+//                .email("sgw0816@naver.com")
+//                .password("1234")
+//                .dept("인사과")
+//                .position("대리")
+//                .birthDay(LocalDate.of(1996, 8, 16))
+//                .authority(Authority.ADMIN)
+//                .tel("010-5456-4973")
+//                .build();
+//
+//        userRepository.save(user);
+//    }
 
 }
