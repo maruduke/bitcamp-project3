@@ -34,16 +34,16 @@ public class CustomSecurityConfig {
                                 .requestMatchers("/admin/**").hasAuthority(Authority.ADMIN.name())
                                 .anyRequest().authenticated())
                 .formLogin((formLogin) ->
-                    formLogin
-                            .loginPage("/login")
-                            .usernameParameter("email")
-                            .passwordParameter("password")
-                            .loginProcessingUrl("/login")
-                            .defaultSuccessUrl("/")
-                            .failureUrl("/login?error=true")
+                        formLogin
+                                .loginPage("/login")
+                                .usernameParameter("email")
+                                .passwordParameter("password")
+                                .loginProcessingUrl("/login")
+                                .defaultSuccessUrl("/")
+                                .failureUrl("/login?error=true")
                 )
                 .logout((logoutConfig)-> logoutConfig.logoutSuccessUrl("/")
-        ).userDetailsService(customUserDetailService);
+                ).userDetailsService(customUserDetailService);
         return http.build();
     }
 }

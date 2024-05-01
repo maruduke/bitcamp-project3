@@ -9,6 +9,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 
 @Entity
@@ -24,6 +27,9 @@ public class Document {
 
     private String title;
     private DocType type;
+
+    @CreatedDate
+    private LocalDate createDate;
 
     public static Document dtoToEntity(AccountDto accountDto){
         return Document.builder()

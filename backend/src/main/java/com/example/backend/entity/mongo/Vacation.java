@@ -1,5 +1,6 @@
 package com.example.backend.entity.mongo;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,8 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class Vacation {
+@Builder
+public class Vacation extends TypeData{
 
     private String title;
 
@@ -15,4 +17,6 @@ public class Vacation {
     private LocalDateTime endDate;
 
     private String reason;
+
+
 }

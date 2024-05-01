@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 
-public class AccountingExpense {
+public class AccountingExpense extends TypeData{
 
     private String title;
     private String category;
