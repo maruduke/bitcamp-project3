@@ -44,7 +44,6 @@ public class UserService {
                 joinDto.getDept(),
                 joinDto.getPosition(),
                 joinDto.getAuthority(),
-                joinDto.getBirthDay(),
                 joinDto.getTel());
 
         user = userRepository.save(user);

@@ -21,8 +21,6 @@ public class QUser extends EntityPathBase<User> {
 
     public final EnumPath<com.example.backend.entity.maria.enumData.Authority> authority = createEnum("authority", com.example.backend.entity.maria.enumData.Authority.class);
 
-    public final DatePath<java.time.LocalDate> birthDay = createDate("birthDay", java.time.LocalDate.class);
-
     public final StringPath dept = createString("dept");
 
     public final StringPath email = createString("email");
@@ -34,8 +32,6 @@ public class QUser extends EntityPathBase<User> {
     public final StringPath position = createString("position");
 
     public final StringPath profile_image_path = createString("profile_image_path");
-
-    public final NumberPath<Long> supervisor = createNumber("supervisor", Long.class);
 
     public final StringPath tel = createString("tel");
 

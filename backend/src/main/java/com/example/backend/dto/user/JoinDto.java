@@ -25,8 +25,8 @@ public class JoinDto {
     private Authority authority;
     private String tel;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birthDay;
+    
+
 
     public static JoinDto of(User user){
         return new JoinDto(
@@ -36,7 +36,7 @@ public class JoinDto {
                 user.getDept(),
                 user.getPosition(),
                 user.getAuthority(),
-                user.getTel(),
-                user.getBirthDay());
+                user.getTel()
+                );
     }
 }

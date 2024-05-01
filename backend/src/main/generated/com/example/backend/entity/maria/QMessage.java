@@ -38,8 +38,6 @@ public class QMessage extends EntityPathBase<Message> {
 
     public final DateTimePath<java.time.LocalDateTime> sendTime = createDateTime("sendTime", java.time.LocalDateTime.class);
 
-    public final StringPath title = createString("title");
-
     public QMessage(String variable) {
         this(Message.class, forVariable(variable), INITS);
     }
