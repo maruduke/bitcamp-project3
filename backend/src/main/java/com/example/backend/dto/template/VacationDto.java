@@ -3,15 +3,12 @@ package com.example.backend.dto.template;
 import com.example.backend.entity.mongo.Template;
 import com.example.backend.entity.mongo.TypeData;
 import com.example.backend.entity.mongo.Vacation;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter @Setter @NoArgsConstructor(access = AccessLevel.PROTECTED) @ToString(callSuper = true)
 public class VacationDto extends TemplateDto{
     private String title;
 

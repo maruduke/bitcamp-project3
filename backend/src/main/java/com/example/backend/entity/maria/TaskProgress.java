@@ -24,7 +24,7 @@ public class TaskProgress {
     private DocState state;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ref_user_id")
+    @JoinColumn(name = "ref_user_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private User ref_user_id;
 
 }

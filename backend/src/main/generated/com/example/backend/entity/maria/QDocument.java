@@ -23,6 +23,8 @@ public class QDocument extends EntityPathBase<Document> {
 
     public final StringPath documentId = createString("documentId");
 
+    public final EnumPath<com.example.backend.entity.maria.enumData.DocState> state = createEnum("state", com.example.backend.entity.maria.enumData.DocState.class);
+
     public final StringPath title = createString("title");
 
     public final EnumPath<com.example.backend.entity.maria.enumData.DocType> type = createEnum("type", com.example.backend.entity.maria.enumData.DocType.class);
