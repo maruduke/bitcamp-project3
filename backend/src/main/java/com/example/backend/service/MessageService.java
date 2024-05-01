@@ -37,7 +37,6 @@ public class MessageService {
         Message message = Message.builder()
                 .senderId(sender)
                 .receiverId(receiver)
-                .title(sendMessageDto.getTitle())
                 .message(sendMessageDto.getMessage())
                 .sendTime(LocalDateTime.now())
                 .build();
@@ -46,14 +45,13 @@ public class MessageService {
 
 
     }
-    // 쪽지 정보 가져오기
+    // 받은 쪽지 정보 가져오기
     private ReceivedMessageDto receivedMessageDto(Message message) {
         return ReceivedMessageDto.builder()
                 .messageId(message.getMessageId())
                 .senderEmail(message.getSenderId().getEmail())
                 .senderName(message.getSenderId().getName())
                 .message(message.getMessage())
-                .title(message.getTitle())
                 .sendTime(message.getSendTime())
                 .readCheck(message.isReadCheck())
                 .build();
@@ -88,5 +86,28 @@ public class MessageService {
             message.updateReadCheck(true);
             messageRepository.save(message); // 변경된 상태 저장
         }
+    }
+
+    // 내가 보낸 쪽지 리스트
+    public List<SendMessageDto> getSendMessages(String senderEmail) {
+        User senderId = userRepository.findByEmail(senderEmail)
+                .orElseThrow(() -> new IllegalArgumentException("Sender not found"));
+
+        List<Message> sendMessages = messageRepository.findBySenderId(senderId);
+
+        return sendMessages.stream()
+                .map(this::sentMessageDto)
+                .collect(Collectors.toList());
+    }
+
+    // 보낸 쪽지 정보 가져오기
+    private SendMessageDto sentMessageDto(Message message) {
+        return SendMessageDto.builder()
+                .message(message.getMessage())
+                .receiverEmail(message.getReceiverId().getEmail())
+                .senderEmail(message.getSenderId().getEmail())
+                .receiverName(message.getReceiverId().getName())
+                .receiveTime(LocalDateTime.now())
+                .build();
     }
 }

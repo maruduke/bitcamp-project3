@@ -26,9 +26,6 @@ public class ReceivedMessageDto {
     private String message;
 
     @NotEmpty
-    private String title;
-
-    @NotEmpty
     private LocalDateTime sendTime;
 
     @NotEmpty

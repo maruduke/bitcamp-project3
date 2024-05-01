@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,12 +19,14 @@ public class SendMessageDto {
     private String message;
 
     @NotEmpty
-    private String title;
-
-    @NotEmpty
     private String senderEmail;
 
     @NotEmpty
     private String receiverEmail;
 
+    @NotEmpty
+    private String receiverName;
+
+    @NotEmpty
+    private LocalDateTime receiveTime;
 }

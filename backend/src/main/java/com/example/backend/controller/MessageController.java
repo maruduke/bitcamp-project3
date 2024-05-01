@@ -41,4 +41,11 @@ public class MessageController {
         return ResponseEntity.ok(receivedMessageDto);
     }
 
+    // 내가 보낸 쪽지 리스트
+    @GetMapping("/sent")
+    public  ResponseEntity<List<SendMessageDto>> getSentMessages(@RequestParam String senderEmail) {
+        List<SendMessageDto> sentMessageList = messageService.getSendMessages(senderEmail);
+        return ResponseEntity.ok(sentMessageList);
+    }
+
 }
