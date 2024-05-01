@@ -15,17 +15,16 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 public class AccountExpenseDto extends TemplateDto{
 
-    private String title;
     private String category;
     private int cost;
     private LocalDateTime expenseDate;
 
 
     @Override
-    public Template<? extends TypeData> toEntity() {
+    public Template<? extends TypeData> toTemplateEntity() {
 
         AccountingExpense accountingExpense = AccountingExpense.builder()
-                .title(this.title)
+                .title(this.getTitle())
                 .category(this.category)
                 .cost(this.cost)
                 .expenseDate(this.expenseDate)

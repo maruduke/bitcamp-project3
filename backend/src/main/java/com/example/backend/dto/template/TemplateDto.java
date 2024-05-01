@@ -1,5 +1,7 @@
 package com.example.backend.dto.template;
 
+import com.example.backend.entity.maria.Document;
+import com.example.backend.entity.maria.enumData.DocState;
 import com.example.backend.entity.maria.enumData.DocType;
 import com.example.backend.entity.mongo.Template;
 import com.example.backend.entity.mongo.TypeData;
@@ -7,9 +9,11 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @ToString
@@ -24,7 +28,6 @@ import java.util.List;
         @JsonSubTypes.Type(name="ACCOUNTINGEXPENSE", value= AccountExpenseDto.class),
 
 })
-
 public abstract class TemplateDto {
 
     private Long writer;
@@ -33,5 +36,20 @@ public abstract class TemplateDto {
     private List<Long> refList;
     private List<Long> approverList;
 
-    abstract public Template< ? extends TypeData> toEntity();
+    private String title;
+
+
+    abstract public Template< ? extends TypeData> toTemplateEntity();
+
+
+    public Document toDocumentDto(String documentId, LocalDate createDate) {
+        return Document.builder()
+                .documentId(documentId)
+                .writer(this.writer)
+                .title(this.title)
+                .type(this.type)
+                .state(DocState.PROCESS_1)
+                .createDate(createDate)
+                .build();
+    }
 }

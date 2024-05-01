@@ -26,8 +26,6 @@ public class Message {
     private User receiverId;
 
     @Column(nullable = false)
-    private String title;
-    @Column(nullable = false)
     private String message;
 
     @CreatedDate
@@ -43,10 +41,9 @@ public class Message {
     private boolean receiverDelete;
 
     @Builder
-    public Message(User senderId, User receiverId, String title, String message) {
+    public Message(User senderId, User receiverId, String message) {
         this.senderId = senderId;
         this.receiverId = receiverId;
-        this.title = title;
         this.message = message;
     }
 

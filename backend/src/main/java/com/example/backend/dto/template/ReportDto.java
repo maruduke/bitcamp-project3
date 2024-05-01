@@ -8,13 +8,13 @@ import lombok.experimental.SuperBuilder;
 
 @Getter @Setter @ToString(callSuper = true)
 public class ReportDto extends TemplateDto{
-    private String title;
+
     private String detail;
 
     @Override
-    public Template<? extends TypeData> toEntity() {
+    public Template<? extends TypeData> toTemplateEntity() {
         Report report = Report.builder()
-                .title(title)
+                .title(this.getTitle())
                 .detail(detail)
                 .build();
 
