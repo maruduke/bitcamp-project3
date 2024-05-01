@@ -30,9 +30,5 @@ public class MemberDto {
     @NotEmpty
     private String tel;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @NotEmpty
-    private LocalDate birthDay;
 
-    private Long supervisor;
 }
