@@ -1,5 +1,6 @@
-package com.example.backend.dto;
+package com.example.backend.dto.Member;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +30,7 @@ public class MemberDto {
     @NotEmpty
     private String tel;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @NotEmpty
     private LocalDate birthDay;
 
