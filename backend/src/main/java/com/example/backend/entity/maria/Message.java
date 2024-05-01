@@ -42,6 +42,7 @@ public class Message {
 
     @Builder
     public Message(User senderId, User receiverId, String message) {
+
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.message = message;
