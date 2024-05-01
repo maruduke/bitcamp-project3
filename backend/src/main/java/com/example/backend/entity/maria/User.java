@@ -16,9 +16,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class User implements UserDetails {
-
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "user_id")
@@ -51,8 +49,7 @@ public class User implements UserDetails {
     }
 
     public User(String name, String email, String password,
-                String dept, String position, Authority authority,
-                String tel) {
+                String dept, String position, Authority authority, String tel) {
         this.name = name;
         this.email = email;
         this.password = password;

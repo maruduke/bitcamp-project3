@@ -25,9 +25,6 @@ public class JoinDto {
     private Authority authority;
     private String tel;
 
-    
-
-
     public static JoinDto of(User user){
         return new JoinDto(
                 user.getEmail(),
@@ -36,7 +33,6 @@ public class JoinDto {
                 user.getDept(),
                 user.getPosition(),
                 user.getAuthority(),
-                user.getTel()
-                );
+                user.getTel());
     }
 }
