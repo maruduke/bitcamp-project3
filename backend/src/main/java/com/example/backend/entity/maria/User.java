@@ -40,12 +40,8 @@ public class User implements UserDetails {
     private String tel;
 
     @Column(nullable = false)
-    private LocalDate birthDay;
-
-    @Column(nullable = false)
     private Authority authority;
 
-    private Long supervisor;
 
     private String profile_image_path;
 
@@ -56,14 +52,13 @@ public class User implements UserDetails {
 
     public User(String name, String email, String password,
                 String dept, String position, Authority authority,
-                LocalDate birthday, String tel) {
+                String tel) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.dept = dept;
         this.position = position;
         this.authority = authority;
-        this.birthDay = birthday;
         this.tel = tel;
     }
 

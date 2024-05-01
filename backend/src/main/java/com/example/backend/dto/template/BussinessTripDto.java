@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 public class BussinessTripDto extends TemplateDto{
 
-    private String title;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String location;
@@ -21,10 +20,10 @@ public class BussinessTripDto extends TemplateDto{
 
 
     @Override
-    public Template<BussinessTrip> toEntity() {
+    public Template<BussinessTrip> toTemplateEntity() {
 
         BussinessTrip bussinessTrip = BussinessTrip.builder()
-                .title(this.title)
+                .title(this.getTitle())
                 .startDate(this.startDate)
                 .endDate(this.endDate)
                 .location(this.location)

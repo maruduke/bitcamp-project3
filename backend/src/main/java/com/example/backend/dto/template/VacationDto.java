@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 
 @Getter @Setter @NoArgsConstructor(access = AccessLevel.PROTECTED) @ToString(callSuper = true)
 public class VacationDto extends TemplateDto{
-    private String title;
 
     private LocalDateTime startDate;
     private LocalDateTime endDate;
@@ -18,10 +17,10 @@ public class VacationDto extends TemplateDto{
     private String reason;
 
     @Override
-    public Template<? extends TypeData> toEntity() {
+    public Template<? extends TypeData> toTemplateEntity() {
 
         Vacation vacation = Vacation.builder()
-                .title(this.title)
+                .title(this.getTitle())
                 .startDate(this.startDate)
                 .endDate(this.endDate)
                 .reason(this.reason).build();

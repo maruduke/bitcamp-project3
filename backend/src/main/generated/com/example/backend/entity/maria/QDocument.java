@@ -29,7 +29,7 @@ public class QDocument extends EntityPathBase<Document> {
 
     public final EnumPath<com.example.backend.entity.maria.enumData.DocType> type = createEnum("type", com.example.backend.entity.maria.enumData.DocType.class);
 
-    public final StringPath writer = createString("writer");
+    public final NumberPath<Long> writer = createNumber("writer", Long.class);
 
     public QDocument(String variable) {
         super(Document.class, forVariable(variable));
