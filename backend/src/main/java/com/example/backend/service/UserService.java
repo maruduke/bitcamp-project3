@@ -1,12 +1,14 @@
 package com.example.backend.service;
 
 import com.example.backend.dto.user.JoinDto;
+import com.example.backend.dto.user.LoginDto;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.maria.enumData.Authority;
 import com.example.backend.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.coyote.BadRequestException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Log4j2
 public class UserService {
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -49,23 +52,16 @@ public class UserService {
         return JoinDto.of(user);
     }
 
+    public LoginDto login(LoginDto loginDto){
+        Optional<User> user = userRepository.findByEmail(loginDto.getEmail());
 
-
-
-
-
-    public User login(HttpServletRequest req){
-        Optional<User> OptionalUser = userRepository.findByEmail(req.getParameter("email"));
-
-        if(OptionalUser.isEmpty()){
-            return null;
+        if(user.isEmpty()) {
+            user.orElseThrow(()-> new RuntimeException("아이디가 존재하지 않습니다."));
+        }else if(!passwordEncoder.matches(loginDto.getPassword(), user.get().getPassword())) {
+            user.orElseThrow(()-> new RuntimeException("비밀번호가 다릅니다."));
         }
-        User user = OptionalUser.get();
 
-        if(!user.getPassword().equals(req.getParameter("password"))){
-            return null;
-        }
-        return user;
+        return LoginDto.of(user.get());
     }
 
 
