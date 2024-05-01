@@ -5,16 +5,14 @@ import com.example.backend.entity.mongo.Template;
 import com.example.backend.entity.mongo.TypeData;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@ToString
 @JsonTypeInfo(use= JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.EXISTING_PROPERTY,
         property = "type",
@@ -23,7 +21,7 @@ import java.util.List;
         @JsonSubTypes.Type(name="VACATION", value= VacationDto.class),
         @JsonSubTypes.Type(name="BUSSINESSTRIP", value= BussinessTripDto.class),
         @JsonSubTypes.Type(name="REPORT", value= ReportDto.class),
-        @JsonSubTypes.Type(name="ACCOUNTINGEXPENSE", value= AccountDto.class),
+        @JsonSubTypes.Type(name="ACCOUNTINGEXPENSE", value= AccountExpenseDto.class),
 
 })
 
