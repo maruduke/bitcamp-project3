@@ -1,9 +1,9 @@
 package com.example.backend.repository;
 
-import com.example.backend.entity.maria.User;
+import com.example.backend.entity.maria.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NoteRepository extends JpaRepository<User, Long> {
+public interface DocumentRepository extends JpaRepository<Document, Long> {
 }

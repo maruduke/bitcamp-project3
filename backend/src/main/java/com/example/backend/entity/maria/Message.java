@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Note {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long noteId;
+public class Message {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="message_id")
+    private Long messageId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="senderId")
@@ -43,7 +43,7 @@ public class Note {
     private boolean receiverDelete;
 
     @Builder
-    public Note(User senderId, User receiverId, String title, String message) {
+    public Message(User senderId, User receiverId, String title, String message) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.title = title;
