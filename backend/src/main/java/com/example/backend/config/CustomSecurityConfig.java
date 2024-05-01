@@ -47,6 +47,7 @@ public class CustomSecurityConfig  {
                 )
                 .logout((logoutConfig)-> logoutConfig.logoutSuccessUrl("/swagger-ui/**")
         ).userDetailsService(customUserDetailService);
+
         return http.build();
     }
 }

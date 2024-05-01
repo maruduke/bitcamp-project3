@@ -22,7 +22,9 @@ public class Template<T> {
     private String id;
 
     private Long writer;
-    private DocType dataType;
+
+
+    private DocType type;
 
     private List<Long> refList;
 
@@ -32,15 +34,16 @@ public class Template<T> {
     private List<Long> approverList;
     private List<Boolean> approverCheckList;
 
-    private T data;
+    private T typeData;
 
     @Builder
-    public Template (Long writer, DocType dataType,List<Long> refList, List<Long> approverList, T data) {
+    public Template (Long writer, DocType type, List<Long> approverList, List<Long> refList, T typeData) {
         this.writer = writer;
-        this.dataType = dataType;
+        this.type = type;
         this.refList = refList;
-        this.approverList = new ArrayList<Long>();
-        this.data = data;
+        this.approverList = approverList;
+        this.approverCheckList = new ArrayList<Boolean>();
+        this.typeData = typeData;
     }
 
 }

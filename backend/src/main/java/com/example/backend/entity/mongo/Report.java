@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Builder
-public class Report {
+public class Report extends TypeData{
 
     private String title;
     private String detail;
