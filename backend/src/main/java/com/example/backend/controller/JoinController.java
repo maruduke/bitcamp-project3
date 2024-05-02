@@ -17,11 +17,6 @@ public class JoinController {
 
     private final UserService userService;
 
-    @PostMapping()
-    public JoinDto joinPost(@RequestBody JoinDto joinDto) {
-        log.info("joinPost.......");
 
-        return userService.Join(joinDto);
-    }
 
 }

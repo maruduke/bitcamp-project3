@@ -2,6 +2,7 @@ package com.example.backend.service;
 
 import com.example.backend.dto.user.JoinDto;
 import com.example.backend.dto.user.LoginDto;
+import com.example.backend.dto.user.UserResponse;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.maria.enumData.Authority;
 import com.example.backend.repository.UserRepository;
@@ -22,7 +23,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public JoinDto Join(JoinDto joinDto) {
+    public UserResponse Join(JoinDto joinDto) {
         boolean isExist = userRepository.existsByEmail(joinDto.getEmail());
 
         if(isExist) {
@@ -48,19 +49,21 @@ public class UserService {
 
         user = userRepository.save(user);
         log.info(user.toString());
-        return JoinDto.of(user);
+        return UserResponse.of(user);
     }
 
-    public LoginDto login(LoginDto loginDto){
-        Optional<User> user = userRepository.findByEmail(loginDto.getEmail());
+    public UserResponse login(LoginDto loginDto) throws BadRequestException {
+        User user = userRepository
+                .findByEmail(loginDto.getEmail())
+                .orElseThrow(()-> new BadRequestException("아이디가 존재하지않습니다."));
 
-        if(user.isEmpty()) {
-            user.orElseThrow(()-> new RuntimeException("아이디가 존재하지 않습니다."));
-        }else if(!passwordEncoder.matches(loginDto.getPassword(), user.get().getPassword())) {
-            user.orElseThrow(()-> new RuntimeException("비밀번호가 다릅니다."));
+        boolean matches = passwordEncoder.matches(loginDto.getPassword(), user.getPassword());
+
+        if(!matches) {
+             throw new BadRequestException("비밀번호가 다릅니다.");
         }
 
-        return LoginDto.of(user.get());
+        return UserResponse.of(user);
     }
 
 
