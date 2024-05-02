@@ -56,7 +56,7 @@ public class Message {
         this.senderDelete = senderDelete;
     }
 
-    public void updateReceiveDelete(boolean receiverDelete) {
+    public void updateReceiverDelete(boolean receiverDelete) {
         this.receiverDelete = receiverDelete;
     }
 
