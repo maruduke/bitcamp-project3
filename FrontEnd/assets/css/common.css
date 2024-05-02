@@ -1,14 +1,14 @@
 * {margin: 0; padding: 0; box-sizing: border-box;}
 ol,ul,li {list-style: none;}
 a {text-decoration: none; display: inline-block;}
-a:link {color: #000; text-decoration: none;}
-a:hover {color: #000; text-decoration: underline;}
-a:active {color:  #000; text-decoration: underline;}
+a:link {color: #39435C; text-decoration: none;}
+a:hover {color: #39435C;}
+a:active {color:  #39435C; text-decoration: underline;}
 input {line-height: 1;}
 img,fieldset {border: none;}
-body {font-family: 'Roboto Condensed', sans-serif; font-size: 16px; font-weight: 400; color: #000;}
+body {font-family: 'pretendard', sans-serif; font-size: 16px; font-weight: 400; color: #39435C; line-height: 1;}
 em {font-style: normal;}
-.blind {position: absolute; left: -9999px; font-size: 0;}
+.blind {text-indent: -9999px; font-size: 0;}
 
 table {border-collapse: collapse; border-spacing: 0;}
 legend {position: absolute; width: 0; height: 0; line-height: 0; font-size: 0; text-indent: -9999px; overflow: hidden;}

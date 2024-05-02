@@ -1,0 +1,61 @@
+/* flex-layout */
+.inline-flex {display: inline-flex;}
+.flex {display: flex; flex-wrap: wrap;}
+.justify-center {display: flex; justify-self: center;}
+.align-center {display: flex; align-items: center;}
+.column-direction {display: flex; flex-direction: column;}
+.row-direction {display: flex; flex-direction: row;}
+
+/* position-layout */
+.pos-relative {position: relative;}
+.pos-absolute {position: absolute;}
+
+/* box-layout */
+.box {background: #fff; border-radius: 8px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); height: 150px; margin-bottom: 40px;}
+
+/* color */
+.light-blue {background: #eff3f6;}
+.teal-blue {background-color: #5b718f;}
+
+/* font */
+.title-blue {background: #5b718f;color: #fff; font-size: 20px; font-weight: 300; font-family: "designer"; text-align: center; height: 50px; line-height: 50px; border-radius: 8px 8px 0 0;}
+
+/* padding, margin */
+.pdx15 {padding: 0 15px;}
+.pdx25 {padding: 0 25px;}
+.pdx30 {padding: 0 30px;}
+
+/* button */
+.blue-btn {border-radius: 8px; font-family: "designer" !important; font-weight: 500; font-size: 15px; color: #6d717c; padding: 10px 0px; text-align: center; width: 100px;}
+.title-btn {font-family: "designer" !important;font-size: 16px;font-weight: 500; text-align: center; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;}
+
+/* width */
+.w100p {width: 100% !important;}
+.w66p {width: 66.66% !important;}
+.w50p {width: 50% !important;}
+.w33p {width: 33.33% !important;}
+.w25p {width: 25% !important;}
+.w10p {width: 10% !important;}
+
+/* common */
+body::after {content: ""; position: absolute; top: 100px; left: 0; width: 100%; height: 380px; display: block; background: #eff3f6; z-index: -1;}
+.nav-container {max-width: 1440px; margin: 0 auto;}
+.main-container {max-width: 900px; margin: 0 auto;}
+.container {max-width: 700px; margin: 0 auto;}
+
+/* header */
+header {height: 100px; position: relative;}
+header .logo {background:url(../images/logo.png)no-repeat center/contain; width: 130px; height: 100px; position: absolute; top: 0px; left: 0;}
+.nav {padding: 0 60px;}
+.nav ul {display: flex; height: 100px; justify-content: flex-end; align-items: center;}
+.nav ul li a {display: inline-block; padding-left: 70px; font-family: "defigner"; font-size: 20px; font-weight: 300; color: #39435C;}
+
+/* main */
+main {margin-top: 100px;}
+
+/* footer */
+footer {position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);}
+footer em {font-family: "designer" !important; font-size: 11px; font-weight: 300; color: #000;}
+
+/* message */
+.message {position: fixed; bottom: 80px; right: 15%; background: url(../images/message.png)no-repeat center/contain; width: 55px; height: 41px; display: inline-block;}
