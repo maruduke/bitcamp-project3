@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column
+    flex-direction: column;
+    height: 100vh;
 }
 
 .login_logo {background:url(../images/logo.png)no-repeat center/contain; 
     width: 130px; 
     height: 100px; 
     left: 50%;
-    margin-top: 210px;
 }
 
 .login_container{
@@ -19,7 +19,7 @@
 
 }
 
-.rer_container{
+.er_container{
     margin: 0 auto; 
     display: flex; 
     justify-content: center; /*마진이랑 저스티파이 컨텐트가 있어야 중앙 배치 됨*/
