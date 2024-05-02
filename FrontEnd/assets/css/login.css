@@ -1,20 +1,28 @@
+.Login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .login_logo {background:url(../images/logo.png)no-repeat center/contain; 
     width: 130px; 
     height: 100px; 
-    position: absolute; 
-    top: 110px; 
     left: 50%;
-    transform: translateX(-50%); /* 요소의 가로 크기의 절반만큼 왼쪽으로 이동하여 정확히 중앙에 배치 */
 }
 
 .login_container{
     margin: 0 auto; 
-
     display: flex; 
     justify-content: center; /*마진이랑 저스티파이 컨텐트가 있어야 중앙 배치 됨*/
-    margin-top: 210px;
 
-    align-items : center;
+}
+
+.er_container{
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: center; /*마진이랑 저스티파이 컨텐트가 있어야 중앙 배치 됨*/
 
 }
 
@@ -31,12 +39,9 @@
     background-color: #39435C;
 
     justify-content: center;
-    margin-top: 13px;
+    margin-top: 20px;
 
-    text-align: center;
-    display: flex; /* Flexbox 레이아웃 사용 */
-    align-items: center; /* 수직 중앙 정렬 */
-
+    display: flex;
 }
 
 .inputbox input{
@@ -50,9 +55,7 @@
     color: #C1C5D4;
 
     text-align: center;
-    display: flex; /* Flexbox 레이아웃 사용 */
-    justify-content: center; /* 수평 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
+    /* align-items: center; */
 
 }
 
