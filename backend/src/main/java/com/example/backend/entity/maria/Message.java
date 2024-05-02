@@ -41,11 +41,12 @@ public class Message {
     private boolean receiverDelete;
 
     @Builder
-    public Message(User senderId, User receiverId, String message) {
+    public Message(User senderId, User receiverId, String message, LocalDateTime sendTime) {
 
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.message = message;
+        this.sendTime = sendTime;
     }
 
     public void updateReadCheck(boolean readCheck) {
