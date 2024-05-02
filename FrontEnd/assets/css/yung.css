@@ -1,0 +1,11 @@
+/* 시간 박스*/
+.time-box{
+    background: #65ac36; height: 15px; text-align: right; margin-top: 21px;
+}
+
+.time-box span {color: #fff; font-size: 10px; font-weight: 500; padding-right: 45px; position: relative;}
+
+/*확인서 내부 박스*/
+.check-inner-box{
+    background: #d89632; height: 54px; border-bottom: 3px solid #CBC9D7;
+}
