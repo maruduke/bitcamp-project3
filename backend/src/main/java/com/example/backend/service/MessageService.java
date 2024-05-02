@@ -64,27 +64,64 @@ public class MessageService {
         List<Message> messages = messageRepository.findByReceiverId(receiverId);
 
         return messages.stream()
+                .filter(message -> !message.isReceiverDelete())
                 .map(this::receivedMessageDto)
                 .collect(Collectors.toList());
     }
 
-    // 쪽지 읽기
-    public ReceivedMessageDto messageDetails(Long messageId) {
+    // 내가 받은 쪽지 읽기
+    public ReceivedMessageDto messageReadDetails(Long messageId) {
         Message message = messageRepository.findById(messageId)
                 .orElseThrow(() -> new IllegalArgumentException("Message not found"));
-
-        messageReadChange(message); // 읽은 쪽지로 표시
 
         return receivedMessageDto(message);
     }
 
     // 쪽지 읽음으로 변환
     @Transactional
-    public void messageReadChange(Message message) {
+    public ReceivedMessageDto messageReadChange(Long messageId) {
+        Message message = messageRepository.findById(messageId)
+                .orElseThrow(() -> new IllegalArgumentException("Message not found"));
+
         if (!message.isReadCheck()) { // 읽지 않은 경우에만 업데이트
             message.updateReadCheck(true);
             messageRepository.save(message); // 변경된 상태 저장
         }
+        return receivedMessageDto(message);
+    }
+
+    // 나에게 온 쪽지 리스트에 receiverDelete 값을 true 업데이트
+    public ReceivedMessageDto deleteReceivedMessage(Long messageId) {
+        Message message = messageRepository.findById(messageId)
+                .orElseThrow(() -> new IllegalArgumentException("Message not found"));
+
+        receiverDeleteChange(message); // 내가 받은 쪽지 리스트 receiverDelete - true 업데이트
+
+        if(message.isReceiverDelete() && message.isSenderDelete()) {
+            messageRepository.deleteById(messageId);
+        }
+
+        return receivedMessageDto(message);
+
+    }
+
+    // 나에게 온 쪽지 삭제 정보 true로 변환
+    @Transactional
+    public void receiverDeleteChange(Message message) {
+        if (!message.isReceiverDelete()) {
+            message.updateReceiverDelete(true); // receiverDelete 값을 true로 업데이트
+            messageRepository.save(message);
+        }
+    }
+
+    // 보낸 쪽지 정보 가져오기
+    private SendMessageDto sentMessageDto(Message message) {
+        return SendMessageDto.builder()
+                .message(message.getMessage())
+                .receiverEmail(message.getReceiverId().getEmail())
+                .senderEmail(message.getSenderId().getEmail())
+                .receiverName(message.getReceiverId().getName())
+                .build();
     }
 
     // 내가 보낸 쪽지 리스트
@@ -95,18 +132,39 @@ public class MessageService {
         List<Message> sendMessages = messageRepository.findBySenderId(senderId);
 
         return sendMessages.stream()
+                .filter(message -> !message.isSenderDelete())
                 .map(this::sentMessageDto)
                 .collect(Collectors.toList());
     }
 
-    // 보낸 쪽지 정보 가져오기
-    private SendMessageDto sentMessageDto(Message message) {
-        return SendMessageDto.builder()
-                .message(message.getMessage())
-                .receiverEmail(message.getReceiverId().getEmail())
-                .senderEmail(message.getSenderId().getEmail())
-                .receiverName(message.getReceiverId().getName())
-                .receiveTime(LocalDateTime.now())
-                .build();
+    // 내가 보낸 쪽지 읽기
+    public SendMessageDto messageMyReadDetails(Long messageId) {
+        Message message = messageRepository.findById(messageId)
+                .orElseThrow(() -> new IllegalArgumentException("Message not found"));
+
+        return sentMessageDto(message);
+    }
+
+    // 내가 보낸 쪽지 리스트에 senderDelete 값을 true 업데이트
+    public SendMessageDto deleteSentMessage(Long messageId) {
+        Message message = messageRepository.findById(messageId)
+                .orElseThrow(() -> new IllegalArgumentException("Message not found"));
+
+        senderDeleteChange(message); // 내가 보낸 쪽지지 리스트 senderDelete - true 업데이트
+
+        if(message.isSenderDelete() && message.isReceiverDelete()) {
+            messageRepository.deleteById(messageId);
+        }
+
+        return sentMessageDto(message);
+    }
+
+    // 삭제 정보 true로 변환
+    @Transactional
+    public void senderDeleteChange(Message message) {
+        if (!message.isSenderDelete()) {
+            message.updateSenderDelete(true); // senderDelete 값을 true로 업데이트
+            messageRepository.save(message);
+        }
     }
 }

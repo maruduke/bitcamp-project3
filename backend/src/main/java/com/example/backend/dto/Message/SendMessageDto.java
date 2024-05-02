@@ -26,7 +26,4 @@ public class SendMessageDto {
 
     @NotEmpty
     private String receiverName;
-
-    @NotEmpty
-    private LocalDateTime receiveTime;
 }
