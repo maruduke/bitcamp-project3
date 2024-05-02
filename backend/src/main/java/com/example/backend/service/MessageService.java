@@ -38,6 +38,7 @@ public class MessageService {
                 .senderId(sender)
                 .receiverId(receiver)
                 .message(sendMessageDto.getMessage())
+                .sendTime(LocalDateTime.now())
                 .build();
 
         messageRepository.save(message);
