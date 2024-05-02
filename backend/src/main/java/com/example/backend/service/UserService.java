@@ -22,6 +22,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RedisService redisService;
 
     public UserResponse Join(JoinDto joinDto) {
         boolean isExist = userRepository.existsByEmail(joinDto.getEmail());
@@ -65,6 +66,13 @@ public class UserService {
 
         return UserResponse.of(user);
     }
+
+//    public String logout(String atk, User user) {
+//        userRepository.delete(user);
+//        redisService.setBlackList("atk", atk);
+//
+//        return "logout";
+//    }
 
 
 
