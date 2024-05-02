@@ -1,5 +1,5 @@
 /* flex-layout */
-.inline-flex {display: inline-flex;}
+.inline-flex {display: inline-flex; flex-wrap: wrap;}
 .flex {display: flex; flex-wrap: wrap;}
 .justify-center {display: flex; justify-content: center;}
 .space-between {display: flex; justify-content: space-between;}
@@ -21,6 +21,8 @@
 .teal-blue {background-color: #5b718f;}
 
 /* font */
+.text-center {text-align: center;}
+.text-right {text-align: right;}
 .title-blue {background: #5b718f;color: #fff; font-size: 20px; font-weight: 300; text-align: center; height: 50px; line-height: 50px; border-radius: 8px 8px 0 0;}
 
 .title-blue-box {background: #5b718f;border-radius: 8px 8px 0 0;height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 35px;}
@@ -42,8 +44,13 @@
 
 
 /* button */
-.blue-btn {border-radius: 8px; font-weight: 500; font-size: 15px; color: #6d717c; padding: 10px 0px; text-align: center; width: 100px;}
+.blue-btn {border-radius: 8px; font-weight: 500; font-size: 15px; color: #6d717c; padding: 10px 0px; text-align: center; width: 100px; background: #eff3f6;}
 .title-btn {font-size: 16px;font-weight: 500; text-align: center; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: #39435C;}
+
+
+/* 접근권한 */
+.show {display: block;}
+.hide {display: none;}
 
 
 /* width */
@@ -89,7 +96,6 @@ header .logo a {width: 100%; height: 100%; cursor: pointer;}
 /* main */
 main {margin-top: 100px;}
 main.index-main {margin-top: 90px;}
-.content {padding: 40px;}
 
 /* index-main */
 .user {font-size: 20px; font-weight: 500; color: #39435C;}
