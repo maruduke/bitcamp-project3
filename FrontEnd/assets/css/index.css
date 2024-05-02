@@ -1,5 +1,5 @@
 /* flex-layout */
-.inline-flex {display: inline-flex;}
+.inline-flex {display: inline-flex; flex-wrap: wrap;}
 .flex {display: flex; flex-wrap: wrap;}
 .justify-center {display: flex; justify-content: center;}
 .space-between {display: flex; justify-content: space-between;}
@@ -42,7 +42,7 @@
 
 
 /* button */
-.blue-btn {border-radius: 8px; font-weight: 500; font-size: 15px; color: #6d717c; padding: 10px 0px; text-align: center; width: 100px;}
+.blue-btn {border-radius: 8px; font-weight: 500; font-size: 15px; color: #6d717c; padding: 10px 0px; text-align: center; width: 100px; background: #eff3f6;}
 .title-btn {font-size: 16px;font-weight: 500; text-align: center; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: #39435C;}
 
 
@@ -64,6 +64,7 @@
 
 /* scroll */
 .scroll {height: 500px; overflow-y: scroll;}
+.scroll .content {padding: 40px;}
 
 
 /* select, input */
@@ -89,7 +90,6 @@ header .logo a {width: 100%; height: 100%; cursor: pointer;}
 /* main */
 main {margin-top: 100px;}
 main.index-main {margin-top: 90px;}
-.content {padding: 40px;}
 
 /* index-main */
 .user {font-size: 20px; font-weight: 500; color: #39435C;}

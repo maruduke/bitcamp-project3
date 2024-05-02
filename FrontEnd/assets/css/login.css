@@ -18,7 +18,9 @@
 
 }
 
-.box {background: #fff; border-radius: 8px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); height: 150px; margin-bottom: 40px;}
+
+.Login .box ul {background: #fff; border-radius: 8px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); height: 150px; margin-bottom: 40px;}
+
 
 .inputbox{
     margin: auto; 
@@ -75,6 +77,24 @@
     background-color: #D1D5DB; /* 마우스를 올렸을 때 배경색 변경 */
 }
 
+
+::-webkit-input-placeholder {
+    color: #C1C5D4; /* 원하는 색상으로 변경 */
+}
+
+::-moz-placeholder {
+    color: #C1C5D4; /* 원하는 색상으로 변경 */
+}
+
+:-ms-input-placeholder {
+    color: #C1C5D4; /* 원하는 색상으로 변경 */
+}
+
+::-ms-input-placeholder {
+    color: #C1C5D4; /* 원하는 색상으로 변경 */
+}
+
 ::placeholder {
     color: #C1C5D4; /* 원하는 색상으로 변경 */
 }
+
