@@ -24,7 +24,10 @@ public class BoardController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-
+    @GetMapping("/test")
+    public String test() {
+        return "good";
+    }
 
 
 

@@ -19,7 +19,7 @@ public class Subject {
         return new Subject(email, authority, "ATK");
     }
 
-    public static Subject rtk(String email, Authority authority, String type) {
+    public static Subject rtk(String email, Authority authority) {
         return new Subject(email, authority, "RTK");
     }
 }

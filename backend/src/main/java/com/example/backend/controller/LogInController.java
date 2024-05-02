@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Log4j2
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/login")
 @RequiredArgsConstructor
 public class LogInController {
 
@@ -28,14 +28,14 @@ public class LogInController {
         return userService.Join(joinDto);
     }
 
-    @GetMapping("/login/get")
+    @GetMapping("/get")
     public String loginGET(LoginDto loginDto){
         log.info("loginGET....");
         log.info("test");
-        return "redirect:/login";
+        return "login";
     }
 
-    @PostMapping("/login/post")
+    @PostMapping("/post")
     public TokenDto loginPOST(@RequestBody LoginDto loginDto) throws BadRequestException, JsonProcessingException {
         log.info("loginPOST....");
         UserResponse userResponse = userService.login(loginDto);
@@ -48,5 +48,9 @@ public class LogInController {
         return "good!";
     }
 
+    @GetMapping("")
+    public String ok() {
+        return "test";
+    }
 
 }

@@ -44,6 +44,7 @@ public class JwtUtil {
         String subjectStr = objectMapper.writeValueAsString(subject);
         Claims claims = Jwts.claims()
                 .setSubject(subjectStr);
+
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
