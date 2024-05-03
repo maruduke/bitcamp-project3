@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 @SpringBootTest
-
 class TemplateRepositoryTest {
 
     @Autowired
@@ -33,17 +32,5 @@ class TemplateRepositoryTest {
         Assertions.assertEquals(reporttemplate.getId(), find.getId());
     }
 
-    @Test
-    public void find() {
-        Optional<Template> template = templateRepository.findById("66308ea6ee73234e6da70c17");
-
-        Template findTemplate = template.orElse(null);
-
-        if (findTemplate == null)
-            System.out.println("null");
-        else
-            System.out.println(findTemplate.toString());
-            System.out.println(findTemplate.getTypeData().toString());
-    }
 
 }

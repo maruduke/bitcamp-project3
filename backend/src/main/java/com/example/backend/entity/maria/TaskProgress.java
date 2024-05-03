@@ -3,9 +3,7 @@ package com.example.backend.entity.maria;
 import com.example.backend.entity.maria.enumData.DocState;
 import com.example.backend.entity.maria.enumData.DocType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
@@ -24,7 +22,26 @@ public class TaskProgress {
     private DocState state;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ref_user_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    private User ref_user_id;
+    @JoinColumn(name = "ref_user_id", insertable = false, updatable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    private User user;
 
+    @Column(name = "ref_user_id")
+    private Long ref_user_id;
+
+    @Builder
+    public TaskProgress(String documentId, DocState state, Long ref_user_id) {
+        this.documentId = documentId;
+        this.state = state;
+        this.ref_user_id = ref_user_id;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskProgress{" +
+                "refId=" + refId +
+                ", documentId='" + documentId + '\'' +
+                ", state=" + state +
+                ", ref_user_id=" + ref_user_id +
+                '}';
+    }
 }

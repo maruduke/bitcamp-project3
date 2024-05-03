@@ -21,6 +21,7 @@ public class ReportDto extends TemplateDto{
         return Template.<Report>builder()
                 .writer(this.getWriter())
                 .type(this.getType())
+                .approverList(this.getApproverList())
                 .refList(this.getRefList())
                 .typeData(report)
                 .build();

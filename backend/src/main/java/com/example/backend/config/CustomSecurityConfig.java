@@ -37,7 +37,7 @@ public class CustomSecurityConfig  {
                 .cors(CorsConfigurer::disable)
                 .authorizeHttpRequests((authorizeRequests)->
                         authorizeRequests
-                                .requestMatchers("**").permitAll()
+                                .requestMatchers("/login/**").permitAll()
                                 .requestMatchers("/join/**").hasAuthority(Authority.ADMIN.name())
                                 .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthenticationFilter(jwtUtil, customUserDetailService), UsernamePasswordAuthenticationFilter.class)
