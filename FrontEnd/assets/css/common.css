@@ -23,3 +23,9 @@ textarea,
 button,
 legend,
 label{font-family: 'Gmarket Sans', 'pretendard', sans-serif !important;}
+
+::-webkit-input-placeholder {color: #6d717c;}
+::-moz-placeholder {color: #6d717c;}
+:-ms-input-placeholder {color: #6d717c;}
+::-ms-input-placeholder {color: #6d717c;}
+::placeholder {color: #6d717c;}
