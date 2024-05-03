@@ -85,19 +85,14 @@
     color: #C1C5D4; /* 원하는 색상으로 변경 */
 }
 
-::-moz-placeholder {
-    color: #C1C5D4; /* 원하는 색상으로 변경 */
-}
+    .check-btn{
 
-:-ms-input-placeholder {
-    color: #C1C5D4; /* 원하는 색상으로 변경 */
-}
+    background: #fff; 
+    height: 35px; 
+    justify-content: center; 
+    align-items: center; 
+    }
 
-::-ms-input-placeholder {
-    color: #C1C5D4; /* 원하는 색상으로 변경 */
-}
-
-::placeholder {
-    color: #C1C5D4; /* 원하는 색상으로 변경 */
-}
-
+    .check-btn > .blue-btn{
+            margin: 0px 17px;
+    }
