@@ -112,3 +112,9 @@ footer em {font-size: 13px; font-weight:lighter; color: #000;}
 
 /* message */
 .message {position: fixed; bottom: 80px; right: 100px; background: url(../images/message.png)no-repeat center/contain; width: 55px; height: 41px; display: inline-block;}
+
+::-webkit-input-placeholder {color: #C1C5D4;}
+::-moz-placeholder {color: #C1C5D4;}
+:-ms-input-placeholder {color: #C1C5D4;}
+::-ms-input-placeholder {color: #C1C5D4;}
+::placeholder {color: #C1C5D4;}

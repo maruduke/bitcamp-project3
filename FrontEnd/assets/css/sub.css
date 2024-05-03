@@ -4,7 +4,7 @@
 /* 목록 보기 */
 .myList .title-white-box h2 {font-weight: 500;}
 .myList .return-btn span {background: url(../images/return_btn.svg)no-repeat center; width: 20px; height: 20px; display: inline-block;}
-.myList .myList-list {border-bottom: 1px solid #cbcbcb; height: 80px;}
+.myList .myList-list {border-bottom: 1px solid #cbcbcb; height: 80px; cursor: pointer;}
 
 .myList .myList-title p {font-size: 15px; font-weight: 300; color: #39435c; margin-bottom: 15px;}
 .myList .myList-date,
