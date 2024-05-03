@@ -16,22 +16,4 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class BoardService {
 
-    private final DocumentRepository documentRepository;
-    private final TemplateRepository templateRepository;
-
-
-
-    public String saveTemplate(TemplateDto templateDto) {
-
-        LocalDate createDate = LocalDate.now();
-
-        Template<? extends TypeData> template = templateDto.toTemplateEntity();
-        // mongodb 저장
-        templateRepository.save(template);
-
-        Document document = templateDto.toDocumentDto(template.getId(), createDate);
-        documentRepository.save(document);
-
-        return template.getId();
-    }
 }

@@ -1,6 +1,7 @@
 package com.example.backend.dto.template;
 
 import com.example.backend.entity.maria.Document;
+import com.example.backend.entity.maria.TaskProgress;
 import com.example.backend.entity.maria.enumData.DocState;
 import com.example.backend.entity.maria.enumData.DocType;
 import com.example.backend.entity.mongo.Template;
@@ -42,7 +43,7 @@ public abstract class TemplateDto {
     abstract public Template< ? extends TypeData> toTemplateEntity();
 
 
-    public Document toDocumentDto(String documentId, LocalDate createDate) {
+    public Document toDocumentEntity(String documentId, LocalDate createDate) {
         return Document.builder()
                 .documentId(documentId)
                 .writer(this.writer)
@@ -52,4 +53,5 @@ public abstract class TemplateDto {
                 .createDate(createDate)
                 .build();
     }
+
 }

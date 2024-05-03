@@ -23,39 +23,5 @@ import java.util.Optional;
 
 @SpringBootTest
 public class BoardServiceTest {
-    private static final Logger log = LoggerFactory.getLogger(BoardServiceTest.class);
-    @Autowired
-    private BoardService boardService;
 
-    @Autowired
-    private TemplateRepository templateRepository;
-
-    @Autowired
-    private DocumentRepository documentRepository;
-
-
-    @Test
-    public void templateSaveTest() {
-        // given
-        ReportDto dto = new ReportDto();
-        dto.setWriter(2L);
-        dto.setType(DocType.REPORT);
-        dto.setRefList(new ArrayList<Long>());
-        dto.setDetail("test");
-
-
-        // when
-        String id = boardService.saveTemplate(dto);
-
-        // then
-        Template report = templateRepository.findById(id).orElse(null);
-        Document document = documentRepository.findById(id).orElse(null);
-
-        log.info(report.toString());
-        log.info(document.toString());
-
-        Assertions.assertEquals(id, report.getId());
-        Assertions.assertEquals(id, document.getDocumentId());
-
-    }
 }
