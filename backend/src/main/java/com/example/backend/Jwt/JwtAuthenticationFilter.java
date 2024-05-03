@@ -30,15 +30,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         log.info("JWT Authentication Filter");
         String authorization = request.getHeader("Authorization");
+        log.info("authorization: " + authorization);
         if(authorization!=null){
             String atk = authorization.substring("Bearer ".length());
+            log.info("atk: " + atk);
             try{
                 Subject subject = jwtUtil.getSubject(atk);
-                log.info(subject);
+                log.info("subject: " + subject);
+                String requsetURI = request.getRequestURI();
+                log.info("requsetURI: " + requsetURI);
+                if(subject.getType().equals("RTK") && !requsetURI.equals("/login/reissue")){
+                    throw new JwtException("토큰을 확인하세요.");
+                }
                 User user = customUserDetailService.loadUserByUsername(subject.getEmail());
+                log.info("user: " + user);
                 Authentication token = new UsernamePasswordAuthenticationToken(user, "", user.getAuthorities());
+                log.info("token: " + token);
                 SecurityContextHolder.getContext().setAuthentication(token);
             }catch(JwtException e){
+                log.info("jwt exception: " + e);
                 request.setAttribute("exception", e.getMessage());
             }
         }

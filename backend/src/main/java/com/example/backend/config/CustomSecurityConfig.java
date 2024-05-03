@@ -41,15 +41,6 @@ public class CustomSecurityConfig  {
                                 .requestMatchers("/join/**").hasAuthority(Authority.ADMIN.name())
                                 .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthenticationFilter(jwtUtil, customUserDetailService), UsernamePasswordAuthenticationFilter.class)
-                .formLogin((formLogin) ->
-                    formLogin
-                            .loginPage("/login")
-                            .usernameParameter("email")
-                            .passwordParameter("password")
-                            .defaultSuccessUrl("/")
-                            .failureUrl("/")
-
-                )
                 .logout((logoutConfig)-> logoutConfig.logoutSuccessUrl("/login")
         ).userDetailsService(customUserDetailService);
 
