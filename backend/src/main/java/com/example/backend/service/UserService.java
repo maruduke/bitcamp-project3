@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.Jwt.JwtUtil;
 import com.example.backend.dto.user.JoinDto;
 import com.example.backend.dto.user.LoginDto;
 import com.example.backend.dto.user.UserResponse;
@@ -23,6 +24,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RedisService redisService;
+    private final JwtUtil jwtUtil;
 
     public UserResponse Join(JoinDto joinDto) {
         boolean isExist = userRepository.existsByEmail(joinDto.getEmail());
@@ -33,7 +35,7 @@ public class UserService {
 
         String encodedPassword = passwordEncoder.encode(joinDto.getPassword());
 
-        if(joinDto.getDept().equals("인사과")){
+        if(joinDto.getDept().equals("인사과")|| joinDto.getPosition().equals("CEO")){
             joinDto.setAuthority(Authority.ADMIN);
         }else{
             joinDto.setAuthority(Authority.USER);
@@ -67,12 +69,18 @@ public class UserService {
         return UserResponse.of(user);
     }
 
-//    public String logout(String atk, User user) {
-//        userRepository.delete(user);
-//        redisService.setBlackList("atk", atk);
-//
-//        return "logout";
-//    }
+    public void logout(String atk) {
+
+        if(!jwtUtil.validateToken(atk)){
+            redisService.deleteValues(atk);
+            log.info("atk value 제거");
+        }
+
+        log.info(atk);
+
+
+
+    }
 
 
 

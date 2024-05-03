@@ -85,12 +85,11 @@ public class JwtUtil {
         return new TokenDto(atk, null);
     }
 
-    public boolean validateToken(String atk){
+    public boolean validateToken(String token){
         try{
-            Jwts.parser().setSigningKey(key).parseClaimsJws(atk);
-            if(redisService.hasBlackList(atk)){
-                throw new RuntimeException("로그아웃 되었습니다.");
-
+            Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+            if(redisService.hasBlackList(token)){
+                return false;
             }
             return true;
         }catch (SecurityException | MalformedJwtException e){

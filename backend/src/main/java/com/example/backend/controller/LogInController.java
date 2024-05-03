@@ -6,6 +6,7 @@ import com.example.backend.dto.user.LoginDto;
 import com.example.backend.dto.user.TokenDto;
 import com.example.backend.dto.user.UserResponse;
 import com.example.backend.entity.maria.User;
+import com.example.backend.service.RedisService;
 import com.example.backend.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class LogInController {
 
     private final UserService userService;
     private final JwtUtil jwtUtil;
+    private final RedisService redisService;
 
     @PostMapping("/join")
     public UserResponse joinPost(@RequestBody JoinDto joinDto) {
@@ -55,10 +57,14 @@ public class LogInController {
         return jwtUtil.reissueAtk(userResponse);
     }
 
-//    @DeleteMapping("/logout")
-//    public UserResponse logout(@AuthenticationPrincipal User user, @RequestBody TokenDto tokenDto) throws JsonProcessingException {
-//        return UserResponse.of(userService.logout(tokenDto.getAtk(), user.getEmail()));
-//    }
+    @PostMapping("/logout")
+    public String logout(String token)  {
+        log.info("atk : " + token);
+        redisService.setBlackList("logout", token);
+        userService.logout(token);
+
+        return "로그아웃 되었습니다.";
+    }
 
     @GetMapping("/test")
     public String test(Authentication authentication) throws JsonProcessingException {

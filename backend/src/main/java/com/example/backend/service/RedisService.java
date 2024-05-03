@@ -3,6 +3,8 @@ package com.example.backend.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -21,15 +23,18 @@ public class RedisService {
     }
 
     public void setValues(String key, String data) {
-        redisTemplate.opsForValue().set(key, data);
+        ValueOperations<String, String> values = redisTemplate.opsForValue();
+        values.set(key, data);
     }
 
     public void setValues(String key, String data, Duration duration) {
-        redisTemplate.opsForValue().set(key, data, duration);
+        ValueOperations<String, String> values = redisTemplate.opsForValue();
+        values.set(key, data, duration);
     }
 
     public String getValues(String key) {
-        return redisTemplate.opsForValue().get(key);
+        ValueOperations<String, String> values = redisTemplate.opsForValue();
+        return values.get(key);
     }
 
     public void deleteValues(String key) {
@@ -43,6 +48,7 @@ public class RedisService {
     public void setBlackList(String key, String data) {
         redisBlackListTemplate.opsForSet().add(key, data);
     }
+
 
     public String getBlackList(String key){
         return redisBlackListTemplate.opsForValue().get(key);
