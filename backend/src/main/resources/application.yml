@@ -6,3 +6,12 @@ spring:
     key: secret-key
     live:
       atk: 300000
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG

@@ -28,6 +28,8 @@ public class QRef extends EntityPathBase<Ref> {
 
     public final NumberPath<Long> refId = createNumber("refId", Long.class);
 
+    public final NumberPath<Long> refUserId = createNumber("refUserId", Long.class);
+
     public final EnumPath<com.example.backend.entity.maria.enumData.DocState> state = createEnum("state", com.example.backend.entity.maria.enumData.DocState.class);
 
     public QRef(String variable) {

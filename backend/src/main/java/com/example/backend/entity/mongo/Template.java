@@ -48,4 +48,8 @@ public class Template<T> {
         this.typeData = typeData;
     }
 
+    public void updateCheckList(List<Boolean> update) {
+        this.approverCheckList = update;
+    }
+
 }
