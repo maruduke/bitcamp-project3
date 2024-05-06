@@ -75,7 +75,7 @@ public class JwtUtil {
 
     public TokenDto reissueAtk(UserResponse userResponse) throws JsonProcessingException {
         String rtkInRedis = redisService.getValues(userResponse.getEmail());
-        if (rtkInRedis == null) {
+        if (Objects.isNull(rtkInRedis)) {
             System.out.println("인증정보가 만료되었습니다.");
         }
         Subject atkSubject = Subject.atk(
@@ -87,13 +87,24 @@ public class JwtUtil {
 
     public boolean validateToken(String token){
         try{
-            Jwts.parser().setSigningKey(key).parseClaimsJws(token);
-            if(redisService.hasBlackList(token)){
+            Jws<Claims> claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+
+            Date expiration = claims.getBody().getExpiration();
+            Date now = new Date();
+            if(expiration.before(now)){
+                log.info("만료된 토큰입니다.");
+                return false;
+            }
+
+            if(!redisService.hasValues(token)){
+                log.info("존재하지 않는 토큰입니다.");
                 return false;
             }
             return true;
-        }catch (SecurityException | MalformedJwtException e){
-            log.info("잘못된 JWT 서명입니다.");
+        }catch (SecurityException e) {
+            log.info("토큰의 서명이 올바르지 않습니다.");
+        }catch(MalformedJwtException e){
+            log.info("jwt 토큰의 형식이 올바르지 않습니다.");
         }catch(ExpiredJwtException e){
             log.info("만료된 토큰입니다.");
         }catch(UnsupportedJwtException e){

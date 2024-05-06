@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.Jwt.JwtUtil;
+import com.example.backend.dto.user.InfoDto;
 import com.example.backend.dto.user.JoinDto;
 import com.example.backend.dto.user.LoginDto;
 import com.example.backend.dto.user.UserResponse;
@@ -11,8 +12,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.coyote.BadRequestException;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -25,6 +28,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final RedisService redisService;
     private final JwtUtil jwtUtil;
+    private final RedisTemplate redisTemplate;
 
     public UserResponse Join(JoinDto joinDto) {
         boolean isExist = userRepository.existsByEmail(joinDto.getEmail());
@@ -71,18 +75,28 @@ public class UserService {
 
     public void logout(String atk) {
 
-        if(!jwtUtil.validateToken(atk)){
-            redisService.deleteValues(atk);
-            log.info("atk value 제거");
+        if(jwtUtil.validateToken(atk)){
+            redisService.setBlackList("logout", atk);
+
+            log.info("토큰을 블랙리스트에 추가했습니다.");
         }
-
+        redisService.deleteValues(atk);
         log.info(atk);
-
-
-
     }
 
+    public User getUser(String email) {
+        return userRepository.findByEmail(email).orElseThrow();
+    }
 
+    @Transactional
+    public int modifyInfo(String name, InfoDto infoDto){
+
+        String email = infoDto.getEmail();
+        String tel = infoDto.getTel();
+
+        return userRepository.updateUserByName(email, tel, name);
+
+    }
 
 
 }

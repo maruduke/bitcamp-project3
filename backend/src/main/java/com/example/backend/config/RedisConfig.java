@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -28,6 +29,7 @@ public class RedisConfig {
         return new LettuceConnectionFactory(host, port);
     }
 
+    @Primary
     @Bean
     public RedisTemplate<String, String> redisTemplate() {
         RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
@@ -37,12 +39,5 @@ public class RedisConfig {
         return redisTemplate;
     }
 
-    @Bean
-    public RedisTemplate<String, String> redisBlackListTemplate() {
-        RedisTemplate<String, String> redisBlackListTemplate = new RedisTemplate<>();
-        redisBlackListTemplate.setKeySerializer(new StringRedisSerializer());
-        redisBlackListTemplate.setValueSerializer(new StringRedisSerializer());
-        redisBlackListTemplate.setConnectionFactory(redisConnectionFactory());
-        return redisBlackListTemplate;
-    }
+
 }

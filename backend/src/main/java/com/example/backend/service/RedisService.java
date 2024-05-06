@@ -16,8 +16,8 @@ public class RedisService {
     private final RedisTemplate<String, String> redisTemplate;
     private final RedisTemplate<String, String> redisBlackListTemplate;
 
-    public RedisService(@Qualifier("redisTemplate") RedisTemplate<String, String> redisTemplate,
-                        @Qualifier("redisBlackListTemplate") RedisTemplate<String, String> redisBlackListTemplate) {
+    public RedisService(RedisTemplate<String, String> redisTemplate,
+                        RedisTemplate<String, String> redisBlackListTemplate) {
         this.redisTemplate = redisTemplate;
         this.redisBlackListTemplate = redisBlackListTemplate;
     }
