@@ -224,5 +224,48 @@ public class SignService {
     }
 
 
+    /**
+     * 템플릿 임시 저장
+     * @param user
+     * @param templateDto
+     */
+    public void temporaryStorage(User user,TemplateDto templateDto) {
+        
+
+        // mongodb 템플릿 저장
+        Template<? extends TypeData> template = templateDto.toTemplateEntity();
+        templateRepository.save(template);
+
+        // Document Table 템플릿 메타 정보는 필요하지 않으므로 저장하지 않음
+        
+        // TaskProgress에 작성 상태 저장
+        TaskProgress taskProgressApprover = TaskProgress.builder()
+                .documentId(template.getId())
+                .state(DocState.TEMPORARY)
+                .ref_user_id(templateDto.getWriter())
+                .build();
+    }
+
+    /**
+     * 임시 저장 템플릿 가져오기 + 삭제
+     * @param user
+     * @return 저장된 임시저장 템플릿 반환
+     */
+    public Template getTemporaryStorage(User user) {
+
+        TaskProgress taskProgress = taskProgressRepository.findByRef_user_idAndState(user.getUserId(), DocState.TEMPORARY)
+                .orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
+
+        // 임시파일 저장 확인
+        Template template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
+
+        // 임시파일 삭제
+        templateRepository.delete(template);
+        taskProgressRepository.deleteByDocumentId(taskProgress.getDocumentId());
+
+        
+        return template;
+
+    }
 
 }

@@ -50,7 +50,7 @@ public class LogInController {
 
     @GetMapping("")
     public String ok() {
-        return "test";
+        return "login waiting";
     }
 
 }
