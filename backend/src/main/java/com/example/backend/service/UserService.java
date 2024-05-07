@@ -77,10 +77,10 @@ public class UserService {
 
         if(jwtUtil.validateToken(atk)){
             redisService.setBlackList("logout", atk);
-            redisService.deleteValues(atk);
+
             log.info("토큰을 블랙리스트에 추가했습니다.");
         }
-
+        redisService.deleteValues(atk);
         log.info(atk);
     }
 

@@ -87,10 +87,7 @@ public class JwtUtil {
 
     public boolean validateToken(String token){
         try{
-            log.info(token);
-            String atk = token.substring(7);
-            log.info(atk);
-            Jws<Claims> claims = Jwts.parser().setSigningKey(key).parseClaimsJws(atk);
+            Jws<Claims> claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
 
             Date expiration = claims.getBody().getExpiration();
             Date now = new Date();
@@ -99,10 +96,10 @@ public class JwtUtil {
                 return false;
             }
 
-//            if(!redisService.hasValues(atk)){
-//                log.info("존재하지 않는 토큰입니다.");
-//                return false;
-//            }
+            if(!redisService.hasValues(token)){
+                log.info("존재하지 않는 토큰입니다.");
+                return false;
+            }
             return true;
         }catch (SecurityException e) {
             log.info("토큰의 서명이 올바르지 않습니다.");
