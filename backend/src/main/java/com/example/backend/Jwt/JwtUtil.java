@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.Date;
+import java.util.Map;
 import java.util.Objects;
 
 @Component
@@ -50,7 +51,7 @@ public class JwtUtil {
         String atk = createToken(atkSubject, atkLive);
         String rtk = createToken(rtkSubject, rtkLive);
 
-        redisService.setValues(userResponse.getEmail(), rtk, Duration.ofMillis(rtkLive));
+        redisService.setValues(atk, userResponse.getEmail(), Duration.ofMillis(rtkLive));
 
         return new TokenDto(atk, rtk);
     }
@@ -87,22 +88,21 @@ public class JwtUtil {
 
     public boolean validateToken(String token){
         try{
-            log.info(token);
+            log.info("token : " + token);
             String atk = token.substring(7);
-            log.info(atk);
-            Jws<Claims> claims = Jwts.parser().setSigningKey(key).parseClaimsJws(atk);
-
-            Date expiration = claims.getBody().getExpiration();
+            log.info("atk : " + atk);
+            Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(atk).getBody();
+            Date expiration = claims.getExpiration();
             Date now = new Date();
             if(expiration.before(now)){
                 log.info("만료된 토큰입니다.");
                 return false;
             }
 
-//            if(!redisService.hasValues(token)){
-//                log.info("존재하지 않는 토큰입니다.");
-//                return false;
-//            }
+            if(!redisService.hasValues(atk)){
+                log.info("존재하지 않는 토큰입니다.");
+                return false;
+            }
             return true;
         }catch (SecurityException e) {
             log.info("토큰의 서명이 올바르지 않습니다.");

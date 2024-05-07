@@ -73,13 +73,15 @@ public class UserService {
         return UserResponse.of(user);
     }
 
-    public void logout(String atk) {
+    public void logout(String token) {
 
-        if(jwtUtil.validateToken(atk)){
-            redisService.setBlackList("logout", atk);
+        if(jwtUtil.validateToken(token)){
+            redisService.setBlackList("logout", token);
 
             log.info("토큰을 블랙리스트에 추가했습니다.");
         }
+        String atk = token.substring(7);
+        log.info("atk : " + atk);
         redisService.deleteValues(atk);
         log.info(atk);
     }
