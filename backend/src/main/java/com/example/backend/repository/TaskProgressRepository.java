@@ -17,5 +17,5 @@ public interface TaskProgressRepository extends JpaRepository<TaskProgress, Long
 
     public Optional<TaskProgress> deleteAllByDocumentId(String documentId);
 
-//    public Optional<TaskProgress> findByRef_user_idAndState(Long ref_user_id, DocState docState);
+    public Optional<TaskProgress> findByRefIdAndState(Long ref_user_id, DocState docState);
 }

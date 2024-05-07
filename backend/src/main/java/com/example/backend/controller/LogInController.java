@@ -45,6 +45,7 @@ public class LogInController {
         return "login";
     }
 
+    @CrossOrigin("*")
     @PostMapping("/post")
     public ResponseEntity<TokenDto> loginPOST(@RequestBody LoginDto loginDto) throws BadRequestException, JsonProcessingException {
         log.info("loginPOST....");

@@ -80,6 +80,7 @@ public class SignService {
      * @param user 결재자 정보
      * @param approveDto 결재 정보: 문서 id, 결재 여부(True, False)
      */
+    @Transactional
     public void approve(User user, ApproveDto approveDto) {
         
         // 문서 가져오기
@@ -163,7 +164,7 @@ public class SignService {
             refList.stream().forEach((ref_id) -> {
                 Ref ref = Ref.builder()
                         .documentId(template.getId())
-                        .state(DocState.COMPLETE)
+                        .state(DocState.REFERENCE)
                         .refUserId(ref_id)
                         .build();
                 refRepository.save(ref);
@@ -251,21 +252,21 @@ public class SignService {
      * @param user
      * @return 저장된 임시저장 템플릿 반환
      */
-//    public Template getTemporaryStorage(User user) {
-//
-//        TaskProgress taskProgress = taskProgressRepository.findByRef_user_idAndState(user.getUserId(), DocState.TEMPORARY)
-//                .orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
-//
-//        // 임시파일 저장 확인
-//        Template template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
-//
-//        // 임시파일 삭제
-//        templateRepository.delete(template);
-//        taskProgressRepository.deleteByDocumentId(taskProgress.getDocumentId());
-//
-//
-//        return template;
-//
-//    }
+    public Template getTemporaryStorage(User user) {
+
+        TaskProgress taskProgress = taskProgressRepository.findByRefIdAndState(user.getUserId(), DocState.TEMPORARY)
+                .orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
+
+        // 임시파일 저장 확인
+        Template template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
+
+        // 임시파일 삭제
+        templateRepository.delete(template);
+        taskProgressRepository.deleteByDocumentId(taskProgress.getDocumentId());
+
+
+        return template;
+
+    }
 
 }

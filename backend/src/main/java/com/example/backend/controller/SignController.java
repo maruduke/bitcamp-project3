@@ -42,7 +42,7 @@ public class SignController {
      * @param approveDto 문서Id, 승인 여부
      * @return 상태 정보 200
      */
-    @PostMapping("/arrove")
+    @PostMapping("/approve")
     public ResponseEntity signDocument(@AuthenticationPrincipal User user, @RequestBody ApproveDto approveDto) {
         signService.approve(user, approveDto);
         return new ResponseEntity(HttpStatus.OK);
@@ -56,7 +56,7 @@ public class SignController {
 
     @PostMapping("/getTemporary")
     public ResponseEntity getTemporary(@AuthenticationPrincipal User user) {
-//        signService.getTemporaryStorage(user);
+        signService.getTemporaryStorage(user);
         
         // dto 반환 해야 함
         return null;
