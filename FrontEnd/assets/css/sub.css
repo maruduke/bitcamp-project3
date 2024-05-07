@@ -2,11 +2,12 @@
 @import url('./yung.css');
 
 /* 목록 보기 */
-.myList .title-white-box h2 {font-weight: 500;}
-.myList .return-btn span {background: url(../images/return_btn.svg)no-repeat center; width: 20px; height: 20px; display: inline-block;}
-.myList .myList-list {border-bottom: 1px solid #cbcbcb; height: 80px; cursor: pointer;}
+.list .title-white-box h2 {font-weight: 500;}
+.list .return-btn span {background: url(../images/return_btn.svg)no-repeat center; width: 20px; height: 20px; display: inline-block;}
+.list .list-box {border-bottom: 1px solid #cbcbcb; height: 80px; cursor: pointer;}
 
-.myList .myList-title p {font-size: 15px; font-weight: 300; color: #39435c; margin-bottom: 15px;}
-.myList .myList-date,
-.myList .myList-title span {font-size: 12px; font-weight: 300; color: #39435c;}
-.myList .myList-date {line-height: 1.6;}
+.list .list-title-box .list-writer,
+.list .list-title-box .list-title {font-size: 15px; font-weight: 300; color: #39435c; margin-bottom: 15px;}
+.list .list-date,
+.list .list-title-box span {font-size: 12px; font-weight: 300; color: #39435c;}
+.list .list-date {line-height: 1.6;}
