@@ -22,12 +22,14 @@
 .teal-blue {background-color: #5b718f;}
 
 /* font */
+.text-ellipsis {text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
 .text-center {text-align: center;}
 .text-right {text-align: right;}
 .title-blue {background: #5b718f;color: #fff; font-size: 20px; font-weight: 300; text-align: center; height: 50px; line-height: 50px; border-radius: 8px 8px 0 0;}
+.title-blue a {color: #fff; display: block; height: 100%;}
 
 .title-blue-box {background: #5b718f;border-radius: 8px 8px 0 0;height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 35px;}
-.title-blue-box h2, 
+.title-blue-box h2,
 .title-white-box h2 {color: #fff; font-size: 20px; font-weight: 700;}
 .title-blue-box span {color: #fff; font-size: 15px; font-weight: 500; padding-left: 10px; position: relative;}
 .title-blue-box span::after {content: "/"; position: absolute; top: 2px; left: 0; display: inline-block;}
@@ -44,6 +46,7 @@
 .pdx30 {padding: 0 30px;}
 
 .mt8 {margin-top: 8px;}
+.mb0 {margin-bottom: 0px !important;}
 .mb8 {margin-bottom: 8px;}
 .ml8 {margin-left: 8px;}
 
