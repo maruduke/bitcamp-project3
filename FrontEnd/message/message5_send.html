@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="message.css">
+
+    <style>
+        .send_content {
+            padding: 15px;
+            width: 350px;
+            height: 260px;
+        }
+
+        .send_content_area {
+            width: 100%;
+            height: 100%;
+            /* textarea의 너비를 100%로 설정하여 부모 요소에 맞춤 */
+            position: relative;
+            word-break: keep-all;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+    </main>
+
+    <footer></footer>
+
+
+    <button class="message" value="open">
+
+    </button>
+    <div class="message_modal">
+        <div class="message_container">
+            <div class="message_top">
+                <div class="inbox">
+                    <button class="massage_top_btn" id="수신함" style="color: #C1C5D4;">수신함</button>
+                </div>
+                <div class="outbox">
+                    <button class="massage_top_btn" id="발신함" style="color: #C1C5D4;">발신함</button>
+                </div>
+                <div class="send">
+                    <button class="massage_top_btn" id="보내기" style="color: #39435C;">보내기</button>
+                </div>
+            </div>
+            <div class="message_body">
+                <div class="inbox_user_container">
+                    <div class="send_user_select">
+                        <select name="1" id="" class="select">
+                            <option value="" selected disabled>선택</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="send_content">
+                    <textarea class="send_content_area"></textarea>
+                </div>
+
+            </div>
+            <div class="message_bottom">
+                <div class="delete">
+                    <button class="massage_bottom_btn" id="삭제">삭제</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+    </script>
+
+    <script src="../assets/js/common.js"></script>
+    <script src="../message/message.js"></script>
+</body>
+
+</html>
