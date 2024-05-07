@@ -51,7 +51,7 @@
     background: none;
     outline: none;
     padding: 0 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: #C1C5D4;
 
     text-align: center;
@@ -59,6 +59,10 @@
 
 }
 
+.login_container,
+.er_container > .box > a {
+    text-decoration-line: none;
+}
 
 .btn {
     width: 100px;
@@ -75,6 +79,8 @@
     align-items: center; /* 수직 중앙 정렬 */
 
     margin: auto;
+
+    font-size: 14px;
 }
 .btn:hover {
     background-color: #D1D5DB; /* 마우스를 올렸을 때 배경색 변경 */
