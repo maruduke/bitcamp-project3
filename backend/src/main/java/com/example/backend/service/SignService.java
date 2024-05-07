@@ -251,21 +251,21 @@ public class SignService {
      * @param user
      * @return 저장된 임시저장 템플릿 반환
      */
-    public Template getTemporaryStorage(User user) {
-
-        TaskProgress taskProgress = taskProgressRepository.findByRef_user_idAndState(user.getUserId(), DocState.TEMPORARY)
-                .orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
-
-        // 임시파일 저장 확인
-        Template template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
-
-        // 임시파일 삭제
-        templateRepository.delete(template);
-        taskProgressRepository.deleteByDocumentId(taskProgress.getDocumentId());
-
-        
-        return template;
-
-    }
+//    public Template getTemporaryStorage(User user) {
+//
+//        TaskProgress taskProgress = taskProgressRepository.findByRef_user_idAndState(user.getUserId(), DocState.TEMPORARY)
+//                .orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
+//
+//        // 임시파일 저장 확인
+//        Template template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
+//
+//        // 임시파일 삭제
+//        templateRepository.delete(template);
+//        taskProgressRepository.deleteByDocumentId(taskProgress.getDocumentId());
+//
+//
+//        return template;
+//
+//    }
 
 }
