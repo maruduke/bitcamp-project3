@@ -43,5 +43,7 @@ public class Document {
         this.createDate = createDate;
     }
 
-
+    public void updateState(DocState state) {
+        this.state = state;
+    }
 }

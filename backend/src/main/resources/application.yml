@@ -7,3 +7,13 @@ spring:
     live:
       atk: 60000
       rtk: 300000
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+

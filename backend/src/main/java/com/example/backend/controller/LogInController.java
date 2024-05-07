@@ -62,6 +62,7 @@ public class LogInController {
         return jwtUtil.reissueAtk(userResponse);
     }
 
+
     @PostMapping("/logout")
     public void logout()  {
         String auth = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -83,6 +84,7 @@ public class LogInController {
     public ResponseEntity<Integer> modify(@AuthenticationPrincipal User user, @RequestBody InfoDto infoDto) throws JsonProcessingException {
         String name = user.getName();
         return ResponseEntity.ok(userService.modifyInfo(name, infoDto));
+
     }
 
 }

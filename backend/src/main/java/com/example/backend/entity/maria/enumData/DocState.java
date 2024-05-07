@@ -7,4 +7,5 @@ public enum DocState {
     PROCESS_1,
     PROCESS_2,
     PROCESS_3,
+    TEMPORARY,
 }
