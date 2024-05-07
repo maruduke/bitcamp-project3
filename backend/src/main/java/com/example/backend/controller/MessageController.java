@@ -2,15 +2,18 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.Message.ReceivedMessageDto;
 import com.example.backend.dto.Message.SendMessageDto;
+import com.example.backend.entity.maria.User;
 import com.example.backend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/message")
+@CrossOrigin
 public class MessageController {
 
     private final MessageService messageService;
@@ -22,15 +25,18 @@ public class MessageController {
 
     // 메세지 보내기
     @PostMapping("/send")
-    public ResponseEntity<String> sendMessage(@RequestBody SendMessageDto sendMessageDto) {
+    public ResponseEntity<String> sendMessage(@AuthenticationPrincipal User user,
+            @RequestBody SendMessageDto sendMessageDto) {
+        sendMessageDto.setSenderEmail(user.getEmail());
         messageService.sendMessage(sendMessageDto);
         return ResponseEntity.ok("Message sent successfully");
     }
 
     // 나에게 온 받은 쪽지 리스트
     @GetMapping("/receivedList")
-    public ResponseEntity<List<ReceivedMessageDto>> getReceivedMessages(@RequestParam String receiverEmail) {
-        List<ReceivedMessageDto> receivedMessageList = messageService.getReceivedMessages(receiverEmail);
+    public ResponseEntity<List<ReceivedMessageDto>> getReceivedMessages(@AuthenticationPrincipal User user) {
+        String email = user.getEmail();
+        List<ReceivedMessageDto> receivedMessageList = messageService.getReceivedMessages(email);
         return ResponseEntity.ok(receivedMessageList);
     }
 
@@ -50,8 +56,9 @@ public class MessageController {
 
     // 내가 보낸 쪽지 리스트
     @GetMapping("/sentList")
-    public  ResponseEntity<List<SendMessageDto>> getSentMessages(@RequestParam String senderEmail) {
-        List<SendMessageDto> sentMessageList = messageService.getSendMessages(senderEmail);
+    public  ResponseEntity<List<SendMessageDto>> getSentMessages(@AuthenticationPrincipal User user) {
+        String email = user.getEmail();
+        List<SendMessageDto> sentMessageList = messageService.getSendMessages(email);
         return ResponseEntity.ok(sentMessageList);
     }
 

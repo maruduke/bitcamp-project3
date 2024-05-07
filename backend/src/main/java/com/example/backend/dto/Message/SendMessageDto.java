@@ -3,15 +3,13 @@ package com.example.backend.dto.Message;
 import com.example.backend.entity.maria.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
 @Builder
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SendMessageDto {
