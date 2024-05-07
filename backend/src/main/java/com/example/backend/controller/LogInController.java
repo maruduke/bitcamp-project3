@@ -32,59 +32,58 @@ public class LogInController {
     private final UserRepository userRepository;
 
     @PostMapping("/join")
-    public UserResponse joinPost(@RequestBody JoinDto joinDto) {
+    public ResponseEntity<String> joinPost(@RequestBody JoinDto joinDto) {
         log.info("joinPost.......");
-
-        return userService.Join(joinDto);
+        userService.Join(joinDto);
+        return ResponseEntity.ok("사원이 등록되었습니다.");
     }
 
     @GetMapping("/get")
-    public String loginGET(LoginDto loginDto){
+    public String loginGET(){
         log.info("loginGET....");
         log.info("test");
         return "login";
     }
 
     @PostMapping("/post")
-    public TokenDto loginPOST(@RequestBody LoginDto loginDto) throws BadRequestException, JsonProcessingException {
+    public ResponseEntity<TokenDto> loginPOST(@RequestBody LoginDto loginDto) throws BadRequestException, JsonProcessingException {
         log.info("loginPOST....");
         UserResponse userResponse = userService.login(loginDto);
-        return jwtUtil.createTokensByLogin(userResponse);
-
+        return ResponseEntity.ok(jwtUtil.createTokensByLogin(userResponse));
     }
 
     @GetMapping("/reissue")
-    public TokenDto reissue(@AuthenticationPrincipal User user) throws JsonProcessingException {
+    public ResponseEntity<TokenDto> reissue(@AuthenticationPrincipal User user) throws JsonProcessingException {
         UserResponse userResponse = new UserResponse(
                 user.getName(),
                 user.getEmail(),
                 user.getAuthority());
-        return jwtUtil.reissueAtk(userResponse);
+        return ResponseEntity.ok(jwtUtil.reissueAtk(userResponse));
     }
 
 
     @PostMapping("/logout")
-    public void logout()  {
-        String auth = SecurityContextHolder.getContext().getAuthentication().getName();
-        log.info(auth);
-        if (auth != null) {
-            userService.logout(auth);
-            log.info("로그아웃되었습니다.");
+    public ResponseEntity<String> logout(@RequestHeader("Authorization") String token)  {
+        log.info("logout....");
+        log.info("token: " + token);
+        if (token != null) {
+            userService.logout(token);
         }
+        return ResponseEntity.ok("로그아웃 되었습니다.");
     }
 
     @GetMapping("/mypage")
     public ResponseEntity<User> myPage(@AuthenticationPrincipal User user) throws JsonProcessingException {
         String email = user.getEmail();
         return ResponseEntity.ok(userService.getUser(email));
-
     }
 
-    @PostMapping("/mypage/modify")
-    public ResponseEntity<Integer> modify(@AuthenticationPrincipal User user, @RequestBody InfoDto infoDto) throws JsonProcessingException {
+    @PutMapping("/mypage/modify")
+    public ResponseEntity<String> modify(@AuthenticationPrincipal User user, @RequestBody InfoDto infoDto, @RequestHeader("Authorization") String token) throws JsonProcessingException {
         String name = user.getName();
-        return ResponseEntity.ok(userService.modifyInfo(name, infoDto));
-
+        userService.modifyInfo(name, infoDto);
+        userService.logout(token);
+        return ResponseEntity.ok("회원정보가 변경되었습니다. 다시 로그인해주세요.");
     }
 
 }
