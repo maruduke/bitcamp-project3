@@ -27,20 +27,22 @@ public class MessageService {
     }
 
     // 메세지 보내기
-    public void sendMessage(SendMessageDto sendMessageDto){
+    public void sendMessage(String senderEmail, SendMessageDto sendMessageDto){
 
-        User receiver = userRepository.findByEmail((sendMessageDto.getReceiverEmail()))
+        User sender = userRepository.findByEmail(senderEmail).orElseThrow(()
+        -> new IllegalArgumentException("sender not found"));
+
+        User receiver = userRepository.findByEmail(sendMessageDto.getReceiverEmail())
                 .orElseThrow(() -> new IllegalArgumentException("receiver not found"));
 
         Message message = Message.builder()
+                .senderId(sender)
                 .receiverId(receiver)
                 .message(sendMessageDto.getMessage())
                 .sendTime(LocalDateTime.now())
                 .build();
 
         messageRepository.save(message);
-
-
     }
     // 받은 쪽지 정보 가져오기
     private ReceivedMessageDto receivedMessageDto(Message message) {

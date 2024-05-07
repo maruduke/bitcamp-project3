@@ -27,8 +27,7 @@ public class MessageController {
     @PostMapping("/send")
     public ResponseEntity<String> sendMessage(@AuthenticationPrincipal User user,
             @RequestBody SendMessageDto sendMessageDto) {
-        sendMessageDto.setSenderEmail(user.getEmail());
-        messageService.sendMessage(sendMessageDto);
+        messageService.sendMessage(user.getEmail(), sendMessageDto);
         return ResponseEntity.ok("Message sent successfully");
     }
 
