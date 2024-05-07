@@ -5,9 +5,14 @@
 .list .title-white-box h2 {font-weight: 500;}
 .list .return-btn span {background: url(../images/return_btn.svg)no-repeat center; width: 20px; height: 20px; display: inline-block;}
 .list .list-box {border-bottom: 1px solid #cbcbcb; height: 80px; cursor: pointer;}
+.list .list-box-40 {height: 40px; border-bottom: 1px solid #cbcbcb; cursor: pointer;}
 
+
+.list .list-box-40 .list-writer,
 .list .list-title-box .list-writer,
+.list .list-box-40 .list-title,
 .list .list-title-box .list-title {font-size: 15px; font-weight: 300; color: #39435c; margin-bottom: 15px;}
 .list .list-date,
+.list .list-box-40 span,
 .list .list-title-box span {font-size: 12px; font-weight: 300; color: #39435c;}
 .list .list-date {line-height: 1.6;}
