@@ -45,7 +45,7 @@
         }
 
         .user_inputbox {
-        width: 270px;
+        width: 275px;
             height: 40px;
             background-color: #39435c;
             border-radius: 4px;
@@ -61,7 +61,7 @@
         }
         
         .user_inputbox_modify{
-            width: 270px;
+            width: 275px;
             height: 40px;
             background-color: #EDEDED;
             border-radius: 4px;
