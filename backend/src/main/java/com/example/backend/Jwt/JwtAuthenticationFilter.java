@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         log.info("JWT Authentication Filter");
         String authorization = request.getHeader("Authorization");
         log.info("authorization: " + authorization);
-        if(authorization!=null){
+        if(authorization!=null && jwtUtil.validateToken(authorization)) {
             String atk = authorization.substring("Bearer ".length());
             log.info("atk: " + atk);
             try{
