@@ -65,7 +65,7 @@ public class LogInController {
 
     @PostMapping("/logout")
     public void logout()  {
-        String auth = SecurityContextHolder.getContext().getAuthentication().getName();
+        String auth = String.valueOf(SecurityContextHolder.getContext().getAuthentication());
         log.info(auth);
         if (auth != null) {
             userService.logout(auth);
