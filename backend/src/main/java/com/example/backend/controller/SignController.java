@@ -56,7 +56,7 @@ public class SignController {
 
     @PostMapping("/getTemporary")
     public ResponseEntity getTemporary(@AuthenticationPrincipal User user) {
-        signService.getTemporaryStorage(user);
+//        signService.getTemporaryStorage(user);
         
         // dto 반환 해야 함
         return null;
