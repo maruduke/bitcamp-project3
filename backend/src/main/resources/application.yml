@@ -5,7 +5,8 @@ spring:
   jwt:
     key: secret-key
     live:
-      atk: 300000
+      atk: 60000
+      rtk: 300000
 
 logging:
   level:
@@ -15,3 +16,4 @@ logging:
           mongodb:
             core:
               MongoTemplate: DEBUG
+
