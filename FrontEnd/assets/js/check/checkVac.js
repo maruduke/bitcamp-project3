@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sign1: "이경석",
         sign2: "안슬기",
         sign3: "김융",
-        start: "5월7일",
+        startTime: "2014-05-17 15:20",
         end: "5월10일",
         time: "5월6일",
         context: "몸이 아파요"
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('userNamePosition').textContent = userNamePosition;
     document.getElementById('signMember').textContent = signMember;
     document.getElementById('checkContext').textContent = fakeUserData.context;
-
+    document.getElementById('startTime').textContent = fakeUserData.startTime;
     
     
 });
