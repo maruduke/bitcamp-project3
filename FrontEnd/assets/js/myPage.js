@@ -43,3 +43,35 @@ document.addEventListener('DOMContentLoaded', () => {
 //     .catch(error => {
 //         console.error('Fetch Error:', error);
 //     });
+
+// document.addEventListener('DOMContentLoaded', () => {
+
+
+//     fetch('http://localhost:8080/login/mypage',{
+//         method: 'GET'
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+
+//         function formatPhoneNumber(phoneNumber) {
+//             const regex = /(\d{3})(\d{4})(\d{4})/;
+//             const formatted = phoneNumber.replace(regex, '$1-$2-$3');
+//             return formatted;
+//         }
+
+//         document.getElementById('userName').textContent = data.name;
+//         document.getElementById('userPosition').textContent = data.position;
+//         document.getElementById('userDept').textContent += data.dept;
+//         document.getElementById('userId').textContent += data.userId;
+//         document.getElementById('userEmail').textContent += data.email;
+//         document.getElementById('userPhone').textContent += formatPhoneNumber(data.tel);
+//     })
+//     .catch(error => {
+//         console.error('Fetch Error:', error);
+//     });
+// });
