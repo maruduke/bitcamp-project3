@@ -1,6 +1,6 @@
-import { exceptionHandler } from './exceptHandler.js';
+import { loginExceptionHandler } from './exceptHandler.js';
 
-const loginService = {
+export const loginService = {
     login: async function (loginDto, callback) {
         return fetch(`http://localhost:8080/login/post`, {
             method: 'POST',
@@ -10,7 +10,7 @@ const loginService = {
             body: JSON.stringify(loginDto),
         })
             .then((res) => {
-                return exceptionHandler(res);
+                return loginExceptionHandler(res);
             })
             .then((res) => res.json())
             .then((res) => {
@@ -21,7 +21,7 @@ const loginService = {
     },
 };
 
-class loginDto {
+export class loginDto {
     constructor(email, password) {
         this.email = email;
         this.password = password;
