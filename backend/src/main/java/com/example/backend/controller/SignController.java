@@ -4,6 +4,8 @@ package com.example.backend.controller;
 import com.example.backend.dto.sign.ApproveDto;
 import com.example.backend.dto.template.TemplateDto;
 import com.example.backend.entity.maria.User;
+import com.example.backend.entity.mongo.Template;
+import com.example.backend.entity.mongo.TypeData;
 import com.example.backend.service.BoardService;
 import com.example.backend.service.SignService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sign")
+@CrossOrigin
 @Log4j2
 @RequiredArgsConstructor
 public class SignController {
@@ -48,18 +51,20 @@ public class SignController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/temporaryStorage")
     public ResponseEntity temporaryStorage(@AuthenticationPrincipal User user, @RequestBody TemplateDto templateDto) {
         signService.temporaryStorage(user, templateDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/getTemporary")
-    public ResponseEntity getTemporary(@AuthenticationPrincipal User user) {
-        signService.getTemporaryStorage(user);
+    public ResponseEntity<Template<? extends TypeData>> getTemporary(@AuthenticationPrincipal User user) {
+        Template<? extends TypeData> template = signService.getTemporaryStorage(user);
         
         // dto 반환 해야 함
-        return null;
+        return new ResponseEntity<>(template, HttpStatus.OK);
     }
 
 }

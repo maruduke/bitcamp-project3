@@ -26,13 +26,13 @@ public class TaskProgress {
     private User user;
 
     @Column(name = "ref_user_id")
-    private Long ref_user_id;
+    private Long refUserId;
 
     @Builder
     public TaskProgress(String documentId, DocState state, Long ref_user_id) {
         this.documentId = documentId;
         this.state = state;
-        this.ref_user_id = ref_user_id;
+        this.refUserId = ref_user_id;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class TaskProgress {
                 "refId=" + refId +
                 ", documentId='" + documentId + '\'' +
                 ", state=" + state +
-                ", ref_user_id=" + ref_user_id +
+                ", ref_user_id=" + refUserId +
                 '}';
     }
 }

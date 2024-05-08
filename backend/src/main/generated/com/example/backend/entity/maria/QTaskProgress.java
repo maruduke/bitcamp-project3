@@ -24,9 +24,9 @@ public class QTaskProgress extends EntityPathBase<TaskProgress> {
 
     public final StringPath documentId = createString("documentId");
 
-    public final NumberPath<Long> ref_user_id = createNumber("ref_user_id", Long.class);
-
     public final NumberPath<Long> refId = createNumber("refId", Long.class);
+
+    public final NumberPath<Long> refUserId = createNumber("refUserId", Long.class);
 
     public final EnumPath<com.example.backend.entity.maria.enumData.DocState> state = createEnum("state", com.example.backend.entity.maria.enumData.DocState.class);
 

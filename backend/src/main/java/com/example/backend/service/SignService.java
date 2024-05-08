@@ -7,8 +7,8 @@ import com.example.backend.entity.maria.Ref;
 import com.example.backend.entity.maria.TaskProgress;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.maria.enumData.DocState;
-import com.example.backend.entity.mongo.Template;
-import com.example.backend.entity.mongo.TypeData;
+import com.example.backend.entity.maria.enumData.DocType;
+import com.example.backend.entity.mongo.*;
 import com.example.backend.repository.DocumentRepository;
 import com.example.backend.repository.RefRepository;
 import com.example.backend.repository.TaskProgressRepository;
@@ -237,14 +237,22 @@ public class SignService {
         Template<? extends TypeData> template = templateDto.toTemplateEntity();
         templateRepository.save(template);
 
-        // Document Table 템플릿 메타 정보는 필요하지 않으므로 저장하지 않음
-        
+
+        // Document Table 템플릿 메타 정보는 저장
+        Document document = templateDto.toDocumentEntity(template.getId(), LocalDate.now());
+        log.info(document);
+        document.updateState(DocState.TEMPORARY);
+
+        documentRepository.save(document);
+
         // TaskProgress에 작성 상태 저장
-        TaskProgress taskProgressApprover = TaskProgress.builder()
+        TaskProgress taskProgress = TaskProgress.builder()
                 .documentId(template.getId())
                 .state(DocState.TEMPORARY)
-                .ref_user_id(templateDto.getWriter())
+                .ref_user_id(user.getUserId())
                 .build();
+
+        taskProgressRepository.save(taskProgress);
     }
 
     /**
@@ -252,16 +260,22 @@ public class SignService {
      * @param user
      * @return 저장된 임시저장 템플릿 반환
      */
+    @Transactional
     public Template getTemporaryStorage(User user) {
 
-        TaskProgress taskProgress = taskProgressRepository.findByRefIdAndState(user.getUserId(), DocState.TEMPORARY)
-                .orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
-
         // 임시파일 저장 확인
-        Template template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
+        TaskProgress taskProgress = taskProgressRepository.findByRefUserIdAndState(user.getUserId(), DocState.TEMPORARY)
+                .orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
+        Document document = documentRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시 저장 파일이 없습니다."));
+
+        // template 타입 지정
+        Template< ? extends TypeData> template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
+        DocType type = document.getType();
+
 
         // 임시파일 삭제
         templateRepository.delete(template);
+        documentRepository.deleteById(template.getId());
         taskProgressRepository.deleteByDocumentId(taskProgress.getDocumentId());
 
 
