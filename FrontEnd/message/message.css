@@ -97,6 +97,19 @@ body{
     padding-top: 3px;
     font-size: 14px;
 }
+
+        .inbox_user {
+            flex: 1;
+        }
+
+        .inbox_date {
+            font-size: 10px;
+            text-align: right;
+            flex: 1;
+            padding-right: 20px;
+            color: #39435C;
+        }
+
 .inbox_content {
     padding: 15px;
     width: 350px;
@@ -105,10 +118,7 @@ body{
     white-space: normal;
     word-wrap: break-word;
 }
-.inbox_date{
-    
-    font-size: 10px;
-}
+
 
 
 .message_bottom{
