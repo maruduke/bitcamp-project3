@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="message.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/message.css">
 
 
     <style>
@@ -259,13 +259,9 @@
                 <div class="message_body">
                     <div class="inbox_user_container">
                         <div class="send_user_select">
-                            <select name="1" id="" class="select">
+                            <select name="users" id="userSelect" class="select">
                                 <option value="" selected disabled>선택</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                                <option value="">5</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -276,7 +272,7 @@
                 </div>
                 <div class="message_bottom">
                     <div class="check">
-                        <button class="massage_bottom_btn check_btn">확인</button>
+                        <button class="massage_bottom_btn check_btn" id="sendBtn">확인</button>
                     </div>
                 </div>
             </div>
@@ -291,9 +287,10 @@
 
     </script>
 
-    <script src="../assets/js/common.js"></script>
-    <script src="../message/messageModal.js"></script>
-    <script src="../message/message_pagemove.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/messageModal.js"></script>
+    <script src="/js/message_pagemove.js"></script>
+    <script src="/js/messageHander.js"></script>
 </body>
 
 </html>
