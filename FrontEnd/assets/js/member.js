@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const jwt = sessionStorage.getItem('jwt');
     fetch('http://localhost:8080/member',{
         method: 'GET',
         headers:{
+            'Authorization': `Bearer ${jwt}`,
             'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify()
+        }
 
     })
         .then(response => {
