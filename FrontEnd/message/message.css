@@ -1,4 +1,8 @@
 body{
+    overflow: hidden;
+}
+
+.send_content_areabody{
     position: relative;
 }
 
@@ -16,7 +20,7 @@ body{
     width: 350px;
     background-color: white;
     border-radius: 8px;
-    
+                                                            
     text-align: center;
 
     
@@ -37,7 +41,7 @@ body{
     font-size: 15px;
 }
 
-#수신함{
+#inbox_btn{
     color: #39435C;
 }
 
@@ -60,7 +64,7 @@ body{
 .message_list{
     padding: 15px;
     border-bottom: 1px solid #C1C5D4;
-
+    cursor: pointer;
 
 }
 .message_list:last-of-type {border-bottom: none;}
@@ -118,4 +122,16 @@ body{
 .delete,
 .reply {
     flex: 1;
+}
+
+.send_content {
+    padding: 15px;
+}
+
+.send_content_area {
+    width: 100%;
+    height: 230px;
+    border: none;
+    outline: none;
+    resize: none;
 }
