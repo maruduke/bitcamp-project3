@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class SendMessageDto {
 
+    private Long messageId;
+
     @NotEmpty
     private String message;
 

@@ -117,6 +117,7 @@ public class MessageService {
     // 보낸 쪽지 정보 가져오기
     private SendMessageDto sentMessageDto(Message message) {
         return SendMessageDto.builder()
+                .messageId(message.getMessageId())
                 .message(message.getMessage())
                 .receiverEmail(message.getReceiverId().getEmail())
                 .senderEmail(message.getSenderId().getEmail())
