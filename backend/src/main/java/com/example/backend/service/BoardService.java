@@ -24,7 +24,7 @@ public class BoardService {
 
     public Slice<MyListDto> getMyList(User user, Pageable pageable){
 
-        return documentRepository.findSliceBy(user, pageable);
+        return documentRepository.findByWriter(user, pageable);
     }
 
 }
