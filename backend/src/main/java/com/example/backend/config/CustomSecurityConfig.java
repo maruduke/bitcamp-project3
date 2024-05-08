@@ -17,6 +17,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+
+import java.util.Collections;
 
 @Configuration
 @RequiredArgsConstructor
@@ -31,13 +35,25 @@ public class CustomSecurityConfig  {
         return new BCryptPasswordEncoder();
     }
 
+    CorsConfigurationSource corsConfigurationSource() {
+        return request -> {
+            CorsConfiguration config = new CorsConfiguration();
+            config.setAllowedHeaders(Collections.singletonList("*"));
+            config.setAllowedMethods(Collections.singletonList("*"));
+            config.setAllowedOriginPatterns(Collections.singletonList("http:**"));
+            config.setAllowCredentials(true);
+            return config;
+        };
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(CsrfConfigurer::disable)
-                .cors(CorsConfigurer::disable)
+        http
+                .cors(corsConfigurer -> corsConfigurer.configurationSource(corsConfigurationSource()))
+                .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests((authorizeRequests)->
                         authorizeRequests
-                                .requestMatchers("**").permitAll()
+                                .requestMatchers("/login/**").permitAll()
                                 .requestMatchers("/join/**").hasAuthority(Authority.ADMIN.name())
                                 .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthenticationFilter(jwtUtil, customUserDetailService), UsernamePasswordAuthenticationFilter.class)

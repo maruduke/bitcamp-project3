@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sign")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @Log4j2
 @RequiredArgsConstructor
 public class SignController {
