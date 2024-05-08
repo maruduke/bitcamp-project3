@@ -15,4 +15,6 @@ public class AccountingExpense extends TypeData{
     private String category;
     private int cost;
     private LocalDateTime expenseDate;
+
+
 }

@@ -39,7 +39,7 @@ public class DocumentRepositoryTest {
         QDocument document = QDocument.document;
         QTaskProgress taskProgress = QTaskProgress.taskProgress;
 
-        List<Tuple> results = query.select(document.title, document.state, document.type, document.createDate, taskProgress.ref_user_id)
+        List<Tuple> results = query.select(document.title, document.state, document.type, document.createDate, taskProgress.refUserId)
                 .from(document, taskProgress)
                 .leftJoin(document).on(taskProgress.documentId.eq(document.documentId))
                 .fetch();
@@ -65,7 +65,7 @@ public class DocumentRepositoryTest {
                         document.createDate))
                 .from(document)
                 .leftJoin(taskProgress).on(taskProgress.documentId.eq(document.documentId))
-                .where(taskProgress.ref_user_id.eq(3L))
+                .where(taskProgress.refUserId.eq(3L))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

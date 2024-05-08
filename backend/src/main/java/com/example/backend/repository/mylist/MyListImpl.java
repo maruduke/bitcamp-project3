@@ -40,7 +40,7 @@ public class MyListImpl extends QuerydslRepositorySupport implements MyList {
                         document.createDate))
                 .from(document)
                 .leftJoin(taskProgress).on(taskProgress.documentId.eq(document.documentId))
-                .where(taskProgress.ref_user_id.eq(user.getUserId()))
+                .where(taskProgress.refUserId.eq(user.getUserId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
