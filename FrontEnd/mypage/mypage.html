@@ -1,68 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="mypage.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <style></style>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="mypage.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
+    <body>
+        <header></header>
 
-    </style>
-</head>
-
-<body>
-    <header></header>
-
-    <main class="mypage">
-        <div class="container">
-            <section class="flex">
-                <div class="w100p">
-                    <div class="box" style="height: 500px;">
-                        <div class="userflex">
-                            <div class="userprofile">
-                                <div class="userimage">
-                                    <img src="../assets/images/userimg.webp" alt="">
+        <main class="mypage">
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box" style="height: 500px">
+                            <div class="userflex">
+                                <div class="userprofile">
+                                    <div class="userimage">
+                                        <img src="../assets/images/userimg.webp" alt="" />
+                                    </div>
+                                    <div class="usertext">
+                                        <span class="username" id="userName"></span>
+                                        <span class="emp" id="userPosition"></span>
+                                    </div>
                                 </div>
-                                <div class="usertext">
-                                    <span class="username" id="userName"></span>
-                                    <span class="emp" id="userPosition"></span>
-                                </div>
-                            </div>
-                            <div class="userinfo">
-                                <div class="user_inputbox">
-                                    <span id="userDept">부서 : </span>
-                                </div>
-                                <div class="user_inputbox">
-                                    <span id="userId">사번 : </span>
-                                </div>
-                                <div class="user_inputbox">
-                                    <span id="userEmail">이메일 : </span>                                   
-                                </div>
-                                <div class="user_inputbox">
-                                    <span id="userPhone">전화번호 : </span>
+                                <div class="userinfo">
+                                    <div class="user_inputbox">
+                                        <span id="userDept">부서 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userId">사번 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userEmail">이메일 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userPhone">전화번호 : </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="check-btn row-direction">
+                            <a href="mypage_modify.html" class="blue-btn">수정하기</a>
+                        </div>
                     </div>
-                    <div class="check-btn row-direction ">
-                        <a href="mypage_modify.html" class="blue-btn">수정하기</a>
-                    </div>
-                </div>
+                </section>
+            </div>
+        </main>
 
-            </section>
-        </div>
-    </main>
+        <footer></footer>
 
-    <footer></footer>
+        <div class="message blind">쪽지보내기</div>
 
-    <div class="message blind">
-        쪽지보내기
-    </div>
-
-    <script src="../assets/js/common.js"></script>
-    <script src="../assets/js/myPage.js"></script>
-</body>
-
+        <script src="../assets/js/common.js"></script>
+        <script src="../assets/js/myPage.js"></script>
+    </body>
 </html>
