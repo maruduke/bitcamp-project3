@@ -39,10 +39,11 @@ public class LogInController {
     }
 
     @GetMapping("/get")
-    public String loginGET(){
-        log.info("loginGET....");
-        log.info("test");
-        return "login";
+    public ResponseEntity loginGET(@RequestHeader("Authorization") String token) throws BadRequestException {
+        if(!jwtUtil.validateToken(token)){
+            return ResponseEntity.status(401).build();
+        }
+        return ResponseEntity.status(200).build();
     }
 
     @CrossOrigin("*")
