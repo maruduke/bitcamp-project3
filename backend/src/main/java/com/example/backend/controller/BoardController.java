@@ -7,8 +7,10 @@ import com.example.backend.repository.TemplateRepository;
 import com.example.backend.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,10 +23,11 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
 
     private final BoardService boardService;
-
+    @CrossOrigin
     @GetMapping("/myList")
-    public Slice<MyListDto> getMyList(@AuthenticationPrincipal User user, Pageable pageable) {
+    public Slice<MyListDto> getMyList(@AuthenticationPrincipal User user, @RequestParam int pageNumber) {
 
+        Pageable pageable = PageRequest.of(pageNumber, 10);
         return boardService.getMyList(user, pageable);
     }
 }

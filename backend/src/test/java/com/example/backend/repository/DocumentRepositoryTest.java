@@ -54,7 +54,7 @@ public class DocumentRepositoryTest {
         QDocument document = QDocument.document;
         QTaskProgress taskProgress = QTaskProgress.taskProgress;
 
-        Pageable pageable = PageRequest.of(0, 10);
+        Pageable pageable = PageRequest.of(1, 20);
         int pageSize = pageable.getPageSize();
 
         List<MyListDto> content = query
@@ -64,15 +64,19 @@ public class DocumentRepositoryTest {
                         document.state,
                         document.createDate))
                 .from(document)
-                .leftJoin(taskProgress).on(taskProgress.documentId.eq(document.documentId))
+                .leftJoin(taskProgress).on(document.documentId.eq(taskProgress.documentId))
+                .where(document.writer.eq(3L))
                 .where(taskProgress.refUserId.eq(3L))
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .limit(pageable.getPageSize() + 1)
                 .fetch();
+
 
 
         System.out.println("=======================================================");
         content.forEach(System.out::println);
         System.out.println("=======================================================");
+
+//        System.out.println((long) content.size());
     }
 }
