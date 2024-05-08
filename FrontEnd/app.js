@@ -11,6 +11,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/') + 'index.html');
 });
 
+app.get('/approve/:params', (req, res) => {
+    const { params } = req.params;
+    console.log(path.join(__dirname + `/${params}` + `/${params}`) + '.html');
+    res.sendFile(path.join(__dirname + `/approve` + `/${params}`) + '.html');
+});
+
+
 app.get('/message/:params', (req, res) => {
     const { params } = req.params;
     console.log(path.join(__dirname + `/${params}` + `/${params}`) + '.html');
