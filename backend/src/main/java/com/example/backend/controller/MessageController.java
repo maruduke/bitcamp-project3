@@ -1,8 +1,10 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.Member.MemberDto;
 import com.example.backend.dto.Message.ReceivedMessageDto;
 import com.example.backend.dto.Message.SendMessageDto;
 import com.example.backend.entity.maria.User;
+import com.example.backend.service.MemberService;
 import com.example.backend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,18 @@ import java.util.List;
 public class MessageController {
 
     private final MessageService messageService;
+    private final MemberService memberService;
 
     @Autowired
-    public MessageController(MessageService messageService) {
+    public MessageController(MessageService messageService, MemberService memberService) {
         this.messageService = messageService;
+        this.memberService = memberService;
+    }
+
+    // 멤버리스트 전부 가져오기
+    @GetMapping("/send")
+    public List<MemberDto> getAllMembers(){
+        return memberService.getAllMembers();
     }
 
     // 메세지 보내기
