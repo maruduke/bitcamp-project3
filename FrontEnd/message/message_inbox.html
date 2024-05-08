@@ -8,8 +8,15 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="message.css">
 
-    <style>
 
+    <style>
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -27,68 +34,260 @@
     </button>
     <div class="message_modal">
         <div class="message_container">
-            <div class="message_top">
-                <div class="inbox">
-                    <button class="massage_top_btn" id="수신함">수신함</button>
+            <!-- 쪽지 메인 페이지 -->
+            <div class="page active" id="note_inbox">
+                <div class="message_top">
+                    <div class="inbox">
+                        <button class="massage_top_btn inbox_btn" style="color: #39435C;">수신함</button>
+                    </div>
+                    <div class="outbox">
+                        <button class="massage_top_btn outbox_btn" style="color: #C1C5D4;">발신함</button>
+                        <!-- <a href="message_outbox.html">발신함</a> -->
+                    </div>
+                    <div class="send">
+                        <button class="massage_top_btn send_btn" style="color: #C1C5D4;">보내기</button>
+                    </div>
                 </div>
-                <div class="outbox">
-                    <button class="massage_top_btn" id="발신함">
-                        <a href="message_outbox.html">발신함</a></button>
+                <div class="message_body" style="overflow-y: scroll;">
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="send">
-                    <button class="massage_top_btn" id="보내기">보내기</button>
+                <div class="message_bottom">
+
                 </div>
             </div>
-            <div class="message_body" style="overflow-y: scroll;">
-                <div class="message_list">
-                    <div class="massage_inbox_select">
-                        <span>홍길동</span> <span>대리</span>
-                        <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+            <!-- 쪽지 수신 확인 -->
+            <div class="page" id="note_inbox_check">
+                <div class="message_top">
+                    <div class="inbox">
+                        <button class="massage_top_btn inbox_btn">수신함</button>
+                    </div>
+                    <div class="outbox">
+                        <button class="massage_top_btn outbox_btn">발신함</button>
+                        <!-- <a href="message_outbox.html">발신함</a> -->
+                    </div>
+                    <div class="send">
+                        <button class="massage_top_btn send_btn">보내기</button>
                     </div>
                 </div>
-                <div class="message_list">
-                    <div class="massage_inbox_select">
-                        <span>홍길동</span> <span>대리</span>
-                        <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                <div class="message_body">
+                    <div class="inbox_user_container">
+                        <div class="inbox_user">
+                            <span>홍길동</span> <span>대리</span>
+                        </div>
+                    </div>
+                    <div class="inbox_content">
+                        <span>sdfkjsdjkfhskjfhwshfuxcmvnefhalksjhskjfhwshfhalksjhskjfhwshfhalksjhskjfhwshfhalksjhskjfhwshfuxcmvnefhalksjhskjfhwshfuxcmvnefhalksjdasd</span>
+                        <div class="inbox_date">
+                        </div>
+
                     </div>
                 </div>
-                <div class="message_list">
-                    <div class="massage_inbox_select">
-                        <span>홍길동</span> <span>대리</span>
-                        <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                <div class="message_bottom">
+                    <div class="check">
+                        <button class="massage_bottom_btn check_btn">확인</button>
+                    </div>
+                    <div class="delete">
+                        <button class="massage_bottom_btn delete_btn">삭제</button>
+                    </div>
+                    <div class="reply">
+                        <button class="massage_bottom_btn reply_btn">답장</button>
                     </div>
                 </div>
-                <div class="message_list">
-                    <div class="massage_inbox_select">
-                        <span>홍길동</span> <span>대리</span>
-                        <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+            </div>
+            <!-- 쪽지 발신 -->
+            <div class="page" id="note_outbox">
+                <div class="message_top">
+                    <div class="inbox">
+                        <button class="massage_top_btn inbox_btn" style="color: #C1C5D4;">수신함</button>
                     </div>
-                </div>
-                <div class="message_list">
-                    <div class="massage_inbox_select">
-                        <span>홍길동</span> <span>대리</span>
-                        <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                    <div class="outbox">
+                        <button class="massage_top_btn outbox_btn" style="color: #39435C;">발신함</button>
+                        <!-- <a href="message_outbox.html">발신함</a> -->
                     </div>
-                </div>
-                <div class="message_list">
-                    <div class="massage_inbox_select">
-                        <span>홍길동</span> <span>대리</span>
-                        <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                    <div class="send">
+                        <button class="massage_top_btn send_btn" style="color: #C1C5D4;">보내기</button>
                     </div>
                 </div>
 
-            </div>
-            <div class="message_bottom">
+                <div class="message_body" style="overflow-y: scroll;">
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
+                    <div class="message_list">
+                        <div class="massage_inbox_select">
+                            <span>홍길동</span> <span>대리</span>
+                            <p class="message_content">어쩌구 저쩌구 입니다 어쩌라구용</p>
+                        </div>
+                    </div>
 
+
+                </div>
+                <div class="message_bottom">
+
+                </div>
             </div>
+            <!-- 쪽지 발신 확인 -->
+            <div class="page" id="note_outbox_check">
+                <div class="message_top">
+                    <div class="inbox">
+                        <button class="massage_top_btn inbox_btn" style="color: #C1C5D4;">수신함</button>
+                    </div>
+                    <div class="outbox">
+                        <button class="massage_top_btn outbox_btn" style="color: #39435C;">발신함</button>
+                        <!-- <a href="message_outbox.html">발신함</a> -->
+                    </div>
+                    <div class="send">
+                        <button class="massage_top_btn send_btn" style="color: #C1C5D4;">보내기</button>
+                    </div>
+                </div>
+                <div class="message_body">
+                    <div class="inbox_user_container">
+                        <div class="inbox_user">
+                            <span>홍길동</span> <span>대리</span>
+                        </div>
+                    </div>
+                    <div class="inbox_content">
+                        <span>sdfkjsdjkfhskjfhwshfuxcmvnefhalksjhskjfhwshfhalksjhskjfhwshfhalksjhskjfhwshfhalksjhskjfhwshfuxcmvnefhalksjhskjfhwshfuxcmvnefhalksjdasd</span>
+                        <div class="inbox_date">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="message_bottom">
+                    <div class="delete">
+                        <button class="massage_bottom_btn delete_btn">삭제</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 쪽지 보내기 -->
+            <div class="page" id="note_send">
+                <div class="message_top">
+                    <div class="inbox">
+                        <button class="massage_top_btn inbox_btn" style="color: #C1C5D4;">수신함</button>
+                    </div>
+                    <div class="outbox">
+                        <button class="massage_top_btn outbox_btn" style="color: #C1C5D4;">발신함</button>
+                        <!-- <a href="message_outbox.html">발신함</a> -->
+                    </div>
+                    <div class="send">
+                        <button class="massage_top_btn send_btn" style="color: #39435C;">보내기</button>
+                    </div>
+                </div>
+                <div class="message_body">
+                    <div class="inbox_user_container">
+                        <div class="send_user_select">
+                            <select name="1" id="" class="select">
+                                <option value="" selected disabled>선택</option>
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                                <option value="">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="send_content">
+                        <textarea class="send_content_area"></textarea>
+                    </div>
+
+                </div>
+                <div class="message_bottom">
+                    <div class="check">
+                        <button class="massage_bottom_btn check_btn">확인</button>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
+
     <script>
+
 
     </script>
 
     <script src="../assets/js/common.js"></script>
-    <script src="../message/message.js"></script>
+    <script src="../message/messageModal.js"></script>
+    <script src="../message/message_pagemove.js"></script>
 </body>
 
 </html>
