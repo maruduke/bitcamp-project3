@@ -5,8 +5,8 @@ spring:
   jwt:
     key: secret-key
     live:
-      atk: 60000
-      rtk: 300000
+      atk: 43200000
+      rtk: 43200000
 
 logging:
   level:
