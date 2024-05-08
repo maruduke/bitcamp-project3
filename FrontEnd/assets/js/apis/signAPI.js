@@ -1,3 +1,5 @@
+import { exceptionHandler } from './exceptHandler.js';
+
 const url = 'http://localhost:8080/sign';
 
 const signService = {
@@ -37,6 +39,8 @@ const signService = {
                 authorization: `Bearer ${jwt}`,
             },
             body: JSON.stringify(templateDto),
-        });
+        }).then((res) => exceptionHandler(res));
     },
 };
+
+signService.temporaryStorage('', 'test');

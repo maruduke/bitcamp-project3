@@ -1,8 +1,8 @@
-const url = 'http://localhost:8080/login';
+import { exceptionHandler } from './exceptHandler.js';
 
 const loginService = {
-    login: async function (loginDto) {
-        return fetch(`${url}/post`, {
+    login: async function (loginDto, callback) {
+        return fetch(`http://localhost:8080/login/post`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -10,13 +10,14 @@ const loginService = {
             body: JSON.stringify(loginDto),
         })
             .then((res) => {
-                if (!res.ok) throw exception('error');
+                return exceptionHandler(res);
             })
             .then((res) => res.json())
             .then((res) => {
                 // session storage에 jwt 저장
                 sessionStorage.setItem('jwt', res['atk']);
-            });
+            })
+            .then(() => callback());
     },
 };
 
@@ -26,9 +27,3 @@ class loginDto {
         this.password = password;
     }
 }
-
-async function login() {
-    loginService.login(new loginDto('sgw0816@naver.com', '1234'));
-}
-
-login();
