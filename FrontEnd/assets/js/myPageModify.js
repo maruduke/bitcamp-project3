@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('userName').textContent = data.name;
         document.getElementById('userPosition').textContent = data.position;
         document.getElementById('userDept').textContent += data.dept;
-        document.getElementById('userId').textContent = data.userId;
+        document.getElementById('userId').textContent += data.userId;
         document.getElementById('userEmail').textContent += data.email;
 
-        //이메일 변경
-        document.getElementById('userEmail').value = data.email;
-        // document.getElementById('userPhone').value = data.tel;
+       
+        // document.getElementById('userEmail').value = data.email;
+        document.getElementById('userPhone').value = data.tel;
 
         // 수정 버튼 클릭 시 서버에 변경된 정보 전송
         document.getElementById('saveChanges').addEventListener('click', () => {
