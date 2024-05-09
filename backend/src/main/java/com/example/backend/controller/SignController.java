@@ -2,6 +2,7 @@ package com.example.backend.controller;
 
 
 import com.example.backend.dto.sign.ApproveDto;
+import com.example.backend.dto.sign.UserDto;
 import com.example.backend.dto.template.TemplateDto;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.mongo.Template;
@@ -14,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/sign")
@@ -51,20 +54,39 @@ public class SignController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @CrossOrigin
+    /**
+     * 파일 임시 저장
+     * @param user
+     * @param templateDto
+     * @return
+     */
     @PostMapping("/temporaryStorage")
     public ResponseEntity temporaryStorage(@AuthenticationPrincipal User user, @RequestBody TemplateDto templateDto) {
         signService.temporaryStorage(user, templateDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @PostMapping("/getTemporary")
+    /**
+     * 임시 저장된 파일 가져오기
+     * @param user
+     * @return
+     */
+    @GetMapping("/getTemporary")
     public ResponseEntity<Template<? extends TypeData>> getTemporary(@AuthenticationPrincipal User user) {
         Template<? extends TypeData> template = signService.getTemporaryStorage(user);
         
         // dto 반환 해야 함
         return new ResponseEntity<>(template, HttpStatus.OK);
     }
+
+    @GetMapping("/getUserList")
+    public ResponseEntity<List<UserDto>> getUserList() {
+
+        List<UserDto> users = signService.getUserList();
+
+        return ResponseEntity.ok(users);
+    }
+
+
 
 }
