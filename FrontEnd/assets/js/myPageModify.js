@@ -28,12 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
        
         // document.getElementById('userEmail').value = data.email;
-        document.getElementById('userPhone').value = data.tel;
+        // document.getElementById('userPhone').value = data.tel;
 
         // 수정 버튼 클릭 시 서버에 변경된 정보 전송
         document.getElementById('saveChanges').addEventListener('click', () => {
             // const updatedEmail = document.getElementById('userEmail').value;
             const updatedPhone = document.getElementById('userPhone').value;
+        
+            // 전화번호 입력은 숫자만 가능하도록
+            const numberRegex = /^\d+$/;
+            if (!numberRegex.test(updatedPhone)) {
+                alert('전화번호는 숫자만 입력할 수 있습니다.');
+                return; // 숫자가 아닌 경우 함수 종료
+            }
+            
 
             // 서버에 변경된 정보 전송
             fetch('http://localhost:8080/login/mypage/modify', {
@@ -48,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                console.log('Changes saved successfully!');
+                alert('수정이 완료되었습니다!');
+                window.location.href = 'http://localhost:3200/mypage';
+                
             })
             .catch(error => {
                 console.error('Save Changes Error:', error);

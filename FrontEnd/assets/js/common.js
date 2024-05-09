@@ -60,6 +60,7 @@ function includeHeader() {
 						throw new Error(`HTTP error! Status: ${response.status}`);
 					}
 					sessionStorage.removeItem('jwt'); // 세션 스토리지에서 토큰 제거
+					alert('로그아웃 되었습니다!');
 					window.location.href = 'http://localhost:3200/login'; // 로그인 페이지로 리다이렉트
 				})
 				.catch(error => {

@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
+            alert('사원 등록을 완료했습니다!');
             window.location.href = 'http://localhost:3200';
         })
         .catch(error => {
