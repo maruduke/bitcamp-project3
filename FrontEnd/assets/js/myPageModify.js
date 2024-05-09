@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('userPosition').textContent = data.position;
         document.getElementById('userDept').textContent += data.dept;
         document.getElementById('userId').textContent = data.userId;
+        document.getElementById('userEmail').textContent += data.email;
 
         //이메일 변경
         document.getElementById('userEmail').value = data.email;
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 수정 버튼 클릭 시 서버에 변경된 정보 전송
         document.getElementById('saveChanges').addEventListener('click', () => {
-            const updatedEmail = document.getElementById('userEmail').value;
+            // const updatedEmail = document.getElementById('userEmail').value;
             const updatedPhone = document.getElementById('userPhone').value;
 
             // 서버에 변경된 정보 전송
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                     'authorization': `Bearer ${jwt}`
                 },
-                body: JSON.stringify({ email: updatedEmail, tel: updatedPhone })
+                body: JSON.stringify({ tel: updatedPhone })
             })
             .then(response => {
                 if (!response.ok) {
