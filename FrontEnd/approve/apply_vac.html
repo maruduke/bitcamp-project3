@@ -1,81 +1,72 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>(주)위계질서</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
 
-    <link rel="stylesheet" href="/css/style.css" />
-
-</head>
-
-<body>
-    <header></header>
-    <main>
-        <div class="container">
-            <section class="flex">
-                <div class="w100p">
-                    <div class="box" style="height: 517px;">
-                        <div class="title-blue-box">
-                            <div>
-                                <input type="text" placeholder="제목 입력">
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box" style="height: 517px">
+                            <div class="title-blue-box">
+                                <div>
+                                    <input type="text" placeholder="제목 입력" id="title" />
+                                </div>
+                                <h2>휴가 신청</h2>
                             </div>
-                            <h2>휴가 신청</h2>
+                            <div class="content pdx55 margin-top10">
+                                <div class="apply-white-box">
+                                    <h2>결재자</h2>
+                                    <div class="space-between" id="approvers"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>참조자</h2>
+                                    <div class="space-between" id="references"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>시작일</h2>
+                                    <div class="inner-box">
+                                        <input type="date" id="startDate" />
+                                    </div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>종료일</h2>
+                                    <div class="inner-box">
+                                        <input type="date" id="endDate" />
+                                    </div>
+                                </div>
+                                <div class="apply-white-box align-start">
+                                    <h2 class="mt8">사유</h2>
+                                    <div class="inner-box reason" style="height: 180px">
+                                        <textarea placeholder="여행" id="reason"></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="content pdx55 margin-top10">
-                            <div class="apply-white-box">
-                                <h2>결재자</h2>
-                                <div class="space-between" id="approvers"></div>
-                            </div>
-                            <div class="apply-white-box">
-                                <h2>참조자</h2>
-                                <div class="space-between" id="references"></div>
-                            </div>
-                            <div class="apply-white-box">
-                                <h2>시작일</h2>
-                                <div class="inner-box">
-                                    <input type="date">
-                                </div>
-                            </div>
-                            <div class="apply-white-box">
-                                <h2>종료일</h2>
-                                <div class="inner-box">
-                                    <input type="date">
-                                </div>
-                            </div>
-                            <div class="apply-white-box align-start">
-                                <h2 class="mt8">사유</h2>
-                                <div class="inner-box reason" style="height: 180px;">
-                                    <textarea placeholder="여행"></textarea>
-
-                                </div>
-                            </div>
-
-
+                        <div class="check-btn row-direction">
+                            <button id="submit" href="main" class="blue-btn">상신</a>
+                            <button id="return" class="blue-btn">돌아가기</a>
                         </div>
                     </div>
-                    <div class="check-btn row-direction ">
-                        <a href="main" class="blue-btn">상신</a>
-                        <a href="main" class="blue-btn">돌아가기</a>
-                    </div>
+                </section>
+            </div>
+        </main>
 
-                </div>
-            </section>
-        </div>
-    </main>
+        <footer>
+            <div class="nav-container">
+                <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
+            </div>
+        </footer>
 
-    <footer>
-        <div class="nav-container">
-            <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
-        </div>
-    </footer>
-
-    <div class="message blind">
-        쪽지보내기
-    </div>
-    <script src="/js/common.js"></script>
-    <script src="/js/apply/applyVac.js"></script>
-</body>
-
+        <div class="message blind">쪽지보내기</div>
+        <script src="/js/common.js"></script>
+        <script type="module" src="/js/apply/applyVac.js"></script>
+    </body>
 </html>
