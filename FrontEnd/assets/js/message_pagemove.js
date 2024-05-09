@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function changePage(pageToShow) {
         // 모든 페이지를 비활성화합니다.
         pages.forEach(function (page) {
-            page.classList.remove('active');
+            page.style.display = 'none'; // 모든 페이지를 숨깁니다.
         });
-        // 해당 페이지를 활성화합니다.
-        pageToShow.classList.add('active');
+        // 해당 페이지를 보여줍니다.
+        pageToShow.style.display = 'block';
     }
 
     // 버튼 클릭 이벤트 핸들러 함수를 정의합니다.
@@ -35,4 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 초기에 수신함 페이지를 활성화합니다.
     changePage(document.querySelector('#note_inbox'));
+
+    // messageItem 클릭 이벤트 핸들러 함수를 정의합니다.
+    function handleMessageItemClick(event) {
+        // 페이지를 변경합니다.
+        changePage(document.querySelector('#note_inbox_check'));
+    }
+
+    // 각 messageItem에 클릭 이벤트 리스너를 추가합니다.
+    const messageItems = document.querySelectorAll('.massage_inbox_select');
+    messageItems.forEach(messageItem => {
+        messageItem.addEventListener('click', handleMessageItemClick);
+    });
 });

@@ -76,6 +76,34 @@ body{
     color: #C1C5D4;
     margin-top: 10px;
 }
+
+.message_sendBody{
+    height: 310px;
+    border: 1px solid #C1C5D4;
+    border-top: none;
+
+    text-align: left;
+
+}
+
+.message_sendList{
+    padding: 15px;
+    border-bottom: 1px solid #C1C5D4;
+    cursor: pointer;
+
+}
+.message_sendList:last-of-type {border-bottom: none;}
+/*마지막에 오는 리스트의 보더 바텀을 없앨 수 있을지*/
+
+
+.message_sendContent{
+    font-size: 13px;
+    color: #C1C5D4;
+    margin-top: 10px;
+}
+
+
+
 .message_bottom{
     border-bottom: 1px solid #C1C5D4;
     border-left: 1px solid #C1C5D4;
