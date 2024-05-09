@@ -11,7 +11,7 @@ function fetchUsers() {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`서버 오류: ${response.status}`);
         }
         return response.json();
     })
