@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -17,7 +18,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> getUserByEmail(String username);
 
+    Optional<List<User>> findAllByEmailIn(List<String> refList);
+
     @Modifying
     @Query("UPDATE User u SET u.tel = :tel WHERE u.email = :email")
     int updateUserByEmail(String tel, String email);
+
 }

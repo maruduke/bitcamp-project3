@@ -44,8 +44,13 @@ public class SignService {
 
         LocalDate createDate = LocalDate.now();
 
+        List<Long> refList = userRepository.findAllByEmailIn(templateDto.getRefList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"))
+                .stream().map( (user) -> user.getUserId()).toList();
+        List<Long> approveList = userRepository.findAllByEmailIn(templateDto.getApproverList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"))
+                .stream().map( (user) -> user.getUserId()).toList();;
+
         // mongodb 템플릿 저장
-        Template<? extends TypeData> template = templateDto.toTemplateEntity();
+        Template<? extends TypeData> template = templateDto.toTemplateEntity(approveList, refList);
         templateRepository.save(template);
 
         log.info(template);
@@ -58,7 +63,7 @@ public class SignService {
         TaskProgress taskProgressApprover = TaskProgress.builder()
                 .documentId(template.getId())
                 .state(DocState.PROCESS_1)
-                .ref_user_id(templateDto.getApproverList().get(0))
+                .ref_user_id(template.getApproverList().get(0))
                 .build();
 
         // 작성자 확인용 결재 진행 상황 저장
@@ -230,10 +235,15 @@ public class SignService {
      * @param templateDto
      */
     public void temporaryStorage(User user,TemplateDto templateDto) {
-        
+
+        List<Long> refList = userRepository.findAllByEmailIn(templateDto.getRefList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"))
+                .stream().map(u -> u.getUserId()).toList();
+        List<Long> approveList = userRepository.findAllByEmailIn(templateDto.getApproverList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"))
+                .stream().map(u -> u.getUserId()).toList();
+
 
         // mongodb 템플릿 저장
-        Template<? extends TypeData> template = templateDto.toTemplateEntity();
+        Template<? extends TypeData> template = templateDto.toTemplateEntity(approveList, refList);
         templateRepository.save(template);
 
 

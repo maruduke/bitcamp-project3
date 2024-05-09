@@ -7,7 +7,6 @@ import com.example.backend.dto.template.TemplateDto;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.mongo.Template;
 import com.example.backend.entity.mongo.TypeData;
-import com.example.backend.service.BoardService;
 import com.example.backend.service.SignService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

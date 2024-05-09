@@ -4,10 +4,12 @@ import com.example.backend.entity.maria.enumData.DocType;
 import com.example.backend.entity.mongo.AccountingExpense;
 import com.example.backend.entity.mongo.Template;
 import com.example.backend.entity.mongo.TypeData;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,11 +19,12 @@ public class AccountExpenseDto extends TemplateDto{
 
     private String category;
     private int cost;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime expenseDate;
 
 
     @Override
-    public Template<? extends TypeData> toTemplateEntity() {
+    public Template<? extends TypeData> toTemplateEntity(List<Long> approvers, List<Long> refs) {
 
         AccountingExpense accountingExpense = AccountingExpense.builder()
                 .title(this.getTitle())
@@ -30,12 +33,11 @@ public class AccountExpenseDto extends TemplateDto{
                 .expenseDate(this.expenseDate)
                 .build();
 
-
         return Template.<AccountingExpense>builder()
                 .writer(this.getWriter())
                 .type(this.getType())
-                .refList(this.getRefList())
-                .approverList(this.getApproverList())
+                .refList(refs)
+                .approverList(approvers)
                 .typeData(accountingExpense)
                 .build();
     }
