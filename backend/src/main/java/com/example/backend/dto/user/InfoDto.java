@@ -11,6 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class InfoDto {
 
-    private String email;
     private String tel;
 }
