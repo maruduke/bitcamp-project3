@@ -50,6 +50,7 @@ public class MessageService {
                 .messageId(message.getMessageId())
                 .senderEmail(message.getSenderId().getEmail())
                 .senderName(message.getSenderId().getName())
+                .senderPosition(message.getSenderId().getPosition())
                 .message(message.getMessage())
                 .sendTime(message.getSendTime())
                 .readCheck(message.isReadCheck())
@@ -121,7 +122,9 @@ public class MessageService {
                 .message(message.getMessage())
                 .receiverEmail(message.getReceiverId().getEmail())
                 .senderEmail(message.getSenderId().getEmail())
+                .sendTime(message.getSendTime())
                 .receiverName(message.getReceiverId().getName())
+                .receiverPosition(message.getReceiverId().getPosition())
                 .build();
     }
 

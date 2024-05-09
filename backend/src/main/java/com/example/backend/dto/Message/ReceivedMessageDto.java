@@ -31,6 +31,8 @@ public class ReceivedMessageDto {
     @NotEmpty
     private String senderName;
 
+    private String senderPosition;
+
     @NotEmpty
     private boolean readCheck;
 
