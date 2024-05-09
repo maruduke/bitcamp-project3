@@ -34,13 +34,13 @@ public abstract class TemplateDto {
     private Long writer;
     private DocType type;
 
-    private List<Long> refList;
-    private List<Long> approverList;
+    private List<String> refList;
+    private List<String> approverList;
 
     private String title;
 
 
-    abstract public Template< ? extends TypeData> toTemplateEntity();
+    abstract public Template< ? extends TypeData> toTemplateEntity(List<Long> approvers, List<Long> refs);
 
 
     public Document toDocumentEntity(String documentId, LocalDate createDate) {
