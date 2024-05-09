@@ -22,9 +22,13 @@ public class SendMessageDto {
     @NotEmpty
     private String senderEmail;
 
+    private LocalDateTime sendTime;
+
     @NotEmpty
     private String receiverEmail;
 
     @NotEmpty
     private String receiverName;
+
+    private String receiverPosition;
 }
