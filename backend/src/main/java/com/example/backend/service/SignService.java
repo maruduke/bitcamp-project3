@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.dto.sign.ApproveDto;
+import com.example.backend.dto.sign.UserDto;
 import com.example.backend.dto.template.TemplateDto;
 import com.example.backend.entity.maria.Document;
 import com.example.backend.entity.maria.Ref;
@@ -9,14 +10,11 @@ import com.example.backend.entity.maria.User;
 import com.example.backend.entity.maria.enumData.DocState;
 import com.example.backend.entity.maria.enumData.DocType;
 import com.example.backend.entity.mongo.*;
-import com.example.backend.repository.DocumentRepository;
-import com.example.backend.repository.RefRepository;
-import com.example.backend.repository.TaskProgressRepository;
-import com.example.backend.repository.TemplateRepository;
-import jakarta.transaction.Transactional;
+import com.example.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -31,6 +29,7 @@ public class SignService {
     private final TemplateRepository templateRepository;
     private final TaskProgressRepository taskProgressRepository;
     private final RefRepository refRepository;
+    private final UserRepository userRepository;
 
     // MongoDB template ID값 반환
 
@@ -281,6 +280,15 @@ public class SignService {
 
         return template;
 
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<UserDto> getUserList() {
+
+        List<UserDto> users = userRepository.findAll().stream().map(user -> new UserDto(user)).toList();
+
+        return users;
     }
 
 }
