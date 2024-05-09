@@ -91,12 +91,11 @@ public class UserService {
     }
 
     @Transactional
-    public int modifyInfo(String name, InfoDto infoDto){
+    public int modifyInfo(String email, InfoDto infoDto){
 
-        String email = infoDto.getEmail();
         String tel = infoDto.getTel();
 
-        return userRepository.updateUserByName(email, tel, name);
+        return userRepository.updateUserByEmail(tel, email);
 
     }
 

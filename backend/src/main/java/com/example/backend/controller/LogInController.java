@@ -82,10 +82,8 @@ public class LogInController {
 
     @PutMapping("/mypage/modify")
     public ResponseEntity<String> modify(@AuthenticationPrincipal User user, @RequestBody InfoDto infoDto, @RequestHeader("Authorization") String token) throws JsonProcessingException {
-        String name = user.getName();
-        userService.modifyInfo(name, infoDto);
-        userService.logout(token);
-        return ResponseEntity.ok("회원정보가 변경되었습니다. 다시 로그인해주세요.");
+        String email = user.getEmail();
+        userService.modifyInfo(email, infoDto);
+        return ResponseEntity.ok("회원정보가 변경되었습니다.");
     }
-
 }
