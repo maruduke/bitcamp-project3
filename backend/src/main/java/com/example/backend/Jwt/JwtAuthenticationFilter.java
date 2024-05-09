@@ -31,6 +31,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         log.info("JWT Authentication Filter");
         String authorization = request.getHeader("Authorization");
         log.info("authorization: " + authorization);
+
+        if(authorization == null || !jwtUtil.validateToken(authorization)) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
         if(authorization!=null && jwtUtil.validateToken(authorization)) {
             String atk = authorization.substring("Bearer ".length());
             log.info("atk: " + atk);
@@ -49,7 +55,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(token);
             }catch(JwtException e){
                 log.info("jwt exception: " + e);
-                request.setAttribute("exception", e.getMessage());
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401 상태 코드 설정
+                response.getWriter().write(e.getMessage()); // 오류 메시지 응답으로 전송
+                return; // 필터 체인을 종료하여 더 이상의 처리를 하지 않음
             }
         }
         filterChain.doFilter(request, response);
