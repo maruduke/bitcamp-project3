@@ -164,6 +164,7 @@ function fetchMessageCheck(messageId) {
             if (!response.ok) {
                 throw new Error(`서버 오류: ${response.status}`);
             }
+            location.reload();
             alert('메세지를 확인 했습니다.')
         })
         .catch(error => {
@@ -186,6 +187,7 @@ function fetchMessageDelete(messageId) {
             if (!response.ok) {
                 throw new Error(`서버 오류: ${response.status}`);
             }
+            location.reload();
             alert('메세지가 성공적으로 삭제되었습니다.')
         })
         .catch(error => {
