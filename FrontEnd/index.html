@@ -1,128 +1,251 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>(주)위계질서</title>
 
-        <link rel="stylesheet" href="/css/style.css" />
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>(주)위계질서</title>
 
-    <body class="index-body">
-        <header>
-            <div class="nav-container pos-relative h100p">
-                <div class="flex flex-end align-center w100p h100p">
-                    <h1 class="logo">
-                        <a href="/"></a>
-                    </h1>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+        .titlebox {
+            width: 400px;
+            height: 65px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            background-color: #5B718F;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+        }
 
-                    <h3 class="user">반갑습니다! &nbsp;<span>홍길동님</span></h3>
-                </div>
+        .dept_list {
+            width: 400px;
+            height: 75px;
+            border-bottom: 1px solid #CBC9D7;
+            display: flex;
+            align-items: center;
+
+
+        }
+
+        .index_notelist {
+            width: 400px;
+            height: 75px;
+            border-bottom: 1px solid #CBC9D7;
+            display: flex;
+            align-items: center;
+        }
+
+        .dept_userbox {
+            margin-left: 30px;
+            color: #39435C;
+        }
+
+        .index_notebox {
+            margin-left: 30px;
+            width: 340px;
+            font-size: 17px;
+        }
+
+        .note_username {
+            font-weight: 500;
+        }
+
+        .index_notebox:not(.note_username) {
+            font-weight: lighter;
+        }
+
+        .dept_email {
+            margin-top: 12px;
+            color: #CBC9D7;
+        }
+
+        .index_notebox p {
+            margin-top: 12px;
+            color: #CBC9D7;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .dept_username {
+            font-size: 18px;
+
+            font-weight: normal;
+        }
+
+        .note_username {
+            font-size: 18px;
+        }
+
+        .dept_userbox:not(.dept_username) {
+            font-size: 17px;
+            font-weight: lighter;
+        }
+
+        .dept_emp,
+        .note_emp {
+            font-weight: 500;
+        }
+
+        .dept_phone {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body class="index-body">
+    <header>
+        <div class="nav-container pos-relative h100p">
+            <div class="flex flex-end align-center w100p h100p">
+                <h1 class="logo">
+                    <a href="/"></a>
+                </h1>
+
+                <h3 class="user">반갑습니다! &nbsp;<span>홍길동님</span></h3>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="index-main">
-            <div class="nav-container">
-                <section class="flex">
-                    <nav class="nav-index pdx20 w20p">
-                        <div class="nav-container">
-                            <ul>
-                                <li>
-                                    <a href="/member">MEMBER</a>
-                                </li>
-                                <li>
-                                    <a href="/approve/main">결재</a>
-                                </li>
-                                <li>
-                                    <a href="/mypage/mypage">MY PAGE</a>
-                                </li>
-                                <li>
-                                    <!-- <a href="/emp_registration">사원 등록</a> -->
-                                    <button id="joinbtn">사원 등록</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
+    <main class="index-main">
+        <div class="nav-container">
+            <section class="flex">
+                <nav class="nav-index pdx20 w20p">
+                    <div class="nav-container">
+                        <ul>
+                            <li>
+                                <a href="/member">MEMBER</a>
+                            </li>
+                            <li>
+                                <a href="/approve/main">결재</a>
+                            </li>
+                            <li>
+                                <a href="/mypage/mypage">MY PAGE</a>
+                            </li>
+                            <li>
+                                <!-- <a href="/emp_registration">사원 등록</a> -->
+                                <button id="joinbtn">사원 등록</button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
 
-                    <div class="w70p inline-flex">
-                        <div class="w50p pdx20">
-                            <div class="box" style="height: 600px">
-                                <div class="title-white-box">
-                                    <h2>나의 신청 목록</h2>
+                <div class="w70p inline-flex">
+                    <div class="w50p pdx20" style="width: 460px;">
+                        <div class="box" style="height: 500px; width: 400px;">
+                            <div class="titlebox">
+                                <h2>연락처</h2>
+                            </div>
+                            <div class="deptbox">
+                                <div class="dept_list ">
+                                    <div class="dept_userbox">
+                                        <span class="dept_username">홍길동 </span>
+                                        <span class="dept_emp">대리 </span>
+                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <p class="dept_email">aoklfgjl@nave.com</p>
+                                    </div>
                                 </div>
-                                <div class="scroll">
-                                    <div class="content">
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
-                                        <p>안녕</p>
+                                <div class="dept_list">
+                                    <div class="dept_userbox">
+                                        <span class="dept_username">홍길동 </span>
+                                        <span class="dept_emp">대리 </span>
+                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <p class="dept_email">aoklfgjl@nave.com</p>
+                                    </div>
+                                </div>
+                                <div class="dept_list">
+                                    <div class="dept_userbox">
+                                        <span class="dept_username">홍길동 </span>
+                                        <span class="dept_emp">대리 </span>
+                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <p class="dept_email">aoklfgjl@nave.com</p>
+                                    </div>
+                                </div>
+                                <div class="dept_list">
+                                    <div class="dept_userbox">
+                                        <span class="dept_username">홍길동 </span>
+                                        <span class="dept_emp">대리 </span>
+                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <p class="dept_email">aoklfgjl@nave.com</p>
+                                    </div>
+                                </div>
+                                <div class="dept_list">
+                                    <div class="dept_userbox">
+                                        <span class="dept_username">홍길동 </span>
+                                        <span class="dept_emp">대리 </span>
+                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <p class="dept_email">aoklfgjl@nave.com</p>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="content">
+                            </div>
+
                         </div>
-                        <div class="w50p pdx20">
-                            <div class="box" style="height: 600px">
-                                <div class="scroll">
-                                    <div class="title-white-box">
-                                        <h2>대기 중인 목록</h2>
-                                    </div>
-                                    <div class="content">
-                                        <select name="" id="" class="select">
-                                            <option value="">안녕</option>
-                                            <option value="">내가 바로</option>
-                                            <option value="">안슬기지!</option>
-                                            <option value="">쿄쿄쿄</option>
-                                        </select>
+                    </div>
+                    <div class="w50p pdx20" style="width: 460px;">
+                        <div class="box" style="height: 500px; width: 400px;">
+                            <div class="titlebox">
+                                <h2>쪽지</h2>
+                            </div>
+                            <div class="notebox">
+                                <div class="index_notelist">
+                                    <div class="index_notebox">
+                                        <span class="note_username">홍길동 </span>
+                                        <span class="note_emp">대리 </span>
+                                        <p class="text-ellipsis note_content">
+                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
+                                        </p>
                                     </div>
                                 </div>
+                                <div class="index_notelist">
+                                    <div class="index_notebox">
+                                        <span class="note_username">홍길동 </span>
+                                        <span class="note_emp">대리 </span>
+                                        <p class="text-ellipsis note_content">
+                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="index_notelist">
+                                    <div class="index_notebox">
+                                        <span class="note_username">홍길동 </span>
+                                        <span class="note_emp">대리 </span>
+                                        <p class="text-ellipsis note_content">
+                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="index_notelist">
+                                    <div class="index_notebox">
+                                        <span class="note_username">홍길동 </span>
+                                        <span class="note_emp">대리 </span>
+                                        <p class="text-ellipsis note_content">
+                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
+                                        </p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
-        </main>
+                </div>
+        </div>
+        </section>
+        </div>
+    </main>
 
-        <footer>
-            <div class="nav-container">
-                <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
-            </div>
-        </footer>
+    <footer>
+        <div class="nav-container">
+            <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
+        </div>
+    </footer>
 
-        <div class="message blind">쪽지보내기</div>
-        <script src="/js/index.js"></script>
-    </body>
+    <div class="message blind">쪽지보내기</div>
+    <script src="/js/index.js"></script>
+</body>
+
 </html>
