@@ -110,7 +110,8 @@ main.index-main {margin-top: 90px;}
 /* .nav-index {padding: 60px 0;} */
 .nav-index {padding: 100px 20px;}
 .nav-index ul li {margin-bottom: 80px;}
-.nav-index ul li a {font-size: 20px; font-weight: 500; color: #39435C;}
+.nav-index ul li a,button {font-size: 20px; font-weight: 500; color: #39435C;}
+
 
 /* footer */
 footer {position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);}
