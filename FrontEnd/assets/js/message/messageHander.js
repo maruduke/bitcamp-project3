@@ -35,11 +35,23 @@ export const initHandler = () => {
         const receiverEmail = userSelect.value;
         const messageContent = document.querySelector('.send_content_area').value;
 
-        const message = {
-            message: messageContent,
-            receiverEmail: receiverEmail,
-            receiverName: userSelect.options[userSelect.selectedIndex].textContent,
-        };
+
+    if (receiverEmail === ''){
+        alert('보낼 사람을 선택해주세요.');
+        return;
+    }
+
+    // 메시지 내용이 공백인 경우
+    if (messageContent === '') {
+        alert('메시지 내용을 입력해주세요.');
+        return; // 메시지 전송 중지
+    }
+
+    const message = {
+        message: messageContent,
+        receiverEmail: receiverEmail,
+        receiverName: userSelect.options[userSelect.selectedIndex].textContent
+    };
 
         const jwt = sessionStorage.getItem('jwt');
         fetch('http://localhost:8080/message/send', {

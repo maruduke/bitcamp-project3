@@ -154,8 +154,9 @@ function fetchMessageCheck(messageId) {
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`서버 오류: ${response.status}`);
-            }
-            alert('메세지를 확인 했습니다.');
+            }location.reload();
+            alert('메세지를 확인 했습니다.')
+
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
@@ -177,7 +178,8 @@ function fetchMessageDelete(messageId) {
             if (!response.ok) {
                 throw new Error(`서버 오류: ${response.status}`);
             }
-            alert('메세지가 성공적으로 삭제되었습니다.');
+            location.reload();
+            alert('메세지가 성공적으로 삭제되었습니다.')
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
