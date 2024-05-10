@@ -23,6 +23,16 @@ app.get('/common/:params', (req, res) => {
     res.sendFile(path.join(__dirname + `/common` + `/${params}`) + '.html');
 });
 
+app.get('/approve/check/:params', (req, res) => {
+    const { params } = req.params;
+    res.sendFile(path.join(__dirname + `/approve/apply` + `/${params}`) + '.html');
+});
+
+app.get('/approve/list/:params', (req, res) => {
+    const { params } = req.params;
+    res.sendFile(path.join(__dirname + `/approve/apply` + `/${params}`) + '.html');
+});
+
 app.get('/approve/apply/:params', (req, res) => {
     const { params } = req.params;
     res.sendFile(path.join(__dirname + `/approve/apply` + `/${params}`) + '.html');
