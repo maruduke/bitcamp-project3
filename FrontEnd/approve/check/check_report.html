@@ -1,85 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>(주)위계질서</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
 
-    <link rel="stylesheet" href="/css/style.css" />
-</head>
-
-<body>
-    <header></header>
-    <main>
-        <div class="container">
-            <section class="flex">
-                <div class="w100p">
-                    <div class="box" style="height: 517px;">
-                        <div class="title-blue-box">
-                            <h2>결재할 서류(제목: 화장실 고쳐야함)</h2>
-                            <div>
-                                <span>홍길동 사원</span>
-                                <span>보고서 제출</span>
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box" style="height: 517px">
+                            <div class="title-blue-box">
+                                <h2>결재할 서류(제목: 화장실 고쳐야함)</h2>
+                                <div>
+                                    <span>홍길동 사원</span>
+                                    <span>보고서 제출</span>
+                                </div>
+                            </div>
+                            <div class="content pdx55">
+                                <div class="time-box">
+                                    <span>2024-05-02 16:30</span>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>결재자</h2>
+                                    <div>
+                                        <span>안슬기 팀장</span>
+                                        <span>유민진 과장</span>
+                                        <span>김융 사원</span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>참조자</h2>
+                                    <div>
+                                        <span>이경석 사장</span>
+                                        <span>최병민 팀장</span>
+                                        <span>서주원 대리</span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>제목</h2>
+                                    <div>
+                                        <span>화장실 변기 고쳐줘</span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>내용</h2>
+                                    <div>
+                                        <span
+                                            >매번 화장실 변기가 고장이 나서 제대로 쓰지도 못하고 아주 짜증이 납니다.
+                                            퇴사 하기 전에 빨리 안 고장나는 변기로 고쳐주세요 제발</span
+                                        >
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="content pdx55">
-                            <div class="time-box">
-                                <span>2024-05-02 16:30</span>
-                            </div>
-                            <div class="check-white-box">
-                                <h2>결재자</h2>
-                                <div>
-                                    <span>안슬기 팀장</span>
-                                    <span>유민진 과장</span>
-                                    <span>김융 사원</span>
-                                </div>
-                            </div>
-                            <div class="check-white-box">
-                                <h2>참조자</h2>
-                                <div>
-                                    <span>이경석 사장</span>
-                                    <span>최병민 팀장</span>
-                                    <span>서주원 대리</span>
-                                </div>
-                            </div>
-                            <div class="check-white-box">
-                                <h2>제목</h2>
-                                <div>
-                                    <span>화장실 변기 고쳐줘</span>
-                                </div>
-                            </div>
-                            <div class="check-white-box">
-                                <h2>내용</h2>
-                                <div>
-                                    <span>매번 화장실 변기가 고장이 나서 제대로 쓰지도 못하고 아주 짜증이 납니다. 퇴사 하기 전에 빨리 안 고장나는 변기로 고쳐주세요 제발</span>
-                                </div>
-                            </div>
-                            
-
- 
+                        <div class="check-btn row-direction">
+                            <a href="main" class="blue-btn">승인</a>
+                            <a href="main" class="blue-btn">반려</a>
                         </div>
                     </div>
-                    <div class="check-btn row-direction ">
-                        <a href="main" class="blue-btn">승인</a>
-                        <a href="main" class="blue-btn">반려</a>
-                    </div>
+                </section>
+            </div>
+        </main>
 
-                </div>
-            </section>
-        </div>
-    </main>
+        <footer>
+            <div class="nav-container">
+                <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
+            </div>
+        </footer>
 
-    <footer>
-        <div class="nav-container">
-            <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
-        </div>
-    </footer>
-
-    <div class="message blind">
-        쪽지보내기
-    </div>
-    <script src="/js/common.js"></script>
-</body>
-
+        <div class="message" id="message">쪽지보내기</div>
+        <script type="module" src="/js/common.js"></script>
+    </body>
 </html>
