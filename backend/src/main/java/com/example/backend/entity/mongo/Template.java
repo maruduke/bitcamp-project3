@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Template<T> {
     private List<Long> refList;
 
     @CreatedDate
-    private LocalDateTime createDate;
+    private LocalDate createDate;
 
     private List<Long> approverList;
     private List<Boolean> approverCheckList;
