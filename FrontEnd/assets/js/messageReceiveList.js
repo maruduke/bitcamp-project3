@@ -114,7 +114,6 @@ function fetchMessageDetails(messageId) {
                 // 활성화할 페이지 표시
                 const receiveUpdateList = document.querySelector('#note_inbox');
                 receiveUpdateList.style.display = 'block';
-
                 fetchMessageCheck(messageId);
             })
 
@@ -127,11 +126,9 @@ function fetchMessageDetails(messageId) {
                 receiveDeleteList.style.display = 'block';
 
                 fetchMessageDelete(messageId);
-
                 console.log('dddddddddddddd');
             })
-
-
+      
         })
         .catch(error => {
             console.error('Fetch Error:', error);
