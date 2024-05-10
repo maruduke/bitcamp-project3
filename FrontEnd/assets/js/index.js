@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 alert('권한자입니다.');
-                window.location.href = 'http://localhost:3200/emp_registration';
+                window.location.href = 'http://localhost:3200/registration';
             })
 
             .catch(error => {

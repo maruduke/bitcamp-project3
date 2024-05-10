@@ -43,6 +43,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     const jwt = sessionStorage.getItem('jwt');
 
+    fetch('http://localhost:8080/login/joinget', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${jwt}`
+            }
+        })
+            .then(response => {
+                if (response.status==401) {
+                    alert('로그인이 필요합니다.')
+                    window.location.href = 'http://localhost:3200/login';
+                }else if(response.status==403){
+                alert('권한이 없습니다.');
+                window.location.href = 'http://localhost:3200/';
+                }
+            })
+
+            .catch(error => {
+                console.error('Fetch Error:', error);
+            });
+
     document.querySelector('.btn').addEventListener('click', () => {
         const inputName = document.getElementById('name').value;
         const inputEmail = document.getElementById('email').value;
