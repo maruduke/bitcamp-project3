@@ -1,0 +1,16 @@
+/* ========================================== 로그인 ============================================== */
+.Login {display: flex;justify-content: center;align-items: center;flex-direction: column;height: 100vh;}
+.Login .login_logo {background:url(../images/logo.png)no-repeat center/contain; width: 130px; height: 100px; left: 50%;}
+
+.Login .login_container{margin: 0 auto; display: flex; justify-content: center; /*마진이랑 저스티파이 컨텐트가 있어야 중앙 배치 됨*/}
+.Login .login_container .box a {text-decoration: none; /* 로그인 링크의 밑줄 제거 */}
+.Login .er_container{margin: 0 auto; display: flex; justify-content: center; /*마진이랑 저스티파이 컨텐트가 있어야 중앙 배치 됨*/}
+.Login .login_container,
+.Login .er_container > .box > a {-webkit-text-decoration-line: none; text-decoration-line: none;}
+
+.Login .box {background: #fff; border-radius: 8px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); height: 150px; margin-bottom: 40px;}
+.Login .inputbox{margin: auto; width: 300px;height: 40px;border-radius: 8px;background-color: #39435C;justify-content: center;margin-top: 20px;display: flex;}
+.Login .inputbox input{width: 80%;height: 100%;border: none;background: none;outline: none;padding: 0 10px;font-size: 15px;color: #C1C5D4;text-align: center;/* align-items: center; */}
+.Login .btn {width: 100px;height: 40px;background-color: #EFF3F6;border-radius: 4px;border: none;cursor: pointer;transition: background-color 0.3s ease;font-size: 15px;color: #6D717C;display: flex; /* Flexbox 레이아웃 사용 */justify-content: center; /* 수평 중앙 정렬 */align-items: center; /* 수직 중앙 정렬 */margin: auto;font-size: 14px;}
+.Login .btn:hover {background-color: #D1D5DB; /* 마우스를 올렸을 때 배경색 변경 */}
+/* ========================================== 로그인 ============================================== */
