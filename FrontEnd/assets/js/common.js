@@ -9,7 +9,7 @@ function includeHeader() {
 
 			// MEMBER 버튼 클릭 이벤트 처리
 			document.getElementById('memberButton').addEventListener('click', () => {
-				window.location.href = 'http://localhost:3200/member/member';
+				window.location.href = 'http://localhost:3200/member';
 			});
 
 			// 결재 버튼 클릭 이벤트 처리
