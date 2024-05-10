@@ -1,10 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // 페이지 버튼들을 선택합니다.
-    const topbtn = document.querySelectorAll(".message_top_btn");
-    const bottombtn = document.querySelectorAll(".message_bottom_btn")
+export const init_pagemove = () => {
+    const topbtn = document.querySelectorAll('.message_top_btn');
+    const bottombtn = document.querySelectorAll('.message_bottom_btn');
 
     // 페이지들을 선택합니다.
-    const pages = document.querySelectorAll(".page");
+    const pages = document.querySelectorAll('.page');
 
     // 페이지 변경 함수를 정의합니다.
     function changePage(pageToShow) {
@@ -32,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 각 버튼에 클릭 이벤트 리스너를 추가합니다.
-    topbtn.forEach(button => {
-        button.addEventListener("click", handleButtonClick);
+    topbtn.forEach((button) => {
+        button.addEventListener('click', handleButtonClick);
     });
 
-    bottombtn.forEach(button => {
-        button.addEventListener("click", handleButtonClick);
+    bottombtn.forEach((button) => {
+        button.addEventListener('click', handleButtonClick);
     });
 
     // 초기에 수신함 페이지를 활성화합니다.
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 각 messageItem에 클릭 이벤트 리스너를 추가합니다.
     const messageItems = document.querySelectorAll('.message_inbox_select');
-    messageItems.forEach(messageItem => {
+    messageItems.forEach((messageItem) => {
         messageItem.addEventListener('click', handleMessageItemClick);
     });
-});
+};

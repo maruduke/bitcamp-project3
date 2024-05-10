@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>(주)위계질서 - 대기 중인 목록</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 대기 중인 목록</title>
 
-	<link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-	<header></header>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <header></header>
 
-	<main class="list waitingList" id="waitingList">
-		<div class="container">
-			<section class="flex">
-				<div class="w100p">
-					<div class="box" style="height: 500px;">
-						<div class="title-white-box pos-relative space-between align-center pdx25">
-							<h2>대기 중인 목록</h2>
-							<div class="toggle-box">
-								<div class="toggle-button-cover">
-									<div id="button-3" class="button r">
-									  <input class="checkbox" type="checkbox">
-									  <div class="knobs"></div>
-									  <div class="layer"></div>
-									</div>
-								  </div>
-							</div>
-							<a href="main" class="return-btn">
-								<span></span>
-							</a>
-						</div>
-						<div class="scroll" style="height: 400px;">
-							<div class="content ref none"></div>
-							<div class="content app"></div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-	</main>
+        <main class="list waitingList" id="waitingList">
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box" style="height: 500px">
+                            <div class="title-white-box pos-relative space-between align-center pdx25">
+                                <h2>대기 중인 목록</h2>
+                                <div class="toggle-box">
+                                    <div class="toggle-button-cover">
+                                        <div id="button-3" class="button r">
+                                            <input class="checkbox" type="checkbox" />
+                                            <div class="knobs"></div>
+                                            <div class="layer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="main" class="return-btn">
+                                    <span></span>
+                                </a>
+                            </div>
+                            <div class="scroll" style="height: 400px">
+                                <div class="content ref none"></div>
+                                <div class="content app"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
 
-	<footer></footer>
-	
-	<div class="message blind">
-		쪽지보내기
-	</div>
+        <footer></footer>
 
-	<script src="/js/common.js"></script>
-	<script src="/js/list/waitingList.js"></script>
-</body>
+        <div class="message" id="message"></div>
+
+        <script type="module" src="/js/common.js"></script>
+        <script src="/js/list/waitingList.js"></script>
+    </body>
 </html>
