@@ -11,10 +11,10 @@ import java.time.LocalDate;
 @Builder
 @ToString(callSuper = true)
 @AllArgsConstructor
-public class MyListDto {
+public class WaitDto {
 
     private String documentId;
-    private String title;
+    private String name;
     private DocType type;
     private DocState state;
     private LocalDate createDate;
