@@ -36,7 +36,7 @@ body{
     align-items: center;
 }
 
-.massage_top_btn{
+.message_top_btn{
     color: #C1C5D4;
     font-size: 15px;
 }
@@ -125,12 +125,33 @@ body{
     padding-top: 3px;
     font-size: 14px;
 }
+.outbox_user_container{
+    height: 50px;
+    border-bottom: 1px solid #C1C5D4;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-top: 3px;
+    font-size: 14px;
+}
 
         .inbox_user {
             flex: 1;
         }
 
         .inbox_date {
+            font-size: 10px;
+            text-align: right;
+            flex: 1;
+            padding-right: 20px;
+            color: #39435C;
+        }
+
+        .outbox_user {
+            flex: 1;
+        }
+
+        .outbox_date {
             font-size: 10px;
             text-align: right;
             flex: 1;
@@ -145,6 +166,16 @@ body{
     overflow: auto;
     white-space: normal;
     word-wrap: break-word;
+    font-size: 14px;
+}
+.outbox_content {
+    padding: 15px;
+    width: 350px;
+    height: 260px;
+    overflow: auto;
+    white-space: normal;
+    word-wrap: break-word;
+    font-size: 14px;
 }
 
 
@@ -153,7 +184,7 @@ body{
     display: flex;
     align-items: center;
 }
-.massage_top_btn{
+.message_top_btn{
     font-size: 15px;
 }
 .check,

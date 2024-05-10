@@ -66,8 +66,8 @@ function receiveMessageList(receiveMessage) {
                     document.querySelector('#note_inbox').style.display = 'none';
 
                     // 활성화할 페이지 표시
-                    const noteOutboxCheck = document.querySelector('#note_inbox_check');
-                    noteOutboxCheck.style.display = 'block';
+                    const noteInboxCheck = document.querySelector('#note_inbox_check');
+                    noteInboxCheck.style.display = 'block';
 
                     // 메시지 상세 정보 가져오기
                     fetchMessageDetails(message.messageId);
@@ -110,11 +110,10 @@ function fetchMessageDetails(messageId) {
             // 확인 버튼 클릭시 메세지아이디 전송
             checkButton.addEventListener('click', () => {
                 document.querySelector('#note_inbox_check').style.display = 'none';
-
+                
                 // 활성화할 페이지 표시
                 const receiveUpdateList = document.querySelector('#note_inbox');
                 receiveUpdateList.style.display = 'block';
-
                 fetchMessageCheck(messageId);
             })
 
@@ -127,9 +126,9 @@ function fetchMessageDetails(messageId) {
                 receiveDeleteList.style.display = 'block';
 
                 fetchMessageDelete(messageId);
+                console.log('dddddddddddddd');
             })
-            
-
+      
         })
         .catch(error => {
             console.error('Fetch Error:', error);
