@@ -90,6 +90,7 @@
 
 
 /* ========================================== message ============================================== */
+.msg-box {cursor: pointer;}
 .msg-box .send_content {padding: 15px;width: 350px;height: 260px;}
 .msg-box .send_content_area {width: 100%;height: 100%;/* textarea의 너비를 100%로 설정하여 부모 요소에 맞춤 */position: relative;word-break: keep-all;border: none;}
 
