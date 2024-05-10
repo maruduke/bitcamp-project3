@@ -2,6 +2,7 @@ package com.example.backend.repository;
 
 import com.example.backend.entity.maria.TaskProgress;
 import com.example.backend.entity.maria.enumData.DocState;
+import com.example.backend.repository.boardList.BoardList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Repository;
