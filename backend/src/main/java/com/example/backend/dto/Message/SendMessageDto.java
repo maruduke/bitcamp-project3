@@ -22,6 +22,7 @@ public class SendMessageDto {
     @NotEmpty
     private String senderEmail;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime sendTime;
 
     @NotEmpty
