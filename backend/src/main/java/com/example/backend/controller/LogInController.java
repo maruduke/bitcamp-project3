@@ -3,6 +3,7 @@ package com.example.backend.controller;
 import com.example.backend.Jwt.JwtUtil;
 import com.example.backend.dto.user.*;
 import com.example.backend.entity.maria.User;
+import com.example.backend.entity.maria.enumData.Authority;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.service.RedisService;
 import com.example.backend.service.UserService;
@@ -30,6 +31,15 @@ public class LogInController {
     private final RedisService redisService;
     private final RedisTemplate redisTemplate;
     private final UserRepository userRepository;
+
+    @GetMapping("/joinget")
+    public ResponseEntity joinGET(@AuthenticationPrincipal User user) {
+        Authority authority = user.getAuthority();
+        if(authority == Authority.USER){
+            return ResponseEntity.status(403).build();
+        }
+        return ResponseEntity.ok().build();
+    }
 
     @PostMapping("/join")
     public ResponseEntity<String> joinPost(@RequestBody JoinDto joinDto) throws BadRequestException {
