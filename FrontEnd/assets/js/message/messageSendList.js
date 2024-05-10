@@ -96,8 +96,6 @@ function fetchSendMessageDetails(messageId) {
 
                 // 삭제 버튼 클릭시 메세지아이디 전송
                 fetchSendMessageDelete(messageId);
-
-                console.log('dddddddddddddd');
             });
         })
         .catch((error) => {
@@ -110,11 +108,10 @@ function displaySendMessageDetails(message) {
     const senderDetailPosition = document.querySelector('.myReceiverDetailPosition');
     const senderDetailTime = document.querySelector('.myReceiverDetailTime');
     const senderDetailContent = document.querySelector('.myReceiverDetailContent');
-    const formattedDate = moment(message.sendTime).format('YYYY-MM-DD HH:mm:ss');
 
     senderDetailName.textContent = message.receiverName;
     senderDetailPosition.textContent = message.receiverPosition;
-    senderDetailTime.textContent = formattedDate;
+    senderDetailTime.textContent = message.sendTime;
     senderDetailContent.textContent = message.message;
 }
 

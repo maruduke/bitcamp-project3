@@ -132,11 +132,10 @@ function displayMessageDetails(message) {
     const receiverDetailPosition = document.querySelector('.receiverDetailPosition');
     const receiverDetailTime = document.querySelector('.receiverDetailTime');
     const receiverDetailContent = document.querySelector('.receiverDetailContent');
-    const formattedDate = moment(message.sendTime).format('YYYY-MM-DD HH:mm:ss');
 
     receiverDetailName.textContent = message.senderName;
     receiverDetailPosition.textContent = message.senderPosition;
-    receiverDetailTime.textContent = formattedDate;
+    receiverDetailTime.textContent = message.sendTime;
     receiverDetailContent.textContent = message.message;
 }
 
