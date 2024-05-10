@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 페이지 버튼들을 선택합니다.
-    const buttons = document.querySelectorAll(".massage_top_btn");
+    const topbtn = document.querySelectorAll(".message_top_btn");
+    const bottombtn = document.querySelectorAll(".message_bottom_btn")
 
     // 페이지들을 선택합니다.
     const pages = document.querySelectorAll(".page");
@@ -25,11 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
             changePage(document.querySelector('#note_outbox'));
         } else if (targetBtn.classList.contains('send_btn')) {
             changePage(document.querySelector('#note_send'));
+        } else if (targetBtn.classList.contains('reply_btn')) {
+            changePage(document.querySelector('#note_send'));
         }
     }
 
     // 각 버튼에 클릭 이벤트 리스너를 추가합니다.
-    buttons.forEach(button => {
+    topbtn.forEach(button => {
+        button.addEventListener("click", handleButtonClick);
+    });
+
+    bottombtn.forEach(button => {
         button.addEventListener("click", handleButtonClick);
     });
 
@@ -43,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 각 messageItem에 클릭 이벤트 리스너를 추가합니다.
-    const messageItems = document.querySelectorAll('.massage_inbox_select');
+    const messageItems = document.querySelectorAll('.message_inbox_select');
     messageItems.forEach(messageItem => {
         messageItem.addEventListener('click', handleMessageItemClick);
     });
