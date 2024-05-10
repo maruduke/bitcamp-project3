@@ -125,9 +125,13 @@ body.index-body::after {top: 0;}
 header {height: 100px; position: relative;}
 header .logo {background:url(../images/logo.png)no-repeat center/contain; width: 130px; height: 100px; position: absolute; top: 0px; left: 0;}
 header .logo a {width: 100%; height: 100%; cursor: pointer;}
-.nav ul {display: flex; height: 100px; justify-content: flex-end; align-items: center;}
+.nav ul {display: flex; width: 100%; height: 100px; justify-content: center; align-items: center;}
 .nav ul li {height: 100%; line-height: 100px;}
-.nav ul li button {display: inline-block; padding-left: 70px;font-size: 20px; font-weight: lighter; color: #39435C;}
+.nav ul li button {display: inline-block; padding: 0 35px;font-size: 20px; font-weight: lighter; color: #39435C;}
+
+.nav-index {padding: 100px 20px;}
+.nav-index ul li {margin-bottom: 80px;}
+.nav-index ul li a,button {font-size: 20px; font-weight: 500; color: #39435C;}
 
 /* main */
 main {margin-top: 100px;}
@@ -135,10 +139,12 @@ main.index-main {margin-top: 90px;}
 
 /* index-main */
 .user {font-size: 20px; font-weight: 500; color: #39435C;}
-/* .nav-index {padding: 60px 0;} */
-.nav-index {padding: 100px 20px;}
-.nav-index ul li {margin-bottom: 80px;}
-.nav-index ul li a,button {font-size: 20px; font-weight: 500; color: #39435C;}
+
+.name-box {position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: flex; align-items: center;}
+.name-box .user {font-size: 17px; font-weight: 300;}
+.name-box .user-name {margin-left: 10px; font-weight: 500;}
+.name-box > button {margin-left: 10px;}
+.name-box > button i {font-size: 28px; margin-top: 2px;}
 
 
 /* footer */

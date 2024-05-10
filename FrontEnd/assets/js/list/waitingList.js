@@ -118,9 +118,10 @@ const scroll = document.querySelector(".scroll");
 	}
 
 	listService.approveList(data);
-	listService.referenceList(data);
+	
 
 	chk.addEventListener("click", function(){
+		listService.referenceList(data);
 		if(!chkB){
 			chkB = true;
 			appContent.classList.add("hide");
