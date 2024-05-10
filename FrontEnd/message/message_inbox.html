@@ -5,19 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/message.css">
 
-
-    <style>
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-    </style>
+    <!-- Moment.js 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +24,7 @@
     <button class="message" value="open">
 
     </button>
-    <div class="message_modal">
+    <div class="message_modal msg-box">
         <div class="message_container">
             <!-- 쪽지 메인 페이지 -->
             <div class="page active" id="note_inbox">
@@ -212,14 +204,13 @@
 
 
     </script>
-    <!-- Moment.js 라이브러리 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    
     <script src="/js/common.js"></script>
-    <script src="/js/messageModal.js"></script>
-    <script src="/js/message_pagemove.js"></script>
-    <script src="/js/messageReceiveList.js"></script>
-    <script src="/js/messageSendList.js"></script>
-    <script src="/js/messageHander.js"></script>
+    <script src="/js/message/messageModal.js"></script>
+    <script src="/js/message/message_pagemove.js"></script>
+    <script src="/js/message/messageReceiveList.js"></script>
+    <script src="/js/message/messageSendList.js"></script>
+    <script src="/js/message/messageHander.js"></script>
 </body>
 
 </html>
