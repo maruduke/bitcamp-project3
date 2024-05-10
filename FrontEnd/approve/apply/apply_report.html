@@ -17,11 +17,11 @@
                         <div class="box" style="height: 517px">
                             <div class="title-blue-box">
                                 <div>
-                                    <input type="text" placeholder="제목 입력" id="title" />
+                                    <input type="text" id="title" placeholder="제목 입력" />
                                 </div>
-                                <h2>휴가 신청</h2>
+                                <h2>보고서 제출</h2>
                             </div>
-                            <div class="content pdx55 margin-top10">
+                            <div class="content pdx55 mt10">
                                 <div class="apply-white-box">
                                     <h2>결재자</h2>
                                     <div class="space-between" id="approvers"></div>
@@ -30,29 +30,18 @@
                                     <h2>참조자</h2>
                                     <div class="space-between" id="references"></div>
                                 </div>
-                                <div class="apply-white-box">
-                                    <h2>시작일</h2>
-                                    <div class="inner-box">
-                                        <input type="date" id="startDate" />
-                                    </div>
-                                </div>
-                                <div class="apply-white-box">
-                                    <h2>종료일</h2>
-                                    <div class="inner-box">
-                                        <input type="date" id="endDate" />
-                                    </div>
-                                </div>
+
                                 <div class="apply-white-box align-start">
-                                    <h2 class="mt8">사유</h2>
-                                    <div class="inner-box reason" style="height: 180px">
-                                        <textarea placeholder="여행" id="reason"></textarea>
+                                    <h2 class="mt8">내용</h2>
+                                    <div class="inner-box reason" style="height: 280px">
+                                        <textarea placeholder="화장실 증축 및 세면대 설치" id="detail"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="check-btn row-direction">
-                            <button id="submit" href="main" class="blue-btn">상신</a>
-                            <button id="return" class="blue-btn">돌아가기</a>
+                            <button id="submit" class="blue-btn">상신</a>
+                            <button id = "return" class="blue-btn">돌아가기</a>
                         </div>
                     </div>
                 </section>
@@ -67,6 +56,6 @@
 
         <div class="message blind">쪽지보내기</div>
         <script src="/js/common.js"></script>
-        <script type="module" src="/js/apply/applyVac.js"></script>
+        <script type="module" src="/js/apply/applyReport.js"></script>
     </body>
 </html>

@@ -123,13 +123,13 @@ const scroll = document.querySelector(".scroll");
 	chk.addEventListener("click", function(){
 		if(!chkB){
 			chkB = true;
-			appContent.classList.add("none");
-			refContent.classList.remove("none");
+			appContent.classList.add("hide");
+			refContent.classList.remove("hide");
 
 		} else {
 			chkB = false;
-			refContent.classList.add("none");
-			appContent.classList.remove("none");
+			refContent.classList.add("hide");
+			appContent.classList.remove("hide");
 		}
 	})
 

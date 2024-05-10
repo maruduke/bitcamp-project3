@@ -16,7 +16,7 @@ legend {position: absolute; width: 0; height: 0; line-height: 0; font-size: 0; t
 table caption {position: absolute; width: 0; height: 0; line-height: 0; font-size: 0; overflow: hidden;}
 button {border: none; background: none; cursor: pointer;}
 hr {display: none;}
-
+input {border: none; outline: none;}
 
 input,
 textarea,
