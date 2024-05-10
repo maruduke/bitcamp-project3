@@ -1,4 +1,4 @@
-import { loginService, loginDto } from './apis/loginAPI.js';
+import { loginService, loginDto } from '../apis/loginAPI.js';
 
 const element = {
     email: document.querySelector('#email'),
