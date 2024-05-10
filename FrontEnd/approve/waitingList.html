@@ -10,31 +10,29 @@
 <body>
 	<header></header>
 
-	<main class="list waitingList">
+	<main class="list waitingList" id="waitingList">
 		<div class="container">
 			<section class="flex">
 				<div class="w100p">
 					<div class="box" style="height: 500px;">
-						<div class="title-white-box space-between pdx25">
+						<div class="title-white-box pos-relative space-between align-center pdx25">
 							<h2>대기 중인 목록</h2>
+							<div class="toggle-box">
+								<div class="toggle-button-cover">
+									<div id="button-3" class="button r">
+									  <input class="checkbox" type="checkbox">
+									  <div class="knobs"></div>
+									  <div class="layer"></div>
+									</div>
+								  </div>
+							</div>
 							<a href="main" class="return-btn">
 								<span></span>
 							</a>
 						</div>
 						<div class="scroll" style="height: 400px;">
-							<div class="content">
-								<div class="list-box flex space-between align-center pdx30">
-									<div class="list-title-box">
-										<div class="mb8">
-											<span class="list-writer">차돌바위 대리</span>
-											<span class="list-type ml8">보고서</span>
-										</div>
-										<span>승인 필요</span>
-									</div>
-									<span class="list-date text-center">2024-04-25<br />17:16:44</span>
-								</div>
-								
-							</div>
+							<div class="content ref none"></div>
+							<div class="content app"></div>
 						</div>
 					</div>
 				</div>
@@ -49,6 +47,6 @@
 	</div>
 
 	<script src="/js/common.js"></script>
-	<script src="/js/myList.js"></script>
+	<script src="/js/waitingList.js"></script>
 </body>
 </html>
