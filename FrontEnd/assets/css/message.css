@@ -40,6 +40,10 @@ body{
     color: #C1C5D4;
     font-size: 15px;
 }
+.message_bottom_btn{
+    color: #39435C;
+    font-size: 15px;
+}
 
 #inbox_btn{
     color: #39435C;
