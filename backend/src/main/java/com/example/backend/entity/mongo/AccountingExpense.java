@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,7 +15,7 @@ public class AccountingExpense extends TypeData{
     private String title;
     private String category;
     private int cost;
-    private LocalDateTime expenseDate;
+    private LocalDate expenseDate;
 
 
 }
