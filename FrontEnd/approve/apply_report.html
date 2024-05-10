@@ -1,115 +1,61 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>(주)위계질서</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
 
-    <link rel="stylesheet" href="/css/style.css" />
-
-</head>
-
-<body>
-    <header></header>
-    <main>
-        <div class="container">
-            <section class="flex">
-                <div class="w100p">
-                    <div class="box" style="height: 517px;">
-                        <div class="title-blue-box">
-                            <div>
-                                <input type="text" placeholder="제목 입력" >
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box" style="height: 517px">
+                            <div class="title-blue-box">
+                                <div>
+                                    <input type="text" id="title" placeholder="제목 입력" />
+                                </div>
+                                <h2>보고서 제출</h2>
                             </div>
-                            <h2>보고서 제출</h2>
+                            <div class="content pdx55 margin-top10">
+                                <div class="apply-white-box">
+                                    <h2>결재자</h2>
+                                    <div class="space-between" id="approvers"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>참조자</h2>
+                                    <div class="space-between" id="references"></div>
+                                </div>
+
+                                <div class="apply-white-box align-start">
+                                    <h2 class="mt8">내용</h2>
+                                    <div class="inner-box reason" style="height: 280px">
+                                        <textarea placeholder="화장실 증축 및 세면대 설치" id="detail"></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="content pdx55 margin-top10">
-                            <div class="apply-white-box">
-                                <h2>결재자</h2>
-                                <div class="space-between">
-                                    <select name="1" id="" class="select">
-                                        <option value="" selected disabled>선택</option>
-                                        <option value="">이경석 사장</option>
-                                        <option value="">안슬기 팀장</option>
-                                        <option value="">최병민 부장</option>
-                                        <option value="">김융 사원</option>
-                                    </select>
-                                    <select name="2" id="" class="select">
-                                        <option value="" selected disabled>선택</option>
-                                        <option value="">이경석 사장</option>
-                                        <option value="">안슬기 팀장</option>
-                                        <option value="">최병민 부장</option>
-                                        <option value="">김융 사원</option>
-                                    </select><select name="3" id="" class="select">
-                                        <option value="" selected disabled>선택</option>
-                                        <option value="">이경석 사장</option>
-                                        <option value="">안슬기 팀장</option>
-                                        <option value="">최병민 부장</option>
-                                        <option value="">김융 사원</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="apply-white-box">
-                                <h2>참조자</h2>
-                                <div class="space-between">
-                                    <select name="1" id="" class="select">
-                                        <option value="" selected disabled>선택</option>
-                                        <option value="">이경석 사장</option>
-                                        <option value="">안슬기 팀장</option>
-                                        <option value="">최병민 부장</option>
-                                        <option value="">김융 사원</option>
-                                    </select>
-                                    <select name="2" id="" class="select">
-                                        <option value="" selected disabled>선택</option>
-                                        <option value="">이경석 사장</option>
-                                        <option value="">안슬기 팀장</option>
-                                        <option value="">최병민 부장</option>
-                                        <option value="">김융 사원</option>
-                                    </select><select name="3" id="" class="select">
-                                        <option value="" selected disabled>선택</option>
-                                        <option value="">이경석 사장</option>
-                                        <option value="">안슬기 팀장</option>
-                                        <option value="">최병민 부장</option>
-                                        <option value="">김융 사원</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="apply-white-box">
-                                <h2>제목</h2>
-                                <div class="inner-box">
-                                    <input type="text" placeholder="화장실 증축 공사 ">
-                                </div>
-                            </div>
-                            <div class="apply-white-box align-start">
-                                <h2 class="mt8">내용</h2>
-                                <div class="inner-box reason" style="height: 240px;" >
-                                    <textarea placeholder="화장실 증축 및 세면대 설치"></textarea>                                   
-                              </div>
-                            </div>
-
-
+                        <div class="check-btn row-direction">
+                            <button id="submit" class="blue-btn">상신</a>
+                            <button id = "return" class="blue-btn">돌아가기</a>
                         </div>
                     </div>
-                    <div class="check-btn row-direction ">
-                        <a href="main" class="blue-btn">상신</a>
-                        <a href="main" class="blue-btn">돌아가기</a>
-                    </div>
+                </section>
+            </div>
+        </main>
 
-                </div>
-            </section>
-        </div>
-    </main>
+        <footer>
+            <div class="nav-container">
+                <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
+            </div>
+        </footer>
 
-    <footer>
-        <div class="nav-container">
-            <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
-        </div>
-    </footer>
-
-    <div class="message blind">
-        쪽지보내기
-    </div>
-    <script src="/js/common.js"></script>
-</body>
-
+        <div class="message blind">쪽지보내기</div>
+        <script src="/js/common.js"></script>
+        <script type="module" src="/js/apply/applyReport.js"></script>
+    </body>
 </html>

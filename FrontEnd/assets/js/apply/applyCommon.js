@@ -26,10 +26,46 @@ const createSelectors = (containerId, userList) => {
     }
 };
 
-export async function init() {
+/**
+ * User 정보 DB에 가져와서 Select box생성
+ */
+export async function initAsnc() {
     const userList = await applyService.getUserList();
     createSelectors('approvers', userList);
     createSelectors('references', userList);
 }
 
-init();
+/**
+ *
+ * @returns 결재자 명단
+ */
+export const getApproveList = () => {
+    let approves = [];
+
+    document.querySelectorAll('.approvers').forEach((app) => {
+        if (app.value != '') approves.push(app.value);
+    });
+
+    return approves;
+};
+
+/**
+ *
+ * @returns 참조자 명단
+ */
+export const getReferenceList = () => {
+    let refs = [];
+
+    document.querySelectorAll('.references').forEach((ref) => {
+        if (ref.value != '') refs.push(ref.value);
+    });
+
+    return refs;
+};
+
+/**
+ * 돌아가기 버튼 eventListener 추가
+ */
+document.querySelector('#return').addEventListener('click', () => {
+    location.href = 'http://localhost:3200/approve/main';
+});
