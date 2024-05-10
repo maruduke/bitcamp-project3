@@ -16,3 +16,22 @@
 .list .list-box-40 span,
 .list .list-title-box span {font-size: 12px; font-weight: 300; color: #39435c;}
 .list .list-date {line-height: 1.6;}
+
+/* 토글버튼 */
+.toggle-box {position: absolute; left: 24%; cursor: pointer;}
+.toggle-box .toggle-button-cover {position: relative;}
+.toggle-box .button {width: 61px;height: 28px;}
+.toggle-box .button-cover,
+.toggle-box .knobs,
+.toggle-box .layer {position: absolute;top: 0;right: 0;bottom: 0;left: 0;}
+.toggle-box .checkbox {position: relative;width: 100%;height: 100%;padding: 0;margin: 0;opacity: 0;cursor: pointer;z-index: 3;}
+.toggle-box .knobs {z-index: 2;}
+.toggle-box .layer {width: 100%;background-color: #ebf7fc;transition: 0.3s ease all;z-index: 1;}
+
+.toggle-box .button.r,
+.toggle-box .button.r .layer {border-radius: 100px;}
+  
+.toggle-box #button-3 .knobs:before {content: "승인";position: absolute;top: 4px;left: 4px;width: 29px;height: 11px;color: #fff;font-size: 11px;font-weight: 500;text-align: center;line-height: 1;padding: 5px 2px;background-color: #39435c;border-radius: 16px;transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);}
+.toggle-box #button-3 .checkbox:active + .knobs:before {width: 46px;border-radius: 100px;}
+.toggle-box #button-3 .checkbox:checked + .knobs:before {content: "참조";color: #39435c;left: 24px;background-color: #d7e3e3;}
+.toggle-box #button-3 .checkbox:checked ~ .layer {background-color: #39435c;}
