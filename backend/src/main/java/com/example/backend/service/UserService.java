@@ -30,11 +30,11 @@ public class UserService {
     private final JwtUtil jwtUtil;
     private final RedisTemplate redisTemplate;
 
-    public UserResponse Join(JoinDto joinDto) {
+    public void join(JoinDto joinDto) throws BadRequestException {
         boolean isExist = userRepository.existsByEmail(joinDto.getEmail());
 
         if(isExist) {
-            log.info("중복된 이메일입니다.");
+            throw new BadRequestException("중복된 이메일입니다.");
         }
 
         String encodedPassword = passwordEncoder.encode(joinDto.getPassword());
@@ -54,9 +54,8 @@ public class UserService {
                 joinDto.getAuthority(),
                 joinDto.getTel());
 
-        user = userRepository.save(user);
-        log.info(user.toString());
-        return UserResponse.of(user);
+        userRepository.save(user);
+
     }
 
     public UserResponse login(LoginDto loginDto) throws BadRequestException {

@@ -32,17 +32,15 @@ public class LogInController {
     private final UserRepository userRepository;
 
     @PostMapping("/join")
-    public ResponseEntity<String> joinPost(@RequestBody JoinDto joinDto) {
+    public ResponseEntity<String> joinPost(@RequestBody JoinDto joinDto) throws BadRequestException {
         log.info("joinPost.......");
-        userService.Join(joinDto);
-        return ResponseEntity.ok("사원이 등록되었습니다.");
+        userService.join(joinDto);
+        return ResponseEntity.ok("사원 등록이 완료되었습니다.");
     }
 
     @GetMapping("/get")
-    public ResponseEntity loginGET(@RequestHeader("Authorization") String token) throws BadRequestException {
-        if(!jwtUtil.validateToken(token)){
-            return ResponseEntity.status(401).build();
-        }
+    public ResponseEntity loginGET(@RequestHeader("Authorization") String token) throws BadRequestException{
+
         return ResponseEntity.status(200).build();
     }
 
@@ -75,8 +73,12 @@ public class LogInController {
     }
 
     @GetMapping("/mypage")
-    public ResponseEntity<User> myPage(@AuthenticationPrincipal User user) throws JsonProcessingException {
+    public ResponseEntity<User> myPage(@AuthenticationPrincipal User user, @RequestHeader("Authorization") String token) throws JsonProcessingException {
+        if(!jwtUtil.validateToken(token)){
+            return ResponseEntity.status(401).build();
+        }
         String email = user.getEmail();
+        log.info(email);
         return ResponseEntity.ok(userService.getUser(email));
     }
 
