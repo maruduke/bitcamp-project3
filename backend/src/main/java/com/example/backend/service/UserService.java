@@ -1,10 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.Jwt.JwtUtil;
-import com.example.backend.dto.user.InfoDto;
-import com.example.backend.dto.user.JoinDto;
-import com.example.backend.dto.user.LoginDto;
-import com.example.backend.dto.user.UserResponse;
+import com.example.backend.dto.user.*;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.maria.enumData.Authority;
 import com.example.backend.repository.UserRepository;
@@ -97,6 +94,14 @@ public class UserService {
         return userRepository.updateUserByEmail(tel, email);
 
     }
+
+    public HeaderDto getName(String email){
+        HeaderDto headerDto = new HeaderDto();
+        headerDto.setName(userRepository.findNameByEmail(email));
+
+        return headerDto;
+    }
+
 
 
 }

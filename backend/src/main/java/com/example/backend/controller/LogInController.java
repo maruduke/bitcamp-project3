@@ -32,6 +32,16 @@ public class LogInController {
     private final RedisTemplate redisTemplate;
     private final UserRepository userRepository;
 
+    @GetMapping("/header")
+    public ResponseEntity<HeaderDto> getHeader(@AuthenticationPrincipal User user, @RequestHeader("Authorization") String token) {
+        if(!jwtUtil.validateToken(token)) {
+            return ResponseEntity.status(401).build();
+        }
+        log.info(userService.getName(user.getEmail()));
+        return ResponseEntity.ok(userService.getName(user.getEmail()));
+
+    }
+
     @GetMapping("/joinget")
     public ResponseEntity joinGET(@AuthenticationPrincipal User user) {
         Authority authority = user.getAuthority();
@@ -98,4 +108,6 @@ public class LogInController {
         userService.modifyInfo(email, infoDto);
         return ResponseEntity.ok("회원정보가 변경되었습니다.");
     }
+
+
 }
