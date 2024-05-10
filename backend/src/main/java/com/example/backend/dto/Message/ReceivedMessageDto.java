@@ -26,6 +26,7 @@ public class ReceivedMessageDto {
     private String message;
 
     @NotEmpty
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime sendTime;
 
     @NotEmpty
