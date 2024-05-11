@@ -1,37 +1,22 @@
 const scroll = document.querySelector(".scroll");
-	const refContent = document.querySelector("#waitingList .ref");
-	const appContent = document.querySelector("#waitingList .app");
+const refContent = document.querySelector("#waitingList .ref");
+const appContent = document.querySelector("#waitingList .app");
 	
-	let isFetching = false;
-	let hasNext = true;
+let isFetching = false;
+let hasNext = true;
 
-	const listTitle = document.querySelector(".list-title");
-	const writer = document.querySelector(".list-writer");
-	const listType = document.querySelector(".list-type");
-	const listProgress = document.querySelector(".list-progress");
-	const createDate = document.querySelector(".list-date");
+let refPage = 0;
+let appPage = 0;
 
-	const data = {
-		name: writer,
-		title: listTitle,
-		type: listType,
-		state: listProgress,
-		createDate: createDate
-	};
-
-	let refPage = 0;
-	let appPage = 0;
-
-	const chk = document.querySelector(".checkbox");
-	let chkB = false;
-	
-	
-	const listService = {
-		referenceList : function (data){
-			fetch(`http://localhost:8080/board/refList?pageNumber=${refPage}&DocState=REFERENCE`, {
+const chk = document.querySelector(".checkbox");
+let chkB = false;
+		
+const listService = {
+	referenceList : function (data){
+		fetch(`http://localhost:8080/board/refList?pageNumber=${refPage}&DocState=REFERENCE`, {
 				method: 'GET',
 				headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')},
-				// body: JSON.stringify(data),
+			
 
 			}).then(response=>{
 				isFetching = true;
@@ -49,20 +34,64 @@ const scroll = document.querySelector(".scroll");
 				}
 
 				for(let i = 0; i < data.content.length; i++){
-					
+					// div 생성
+					let listBox = document.createElement("div");
+					let listTitleBox = document.createElement("div");
+					let marginBox = document.createElement("div");
+					let listWriter = document.createElement("span");
+					let listType = document.createElement("span");
+					let listState = document.createElement("span");
+					let listDate = document.createElement("span");
+
+					// class 넣기
+					listBox.classList.add("list-box","flex","space-between","align-center","pdx30");
+					listTitleBox.classList.add("list-title-box");
+					marginBox.classList.add("mb8");
+					listWriter.classList.add("list-writer");
+					listType.classList.add("list-type","ml8");
+					listState.classList.add("list-progress");
+					listDate.classList.add("list-date","text-center");
+
+					// html내 부모 자식 요소 생성
+					refContent.appendChild(listBox);
+					listBox.appendChild(listTitleBox);
+					listBox.appendChild(listDate);
+					listTitleBox.appendChild(marginBox);
+					listTitleBox.appendChild(listState);
+					marginBox.appendChild(listWriter);
+					marginBox.appendChild(listType);
+
+					// 헤딩 type, state 한글로 바꿔주는 작업
 					const type = chgType(data.content[i].type);
 					const state = chgState(data.content[i].state);
 
-					refContent.innerHTML += '<div class="list-box flex space-between align-center pdx30">'
-								+ '<div class="list-title-box">'
-								+ '<div class="mb8">'
-								+ '<span class="list-writer">'+`${data.content[i].name}`+'</span>'
-								+ '<span class="list-type ml8">'+`${type}`+'</span>'
-								+ '</div>'
-								+ '<span class="list-progress">'+`${state}`+'</span>'
-								+ '</div>'
-								+ '<span class="list-date text-center">'+`${data.content[i].createDate}`+'</span>'
-								+ '</div>';								
+					// json 데이터 받아서 넣어줌
+					listWriter.innerHTML = data.content[i].name;
+					listType.innerHTML = type;
+					listDate.innerHTML = data.content[i].createDate;
+					listState.innerHTML = state;
+
+					// 경석
+					let documentId = data.content[i].documentId;
+					console.log(documentId);
+					
+					listBox.addEventListener("click", () => {
+						fetch(`http://localhost:3200/board/read?documentId=${documentId}`, {
+							method: 'GET',
+							headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')},
+
+						}).then(response=>{
+							isFetching = true;
+							if(!response.ok){
+								throw new Error("에러떴음");
+							}
+
+							console.log(data);
+
+							return response.json();
+						}).then(data => {
+						})
+					});							
 				}
 
 				if(data == null || data == "null"){
@@ -93,20 +122,64 @@ const scroll = document.querySelector(".scroll");
 				}
 
 				for(let i = 0; i < data.content.length; i++){
-					
+					// div 생성
+					let listBox = document.createElement("div");
+					let listTitleBox = document.createElement("div");
+					let marginBox = document.createElement("div");
+					let listWriter = document.createElement("span");
+					let listType = document.createElement("span");
+					let listState = document.createElement("span");
+					let listDate = document.createElement("span");
+
+					// class 넣기
+					listBox.classList.add("list-box","flex","space-between","align-center","pdx30");
+					listTitleBox.classList.add("list-title-box");
+					marginBox.classList.add("mb8");
+					listWriter.classList.add("list-writer");
+					listType.classList.add("list-type","ml8");
+					listState.classList.add("list-progress");
+					listDate.classList.add("list-date","text-center");
+
+					// html내 부모 자식 요소 생성
+					appContent.appendChild(listBox);
+					listBox.appendChild(listTitleBox);
+					listBox.appendChild(listDate);
+					listTitleBox.appendChild(marginBox);
+					listTitleBox.appendChild(listState);
+					marginBox.appendChild(listWriter);
+					marginBox.appendChild(listType);
+
+					// 헤딩 type, state 한글로 바꿔주는 작업
 					const type = chgType(data.content[i].type);
 					const state = chgState(data.content[i].state);
 
-					appContent.innerHTML += '<div class="list-box flex space-between align-center pdx30">'
-								+ '<div class="list-title-box">'
-								+ '<div class="mb8">'
-								+ '<span class="list-writer">'+`${data.content[i].name}`+'</span>'
-								+ '<span class="list-type ml8">'+`${type}`+'</span>'
-								+ '</div>'
-								+ '<span class="list-progress">'+`${state}`+'</span>'
-								+ '</div>'
-								+ '<span class="list-date text-center">'+`${data.content[i].createDate}`+'</span>'
-								+ '</div>';								
+					// json 데이터 받아서 넣어줌
+					listWriter.innerHTML = data.content[i].name;
+					listType.innerHTML = type;
+					listDate.innerHTML = data.content[i].createDate;
+					listState.innerHTML = state;
+
+					// 경석
+					let documentId = data.content[i].documentId;
+					console.log(documentId);
+					
+					listBox.addEventListener("click", () => {
+						fetch(`http://localhost:3200/board/read?documentId=${documentId}`, {
+							method: 'GET',
+							headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')},
+
+						}).then(response=>{
+							isFetching = true;
+							if(!response.ok){
+								throw new Error("에러떴음");
+							}
+
+							console.log(data);
+
+							return response.json();
+						}).then(data => {
+						})
+					});							
 				}
 
 				if(data == null || data == "null"){
@@ -117,11 +190,11 @@ const scroll = document.querySelector(".scroll");
 		},
 	}
 
-	listService.approveList(data);
+	listService.approveList();
 	
 
 	chk.addEventListener("click", function(){
-		listService.referenceList(data);
+		listService.referenceList();
 		if(!chkB){
 			chkB = true;
 			appContent.classList.add("hide");
@@ -141,9 +214,9 @@ const scroll = document.querySelector(".scroll");
 				
 		if((scroll.scrollTop + scroll.clientHeight + 50) >= scroll.scrollHeight) {
 			if (chk.checked){
-				listService.refList(data);
+				listService.refList();
 			} else {
-				listService.approveList(data);
+				listService.approveList();
 			}
 			console.log("scroll");
 		}

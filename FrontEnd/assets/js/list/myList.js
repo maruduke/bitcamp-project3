@@ -64,10 +64,10 @@ const scroll = document.querySelector(".scroll");
 					listTitle.innerHTML = data.content[i].title;
 					listType.innerHTML = type;
 					listDate.innerHTML = data.content[i].createDate;
-					listState.innerHTML = type;
+					listState.innerHTML = state;
 
 					let documentId = data.content[i].documentId;
-
+					console.log(documentId);
 
 					// 경석
 					listBox.addEventListener("click", () => {
