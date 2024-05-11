@@ -5,23 +5,8 @@ const scroll = document.querySelector(".scroll");
 
 	let pageNumber = 0;
 
-	const listTitle = document.querySelector(".list-title");
-	const writer = document.querySelector(".list-writer");
-	const listType = document.querySelector(".list-type");
-	const listProgress = document.querySelector(".list-progress");
-	const createDate = document.querySelector(".list-date");
-
-
-	const data = {
-		writer: writer,
-		title: listTitle,
-		type: listType,
-		state: listProgress,
-		createDate: createDate
-	};
-
 	const listService = {
-		myList : function (data){
+		myList : function (){
 			fetch(`http://localhost:8080/board/myList?pageNumber=${pageNumber}`, {
 				method: 'GET',
 				headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')},
@@ -35,7 +20,6 @@ const scroll = document.querySelector(".scroll");
 
 				return response.json();
 			}).then(data => {
-				console.log(data);
 				isFetching = false;
 
 				if(data.content.length === 0){
@@ -44,20 +28,65 @@ const scroll = document.querySelector(".scroll");
 				}
 
 				for(let i = 0; i < data.content.length; i++){
-					console.log(data);
+
+					// div 생성
+					let listBox = document.createElement("div");
+					let listTitleBox = document.createElement("div");
+					let marginBox = document.createElement("div");
+					let listTitle = document.createElement("span");
+					let listType = document.createElement("span");
+					let listState = document.createElement("span");
+					let listDate = document.createElement("span");
+
+					// class 넣기
+					listBox.classList.add("list-box","flex","space-between","align-center","pdx30");
+					listTitleBox.classList.add("list-title-box");
+					marginBox.classList.add("mb8");
+					listTitle.classList.add("list-title");
+					listType.classList.add("list-type","ml8");
+					listState.classList.add("list-progress");
+					listDate.classList.add("list-date","text-center");
+
+					// html내 부모 자식 요소 생성
+					content.appendChild(listBox);
+					listBox.appendChild(listTitleBox);
+					listBox.appendChild(listDate);
+					listTitleBox.appendChild(marginBox);
+					listTitleBox.appendChild(listState);
+					marginBox.appendChild(listTitle);
+					marginBox.appendChild(listType);
+
+					// 헤딩 type, state 한글로 바꿔주는 작업
 					const type = chgType(data.content[i].type);
 					const state = chgState(data.content[i].state);
 
-					content.innerHTML += '<div class="list-box flex space-between align-center pdx30">'
-								+ '<div class="list-title-box">'
-								+ '<div class="mb8">'
-								+ '<span class="list-title">'+`${data.content[i].title}`+'</span>'
-								+ '<span class="list-type ml8">'+`${type}`+'</span>'
-								+ '</div>'
-								+ '<span class="list-progress">'+`${state}`+'</span>'
-								+ '</div>'
-								+ '<span class="list-date text-center">'+`${data.content[i].createDate}`+'</span>'
-								+ '</div>';
+					// json 데이터 받아서 넣어줌
+					listTitle.innerHTML = data.content[i].title;
+					listType.innerHTML = type;
+					listDate.innerHTML = data.content[i].createDate;
+					listState.innerHTML = type;
+
+					let documentId = data.content[i].documentId;
+
+
+					// 경석
+					listBox.addEventListener("click", () => {
+						fetch(`http://localhost:3200/board/read?documentId=${documentId}`, {
+							method: 'GET',
+							headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')},
+
+						}).then(response=>{
+							isFetching = true;
+							if(!response.ok){
+								throw new Error("에러떴음");
+							}
+
+							console.log(data);
+
+							return response.json();
+						}).then(data => {
+						})
+					});
 				}
 				pageNumber++;
 
@@ -67,8 +96,8 @@ const scroll = document.querySelector(".scroll");
 			})
 		},
 	}
-		
-	listService.myList(data);
+
+	listService.myList();
 
 	// 무한스크롤
 	scroll.addEventListener("scroll", ()=>{
@@ -78,9 +107,7 @@ const scroll = document.querySelector(".scroll");
 				
 		if((scroll.scrollTop + scroll.clientHeight + 50) >= scroll.scrollHeight) {
 		
-			listService.myList(data);
-
-			console.log("scroll");
+			listService.myList();
 		}
 	})
 
