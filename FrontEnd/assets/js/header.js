@@ -1,28 +1,6 @@
 export const init_header = () => {
 // header 코드
             
-                const jwt = sessionStorage.getItem('jwt');
-                fetch('http://localhost:8080/login/header',{
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'authorization': `Bearer ${jwt}`
-                    }
-                })
-                    .then(response=>{
-                        if(!response.ok){
-                            alert('로그인이 필요합니다.')
-                            window.location.href = 'http://localhost:3200/login';
-                        }
-                        return response.json();                       
-                    })
-                    .then(data=> {
-                        console.log(data.name);
-                        document.getElementById('username').textContent = data.name;
-                    })
-                    .catch(error =>{
-                        console.error('Fetch Error:', error)
-                    });
                 
             
 
