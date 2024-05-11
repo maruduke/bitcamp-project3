@@ -2,7 +2,12 @@
 
 function sendMessageList(sendMessage) {
     const jwt = sessionStorage.getItem('jwt');
-    fetch('http://localhost:8080/message/sentList', {
+    let isFetching = false;
+    let hasNext = true;
+    let pageNumber = 0;
+    
+    function myFetchMessages(){
+    fetch(`http://localhost:8080/message/sentList?pageNumber=${pageNumber}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -16,16 +21,13 @@ function sendMessageList(sendMessage) {
             return response.json();
         })
         .then((data) => {
-            sendMessage.innerHTML = '';
-
-            // 메시지를 최신 sendTime 순서대로 정렬하는 함수
-            data.sort((a, b) => {
-                // sendTime을 ISO 8601 형식의 문자열로 비교하여 정렬
-                return new Date(b.sendTime) - new Date(a.sendTime);
-            });
+            if (!data || data.content.length === 0) {
+                hasNext = false;
+                return;
+            }
 
             // 정렬된 메시지 리스트를 순회하면서 HTML 요소로 추가
-            data.forEach((message) => {
+            data.content.forEach((message) => {
                 const messageItem = document.createElement('div');
                 messageItem.classList.add('message_sendList');
 
@@ -46,10 +48,10 @@ function sendMessageList(sendMessage) {
                 messageItem.appendChild(messageContent);
 
                 messageItem.addEventListener('click', () => {
-                    // 활성화된 페이지 숨기기
+                    
                     document.querySelector('#note_outbox').style.display = 'none';
 
-                    // 활성화할 페이지 표시
+                    
                     const noteOutboxCheck = document.querySelector('#note_outbox_check');
                     noteOutboxCheck.style.display = 'block';
 
@@ -57,12 +59,32 @@ function sendMessageList(sendMessage) {
                     fetchSendMessageDetails(message.messageId);
                 });
 
-                sendMessage.appendChild(messageItem); // sendMessage에 messageItem 추가
+                sendMessage.appendChild(messageItem);
             });
+
+            pageNumber++;
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
+        })
+        .finally(() =>{
+            isFetching = false;
         });
+    }
+    myFetchMessages();
+
+    sendMessage.addEventListener("scroll", () =>{
+        if (isFetching || !hasNext) {
+            return;
+        }
+
+        // 스크롤이 맨 하단에 도달하면 새로운 페이지 데이터 로드
+        if ((sendMessage.scrollTop + sendMessage.clientHeight + 50) >= sendMessage.scrollHeight) {
+            isFetching = true;
+            myFetchMessages(); // 새로운 페이지의 메시지를 추가로 로드
+        }
+    })
+
 }
 
 //---------------------- 보낸 메세지 정보 가져오기 ---------------------------------------------------
@@ -142,3 +164,5 @@ export const init_sendList = () => {
     const sendMessageListContainer = document.querySelector('.message_sendBody');
     sendMessageList(sendMessageListContainer);
 };
+
+

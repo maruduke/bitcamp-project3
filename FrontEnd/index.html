@@ -31,7 +31,7 @@
         }
 
         .index_notelist {
-            width: 400px;
+            width: 350px;
             height: 75px;
             border-bottom: 1px solid #CBC9D7;
             display: flex;
@@ -92,6 +92,9 @@
 
         .dept_phone {
             font-size: 16px;
+        }
+        .notebox{
+            height: 340px;
         }
     </style>
 </head>
@@ -192,43 +195,8 @@
                             <div class="titlebox">
                                 <h2>쪽지</h2>
                             </div>
-                            <div class="notebox">
-                                <div class="index_notelist">
-                                    <div class="index_notebox">
-                                        <span class="note_username">홍길동 </span>
-                                        <span class="note_emp">대리 </span>
-                                        <p class="text-ellipsis note_content">
-                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="index_notelist">
-                                    <div class="index_notebox">
-                                        <span class="note_username">홍길동 </span>
-                                        <span class="note_emp">대리 </span>
-                                        <p class="text-ellipsis note_content">
-                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="index_notelist">
-                                    <div class="index_notebox">
-                                        <span class="note_username">홍길동 </span>
-                                        <span class="note_emp">대리 </span>
-                                        <p class="text-ellipsis note_content">
-                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="index_notelist">
-                                    <div class="index_notebox">
-                                        <span class="note_username">홍길동 </span>
-                                        <span class="note_emp">대리 </span>
-                                        <p class="text-ellipsis note_content">
-                                            kdsf=dfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkdfshfskjfkd
-                                        </p>
-                                    </div>
-                                </div>
+                            <div class="notebox" style="overflow-y: scroll">
+                                
 
                             </div>
                         </div>
@@ -247,5 +215,6 @@
 
         <div class="message blind">쪽지보내기</div>
         <script type="module" src="/js/index.js"></script>
+        <script src="/js/index/indexRead.js"></script>
     </body>
 </html>
