@@ -7,6 +7,7 @@ import com.example.backend.entity.maria.User;
 import com.example.backend.repository.MessageRepository;
 import com.example.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,16 +59,35 @@ public class MessageService {
     }
 
     // 나에게 온 받은 쪽지 리스트
-    public List<ReceivedMessageDto> getReceivedMessages(String receiverEmail) {
+    public Slice<ReceivedMessageDto> getReceivedMessages(String receiverEmail, int pageNumber, int pageSize) {
         User receiverId = userRepository.findByEmail(receiverEmail)
                 .orElseThrow(() -> new IllegalArgumentException("Receiver not found"));
 
-        List<Message> messages = messageRepository.findByReceiverId(receiverId);
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("sendTime").descending());
 
-        return messages.stream()
-                .filter(message -> !message.isReceiverDelete())
+        Page<Message> messages = messageRepository.findByReceiverId(receiverId, pageRequest);
+
+        List<ReceivedMessageDto> receivedMessageDto = messages.getContent().stream()
                 .map(this::receivedMessageDto)
                 .collect(Collectors.toList());
+
+        return new SliceImpl<>(receivedMessageDto, messages.getPageable(), messages.hasNext());
+    }
+
+    // 나에게 온 받은 안읽음 쪽지 리스트
+    public Slice<ReceivedMessageDto> getNoReadReceivedMessages(String receiverEmail, int pageNumber, int pageSize) {
+        User receiverId = userRepository.findByEmail(receiverEmail)
+                .orElseThrow(() -> new IllegalArgumentException("Receiver not found"));
+
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("sendTime").descending());
+
+        Page<Message> ReadMessages = messageRepository.findByNoReadReceiverId(receiverId, pageRequest);
+
+        List<ReceivedMessageDto> receivedReadMessageDto = ReadMessages.getContent().stream()
+                .map(this::receivedMessageDto)
+                .collect(Collectors.toList());
+
+        return new SliceImpl<>(receivedReadMessageDto, ReadMessages.getPageable(), ReadMessages.hasNext());
     }
 
     // 내가 받은 쪽지 읽기
@@ -129,16 +149,17 @@ public class MessageService {
     }
 
     // 내가 보낸 쪽지 리스트
-    public List<SendMessageDto> getSendMessages(String senderEmail) {
+    public Slice<SendMessageDto> getSendMessages(String senderEmail, int pageNumber, int pageSize) {
         User senderId = userRepository.findByEmail(senderEmail)
                 .orElseThrow(() -> new IllegalArgumentException("Sender not found"));
 
-        List<Message> sendMessages = messageRepository.findBySenderId(senderId);
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("sendTime").descending());
+        Page<Message> sendMessages = messageRepository.findBySenderId(senderId, pageRequest);
 
-        return sendMessages.stream()
-                .filter(message -> !message.isSenderDelete())
+        List<SendMessageDto> sendMessageDto = sendMessages.getContent().stream()
                 .map(this::sentMessageDto)
                 .collect(Collectors.toList());
+        return new SliceImpl<>(sendMessageDto, sendMessages.getPageable(), sendMessages.hasNext());
     }
 
     // 내가 보낸 쪽지 읽기

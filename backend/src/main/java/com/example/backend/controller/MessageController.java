@@ -7,6 +7,7 @@ import com.example.backend.entity.maria.User;
 import com.example.backend.service.MemberService;
 import com.example.backend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -43,9 +44,25 @@ public class MessageController {
 
     // 나에게 온 받은 쪽지 리스트
     @GetMapping("/receivedList")
-    public ResponseEntity<List<ReceivedMessageDto>> getReceivedMessages(@AuthenticationPrincipal User user) {
+    public ResponseEntity<Slice<ReceivedMessageDto>> getReceivedMessages(@AuthenticationPrincipal User user,
+                                                                         @RequestParam(name = "pageNumber",
+                                                                                 defaultValue = "0") int pageNumber,
+                                                                         @RequestParam(name = "pageSize",
+                                                                                 defaultValue = "5") int pageSize) {
         String email = user.getEmail();
-        List<ReceivedMessageDto> receivedMessageList = messageService.getReceivedMessages(email);
+        Slice<ReceivedMessageDto> receivedMessageList = messageService.getReceivedMessages(email, pageNumber, pageSize);
+        return ResponseEntity.ok(receivedMessageList);
+    }
+
+    // 나에게 온 받은 쪽지 리스트
+    @GetMapping("/noReadReceivedList")
+    public ResponseEntity<Slice<ReceivedMessageDto>> getNoReadReceivedMessages(@AuthenticationPrincipal User user,
+                                                                         @RequestParam(name = "pageNumber",
+                                                                                 defaultValue = "0") int pageNumber,
+                                                                         @RequestParam(name = "pageSize",
+                                                                                 defaultValue = "5") int pageSize) {
+        String email = user.getEmail();
+        Slice<ReceivedMessageDto> receivedMessageList = messageService.getNoReadReceivedMessages(email, pageNumber, pageSize);
         return ResponseEntity.ok(receivedMessageList);
     }
 
@@ -65,9 +82,13 @@ public class MessageController {
 
     // 내가 보낸 쪽지 리스트
     @GetMapping("/sentList")
-    public  ResponseEntity<List<SendMessageDto>> getSentMessages(@AuthenticationPrincipal User user) {
+    public  ResponseEntity<Slice<SendMessageDto>> getSentMessages(@AuthenticationPrincipal User user,
+                                                                  @RequestParam(name = "pageNumber",
+                                                                          defaultValue = "0") int pageNumber,
+                                                                  @RequestParam(name = "pageSize",
+                                                                          defaultValue = "5") int pageSize) {
         String email = user.getEmail();
-        List<SendMessageDto> sentMessageList = messageService.getSendMessages(email);
+        Slice<SendMessageDto> sentMessageList = messageService.getSendMessages(email, pageNumber, pageSize);
         return ResponseEntity.ok(sentMessageList);
     }
 
