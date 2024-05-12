@@ -16,9 +16,9 @@
                     <div class="w100p">
                         <div class="box" style="height: 517px">
                             <div class="title-blue-box">
-                                <h2>결재할 서류(제목: 내일 모레 출장 갈거야)</h2>
+                                <h2 id="title"></h2>
                                 <div>
-                                    <span>홍길동 사원</span>
+                                    <span id="writer"></span>
                                     <span>출장 신청</span>
                                 </div>
                             </div>
@@ -29,44 +29,37 @@
                                 <div class="check-white-box">
                                     <h2>결재자</h2>
                                     <div>
-                                        <span>안슬기 팀장</span>
-                                        <span>유민진 과장</span>
-                                        <span>김융 사원</span>
+                                        <span id="approversList"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>참조자</h2>
                                     <div>
-                                        <span>이경석 사장</span>
-                                        <span>최병민 팀장</span>
-                                        <span>서주원 대리</span>
+                                        <span id="refList"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>시작일</h2>
                                     <div>
-                                        <span>2024-05-02 16:30</span>
+                                        <span id="startDate"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>종료일</h2>
                                     <div>
-                                        <span>2024-05-04 16:30</span>
+                                        <span id="endDate"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>출장지</h2>
                                     <div>
-                                        <span>네이버 클라우드 본사</span>
+                                        <span id="location"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>사유</h2>
                                     <div>
-                                        <span
-                                            >그걸 당신이 알아서 뭐하게? 당신이 그걸 알면 뭐가 달라져? 당신이 허락 안
-                                            하면 사장이 널 짜를걸? 그러니 당장 출장 보내</span
-                                        >
+                                        <span id="reason"></span>
                                     </div>
                                 </div>
                             </div>
@@ -88,5 +81,6 @@
 
         <div class="message" id="message">쪽지보내기</div>
         <script type="module" src="/js/common.js"></script>
+        <script type="module" src="/js/check/checkBussiness.js"></script>
     </body>
 </html>

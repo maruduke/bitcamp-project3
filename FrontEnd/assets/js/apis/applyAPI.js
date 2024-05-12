@@ -24,9 +24,21 @@ export const applyService = {
             },
             body: JSON.stringify(template),
         })
-            .then((res) => {
-                (res) => defaultExceptionHandler(res);
-            })
-            .then((res) => callback());
+            .then((res) => defaultExceptionHandler(res))
+            .then((res) => callback(res));
+    },
+
+    // 템플릿 임시저장
+    tempStoreTemplate: async function (template, callback) {
+        fetch('http://localhost:8080/sign/temporaryStorage', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                authorization: `Bearer ${jwt}`,
+            },
+            body: JSON.stringify(template),
+        })
+            .then((res) => defaultExceptionHandler(res))
+            .then((res) => callback(res));
     },
 };
