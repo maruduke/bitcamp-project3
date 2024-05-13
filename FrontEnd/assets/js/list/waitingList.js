@@ -1,4 +1,5 @@
-const scroll = document.querySelector('.scroll');
+const refScroll = document.querySelector('#ref');
+const appScroll = document.querySelector('#app');
 const refContent = document.querySelector('#waitingList .ref');
 const appContent = document.querySelector('#waitingList .app');
 
@@ -169,29 +170,37 @@ chk.addEventListener('click', function () {
     listService.referenceList();
     if (!chkB) {
         chkB = true;
-        appContent.classList.add('hide');
-        refContent.classList.remove('hide');
+        appScroll.classList.add('hide');
+        refScroll.classList.remove('hide');
     } else {
         chkB = false;
-        refContent.classList.add('hide');
-        appContent.classList.remove('hide');
+        refScroll.classList.add('hide');
+        appScroll.classList.remove('hide');
     }
 });
 
-scroll.addEventListener('scroll', () => {
+appScroll.addEventListener('scroll', () => {
     if (isFetching || !hasNext) {
         return;
     }
 
-    if (scroll.scrollTop + scroll.clientHeight + 50 >= scroll.scrollHeight) {
-        if (chk.checked) {
-            listService.refList();
-        } else {
-            listService.approveList();
-        }
+    if (appScroll.scrollTop + appScroll.clientHeight + 50 >= appScroll.scrollHeight) {
+        listService.approveList();
         console.log('scroll');
     }
 });
+
+refScroll.addEventListener('scroll', () => {
+    if (isFetching || !hasNext) {
+        return;
+    }
+
+    if (refScroll.scrollTop + refScroll.clientHeight + 50 >= refScroll.scrollHeight) {
+        listService.refList();
+        console.log('scroll');
+    }
+});
+
 
 function chgType(type) {
     if (type === 'VACATION') {

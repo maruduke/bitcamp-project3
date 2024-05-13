@@ -7,7 +7,7 @@ a:active {color:  #39435C; text-decoration: underline;}
 input {line-height: 1;}
 img,fieldset {border: none;}
 
-body {font-family: 'Gmarket Sans', 'pretendard', sans-serif !important; font-size: 16px; font-weight: 400; color: #39435C; line-height: 1;}
+body {font-family: 'Gmarket Sans', sans-serif !important; font-size: 16px; font-weight: 400; color: #39435C; line-height: 1;}
 em {font-style: normal;}
 .blind {text-indent: -9999px; font-size: 0;}
 
@@ -22,4 +22,4 @@ input,
 textarea,
 button,
 legend,
-label{font-family: 'Gmarket Sans', 'pretendard', sans-serif !important;}
+label{font-family: 'Gmarket Sans', sans-serif !important;}
