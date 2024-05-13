@@ -65,14 +65,14 @@
 .orgchart .node .content {box-sizing: border-box;padding: 2px;font-size: .625rem;border: 1px solid rgba(217, 83, 79, .8);border-radius: 0 0 4px 4px;text-align: center;background-color: #fff;color: #333;white-space: nowrap;height: auto;}
 .orgchart {background-image: none; display: flex; justify-content: center; align-items: center;}
 .orgchart .node .content div {margin-top: 5px;margin-bottom: 5px;}
-.orgchart .lines .leftLine {border-left-color: #4E4C58;}
-.orgchart .lines .rightLine {border-right-color: #4E4C58;}
-.orgchart .lines .topLine {border-top-color: #4E4C58;}
+.orgchart .lines .leftLine {border-left-color: #5B718F;}
+.orgchart .lines .rightLine {border-right-color: #5B718F;}
+.orgchart .lines .topLine {border-top-color: #5B718F;}
 
 .orgchart .lines .downLine,
-.orgchart .node .title {background-color: #4E4C58;}
+.orgchart .node .title {background-color: #5B718F;}
 
-.orgchart .node .content {border-color: #4E4C58;}
+.orgchart .node .content {border-color: #5B718F;}
 /* ========================================== member ============================================== */
 
 
