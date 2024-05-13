@@ -76,6 +76,7 @@ function sendMessage() {
             }
             console.log('Message sent successfully!');
             alert('메세지가 성공적으로 전송되었습니다.');
+            location.reload();
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
