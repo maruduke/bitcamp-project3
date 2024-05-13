@@ -29,6 +29,7 @@ const listService = {
                 }
 
                 for (let i = 0; i < data.content.length; i++) {
+                    
                     // div 생성
                     let listBox = document.createElement('div');
                     let listTitleBox = document.createElement('div');
@@ -67,7 +68,6 @@ const listService = {
                     listState.innerHTML = state;
 
                     let documentId = data.content[i].documentId;
-                    console.log(documentId);
 
                     // 경석 =--------------------------------------------------------------------
                     listBox.addEventListener('click', () => {
