@@ -18,13 +18,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByEmail(String email);
 
-    Optional<User> getUserByEmail(String username);
-
     Optional<List<User>> findAllByEmailIn(List<String> refList);
 
     @Query("SELECT u.name FROM User u WHERE u.email = :email")
     String findNameByEmail(String email);
-
 
     @Modifying
     @Query("UPDATE User u SET u.tel = :tel WHERE u.email = :email")
