@@ -23,6 +23,12 @@ function memberMyDeptList(myDeptList){
            
             data.forEach((member) => {
 
+                function formatPhoneNumber(phoneNumber) {
+                    const regex = /(\d{3})(\d{4})(\d{4})/;
+                    const formatted = phoneNumber.replace(regex, '$1-$2-$3');
+                    return formatted;
+                }
+
                 const memberItem = document.createElement('div');
                 memberItem.classList.add('dept_list');
 
@@ -39,7 +45,7 @@ function memberMyDeptList(myDeptList){
 
                 const deptPhone = document.createElement('span');
                 deptPhone.classList.add('dept_phone');
-                deptPhone.textContent = member.tel;
+                deptPhone.textContent = formatPhoneNumber(member.tel);
 
                 const deptEmail = document.createElement('p');
                 deptEmail.classList.add('dept_email');
