@@ -54,29 +54,31 @@ function includeMessage() {
     return 'ok';
 }
 
-// 헤더 쪽으로 이동함
-// const jwt = sessionStorage.getItem('jwt');
-//                 fetch('http://localhost:8080/login/header',{
-//                     method: 'GET',
-//                     headers: {
-//                         'Content-Type': 'application/json',
-//                         'authorization': `Bearer ${jwt}`
-//                     }
-//                 })
-//                     .then(response=>{
-//                         if(!response.ok){
-//                             alert('로그인이 필요합니다.')
-//                             window.location.href = 'http://localhost:3200/login';
-//                         }
-//                         return response.json();
-//                     })
-//                     .then(data=> {
-//                         console.log(data.name);
-//                         document.getElementById('username').textContent = data.name;
-//                     })
-//                     .catch(error =>{
-//                         console.error('Fetch Error:', error)
-//                     });
+// 로그인 안되어 있을 경우 홈페이지 접근 방지
+const jwt = sessionStorage.getItem('jwt');
+                fetch('http://localhost:8080/login/header',{
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': `Bearer ${jwt}`
+                    }
+                })
+                    .then(response=>{
+                        if(!response.ok){
+                            alert('로그인이 필요합니다.')
+                            window.location.href = 'http://localhost:3200/login';
+                        }
+                        return response.json();                       
+                    })
+                    .then(data=> {
+                        console.log(data.name);
+                        document.getElementById('username').textContent = data.name;
+                    })
+                    .catch(error =>{
+                        console.error('Fetch Error:', error)
+                    });
+                
+
 
 includeHeader();
 includeFooter();
