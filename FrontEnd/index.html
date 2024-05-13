@@ -18,24 +18,18 @@
             color: #ffffff;
             font-size: 14px;
             font-weight: 700;
+            border-radius: 8px 8px 0 0;
         }
 
-        .dept_list {
-            width: 350px;
-            height: 75px;
-            border-bottom: 1px solid #CBC9D7;
-            display: flex;
-            align-items: center;
-
-
-        }
-
+        .dept_list,
         .index_notelist {
             width: 350px;
             height: 75px;
             border-bottom: 1px solid #CBC9D7;
             display: flex;
             align-items: center;
+
+
         }
 
         .dept_userbox {
@@ -49,7 +43,9 @@
             font-size: 17px;
         }
 
-        .note_username {
+        .note_username,
+        .dept_emp,
+        .note_emp {
             font-weight: 500;
         }
 
@@ -85,27 +81,24 @@
             font-weight: lighter;
         }
 
-        .dept_emp,
-        .note_emp {
-            font-weight: 500;
-        }
-
         .dept_phone {
             font-size: 16px;
             margin-left: 10px;
         }
 
-        .notebox {
-            height: 340px;
+        .notebox,
+        .deptbox {
+            height: 435px;
         }
 
         .box_container {
             height: 500px;
             width: 400px;
         }
-        .deptbox{
-            height: 340px;
 
+        .note_content,
+        .dept_email {
+            font-size: 15px;
         }
     </style>
 </head>
@@ -155,7 +148,7 @@
                                 <h2>연락처</h2>
                             </div>
                             <div class="deptbox" style="overflow-y: scroll">
-                                
+
                             </div>
 
                             <div class="content">
@@ -169,8 +162,6 @@
                                 <h2>쪽지</h2>
                             </div>
                             <div class="notebox" style="overflow-y: scroll">
-
-
                             </div>
                         </div>
                     </div>
@@ -189,7 +180,7 @@
     <div class="message" id="message"></div>
 
     <script type="module" src="/js/index.js"></script>
-    
+
     <script src="/js/index/indexRead.js"></script>
     <script src="/js/index/myMembers.js"></script>
 </body>
