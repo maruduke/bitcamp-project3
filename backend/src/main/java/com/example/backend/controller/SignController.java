@@ -4,6 +4,8 @@ package com.example.backend.controller;
 import com.example.backend.dto.sign.ApproveDto;
 import com.example.backend.dto.sign.UserDto;
 import com.example.backend.dto.template.TemplateDto;
+import com.example.backend.dto.template.TemplateResponseDto;
+import com.example.backend.dto.template.TemporaryResponseDto;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.mongo.Template;
 import com.example.backend.entity.mongo.TypeData;
@@ -71,11 +73,15 @@ public class SignController {
      * @return
      */
     @GetMapping("/getTemporary")
-    public ResponseEntity<Template<? extends TypeData>> getTemporary(@AuthenticationPrincipal User user) {
+    public ResponseEntity<TemporaryResponseDto> getTemporary(@AuthenticationPrincipal User user) {
+
+        log.info(user);
         Template<? extends TypeData> template = signService.getTemporaryStorage(user);
-        
+
+        TemporaryResponseDto temporaryResponseDto = TemporaryResponseDto.builder().type(template.getType()).typeData(template.getTypeData()).build();
+
         // dto 반환 해야 함
-        return new ResponseEntity<>(template, HttpStatus.OK);
+        return ResponseEntity.ok(temporaryResponseDto);
     }
 
     @GetMapping("/getUserList")
@@ -85,6 +91,8 @@ public class SignController {
 
         return ResponseEntity.ok(users);
     }
+
+
 
 
 
