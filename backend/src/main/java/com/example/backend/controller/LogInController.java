@@ -83,7 +83,7 @@ public class LogInController {
     }
 
     @GetMapping("/mypage")
-    public ResponseEntity<User> myPage(@AuthenticationPrincipal User user, @RequestHeader("Authorization") String token) throws JsonProcessingException {
+    public ResponseEntity<User> myPage(@AuthenticationPrincipal User user, @RequestHeader("Authorization") String token) {
         if(!jwtUtil.validateToken(token)){
             return ResponseEntity.status(401).build();
         }
@@ -93,7 +93,7 @@ public class LogInController {
     }
 
     @PutMapping("/mypage/modify")
-    public ResponseEntity<String> modify(@AuthenticationPrincipal User user, @RequestBody InfoDto infoDto, @RequestHeader("Authorization") String token) throws JsonProcessingException {
+    public ResponseEntity<String> modify(@AuthenticationPrincipal User user, @RequestBody InfoDto infoDto) {
         String email = user.getEmail();
         userService.modifyInfo(email, infoDto);
         return ResponseEntity.ok("회원정보가 변경되었습니다.");

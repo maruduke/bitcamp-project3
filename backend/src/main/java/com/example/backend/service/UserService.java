@@ -36,7 +36,7 @@ public class UserService {
 
         String encodedPassword = passwordEncoder.encode(joinDto.getPassword());
 
-        if(joinDto.getDept().equals("인사과")|| joinDto.getPosition().equals("CEO")){
+        if(joinDto.getDept().contains("인사")|| joinDto.getPosition().equals("CEO")){
             joinDto.setAuthority(Authority.ADMIN);
         }else{
             joinDto.setAuthority(Authority.USER);
