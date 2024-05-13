@@ -1,5 +1,11 @@
 import { applyService } from '../apis/applyAPI.js';
 
+if (!confirm('임시저장된 파일이 있습니다. 불러오시겠습니가?')) {
+    alert('왜 저장함?');
+} else {
+    alert('저장하거 불러옴');
+}
+
 const createSelect = (userList, containerId) => {
     const select = document.createElement('select');
     select.className = 'select';

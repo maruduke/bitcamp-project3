@@ -25,6 +25,9 @@ export const checkService = {
                 authorization: `Bearer ${jwt}`,
             },
             body: JSON.stringify(status),
-        });
+        })
+            .then((res) => defaultExceptionHandler(res))
+            .then((res) => res.JSON)
+            .then((res) => callback(res));
     },
 };
