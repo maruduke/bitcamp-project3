@@ -74,6 +74,5 @@ document.getElementById('logoutButton').addEventListener('click', () => {
         })
         .catch((error) => {
             console.error('Logout Error:', error);
-            // 로그아웃 처리 중에 오류가 발생했을 때 실행할 코드 작성
         });
 });

@@ -55,6 +55,7 @@ function includeMessage() {
     return 'ok';
 }
 
+// 로그인 안되어 있을 경우 홈페이지 접근 방지
 const jwt = sessionStorage.getItem('jwt');
                 fetch('http://localhost:8080/login/header',{
                     method: 'GET',
