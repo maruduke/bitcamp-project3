@@ -1,4 +1,6 @@
 //----------------------------------------------- 내가 받은 메세지 리스트--------------------------------------------
+let currentMessageId = null;
+
 
 export const init_receiveList = () => {
     const messageListContainer = document.querySelector('.message_body');
@@ -19,67 +21,70 @@ function receiveMessageList(receiveMessage) {
                 Authorization: `Bearer ${jwt}`,
             },
         })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`서버 오류: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            if (!data || data.content.length === 0) {
-                hasNext = false;
-                return;
-            }
-            // 정렬된 메시지 리스트를 순회하면서 HTML 요소로 추가
-            data.content.forEach((message) => {
-                
-                const messageItem = document.createElement('div');
-                messageItem.classList.add('message_list');
-
-                const receiverName = document.createElement('span');
-                receiverName.classList.add('receiver_Name');
-                receiverName.textContent = message.senderName;
-
-                const receiverPosition = document.createElement('span');
-                receiverPosition.classList.add('receiver_Position');
-                receiverPosition.textContent = message.senderPosition;
-
-                const messageContent = document.createElement('p');
-                messageContent.classList.add('message_content');
-                messageContent.textContent = message.message;
-
-                messageItem.appendChild(receiverName);
-                messageItem.appendChild(receiverPosition);
-                messageItem.appendChild(messageContent);
-
-                // 읽음 여부에 따라 스타일 설정
-                if (message.readCheck) {
-                    messageItem.style.color = 'lightgray';
-                } else {
-                    messageItem.style.color = 'black';
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`서버 오류: ${response.status}`);
                 }
-
-                messageItem.addEventListener('click', () => {
-                    document.querySelector('#note_inbox').style.display = 'none';
-                    const noteInboxCheck = document.querySelector('#note_inbox_check');
-                    noteInboxCheck.style.display = 'block';
-
-                    // 메시지 상세 정보 가져오기
-                    fetchMessageDetails(message.messageId);
+                return response.json();
+            })
+            .then((data) => {
+                if (!data || data.content.length === 0) {
+                    hasNext = false;
+                    return;
+                }
+                // 정렬된 메시지 리스트를 순회하면서 HTML 요소로 추가
+                data.content.forEach((message) => {
+    
+                    const messageItem = document.createElement('div');
+                    messageItem.classList.add('message_list');
+    
+                    const receiverName = document.createElement('span');
+                    receiverName.classList.add('receiver_Name');
+                    receiverName.textContent = message.senderName;
+    
+                    const receiverPosition = document.createElement('span');
+                    receiverPosition.classList.add('receiver_Position');
+                    receiverPosition.textContent = message.senderPosition;
+    
+                    const messageContent = document.createElement('p');
+                    messageContent.classList.add('message_content');
+                    messageContent.textContent = message.message;
+    
+                    messageItem.appendChild(receiverName);
+                    messageItem.appendChild(receiverPosition);
+                    messageItem.appendChild(messageContent);
+    
+                    // 읽음 여부에 따라 스타일 설정
+                    if (message.readCheck) {
+                        messageItem.style.color = 'lightgray';
+                    } else {
+                        messageItem.style.color = 'black';
+                    }
+    
+                    messageItem.addEventListener('click', () => {
+                        document.querySelector('#note_inbox').style.display = 'none';
+                        const noteInboxCheck = document.querySelector('#note_inbox_check');
+                        noteInboxCheck.style.display = 'block';
+    
+                        // 현재 클릭된 messageId 설정
+                        currentMessageId = message.messageId;
+    
+                        // 메시지 상세 정보 가져오기
+                        fetchMessageDetails(message.messageId);
+                    });
+    
+                    // 기존의 메시지 목록에 추가
+                    receiveMessage.appendChild(messageItem);
                 });
-
-                // 기존의 메시지 목록에 추가
-                receiveMessage.appendChild(messageItem);
+    
+                pageNumber++; // 다음 페이지 번호 증가
+            })
+            .catch((error) => {
+                console.error('Fetch Error:', error);
+            })
+            .finally(() => {
+                isFetching = false;
             });
-
-            pageNumber++; // 다음 페이지 번호 증가
-        })
-        .catch((error) => {
-            console.error('Fetch Error:', error);
-        })
-        .finally(() => {
-            isFetching = false;
-        });
     }
 
     // 초기 메시지 로딩
@@ -123,32 +128,45 @@ function fetchMessageDetails(messageId) {
             const checkButton = document.querySelector('.check_btn');
             const deleteButton = document.querySelector('.delete_btn');
 
-            
-            checkButton.addEventListener('click', () => {
-                document.querySelector('#note_inbox_check').style.display = 'none';
 
-                // 활성화할 페이지 표시
-                const receiveUpdateList = document.querySelector('#note_inbox');
-                receiveUpdateList.style.display = 'block';
-                fetchMessageCheck(messageId);
-            });
+            checkButton.addEventListener('click', handleCheckButtonClick);
 
-            
-            deleteButton.addEventListener('click', () => {
-                document.querySelector('#note_inbox_check').style.display = 'none';
-
-                // 활성화할 페이지 표시
-                const receiveDeleteList = document.querySelector('#note_inbox');
-                receiveDeleteList.style.display = 'block';
-
-                fetchMessageDelete(messageId);
-                
-            });
+            deleteButton.addEventListener('click', handleDeleteButtonClick);
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
         });
 }
+
+function handleCheckButtonClick() {
+    if (currentMessageId) {
+        // 확인 버튼 클릭 시 해당 messageId에 대한 처리
+        fetchMessageCheck(currentMessageId);
+    }
+
+    // 활성화된 페이지를 수신함으로 변경
+    const noteInboxCheck = document.querySelector('#note_inbox_check');
+    noteInboxCheck.style.display = 'none';
+
+    const noteInbox = document.querySelector('#note_inbox');
+    noteInbox.style.display = 'block';
+}
+
+function handleDeleteButtonClick() {
+    if (currentMessageId) {
+        // 확인 버튼 클릭 시 해당 messageId에 대한 처리
+        fetchMessageDelete(currentMessageId);
+    }
+
+    const noteInboxCheck = document.querySelector('#note_inbox_check');
+    noteInboxCheck.style.display = 'none';
+
+    // 활성화할 페이지 표시
+    const receiveDeleteList = document.querySelector('#note_inbox');
+    receiveDeleteList.style.display = 'block';
+
+}
+
 
 function displayMessageDetails(message) {
     const receiverDetailName = document.querySelector('.receiverDetailName');
