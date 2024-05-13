@@ -99,7 +99,7 @@
 
 .msg-box .send_content_areabody{position: relative;}
 .msg-box .message_modal{position: absolute;display: none;}
-.msg-box .message_container{position: fixed; bottom: 140px; right: 108px;display: inline-block;width: 350px;background-color: white;border-radius: 8px;text-align: center;}
+.msg-box .message_container{position: fixed; bottom: 140px; right: 102px;display: inline-block;width: 350px;background-color: white;border-radius: 8px;text-align: center;}
 .msg-box .message_top{height: 70px;border: 1px solid #C1C5D4;border-top-left-radius: 8px;border-top-right-radius: 8px;display: flex;align-items: center;}
 .msg-box .message_top_btn{color: #C1C5D4;font-size: 15px;}
 .msg-box .message_bottom_btn{color: #39435C;font-size: 15px;}
