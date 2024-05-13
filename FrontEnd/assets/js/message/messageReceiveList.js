@@ -14,6 +14,8 @@ function receiveMessageList(receiveMessage) {
     let pageNumber = 0;
 
     function fetchMessages() {
+        let unreadMessageCount = 0; // 읽지 않은 메시지 수 초기화
+
         fetch(`http://localhost:8080/message/receivedList?pageNumber=${pageNumber}`, {
             method: 'GET',
             headers: {
@@ -34,49 +36,57 @@ function receiveMessageList(receiveMessage) {
                 }
                 // 정렬된 메시지 리스트를 순회하면서 HTML 요소로 추가
                 data.content.forEach((message) => {
-    
+
                     const messageItem = document.createElement('div');
                     messageItem.classList.add('message_list');
-    
+
                     const receiverName = document.createElement('span');
                     receiverName.classList.add('receiver_Name');
                     receiverName.textContent = message.senderName;
-    
+
                     const receiverPosition = document.createElement('span');
                     receiverPosition.classList.add('receiver_Position');
                     receiverPosition.textContent = message.senderPosition;
-    
+
                     const messageContent = document.createElement('p');
                     messageContent.classList.add('message_content');
                     messageContent.textContent = message.message;
-    
+
                     messageItem.appendChild(receiverName);
                     messageItem.appendChild(receiverPosition);
                     messageItem.appendChild(messageContent);
-    
+
                     // 읽음 여부에 따라 스타일 설정
                     if (message.readCheck) {
                         messageItem.style.color = 'lightgray';
                     } else {
                         messageItem.style.color = 'black';
+                        unreadMessageCount++; // 읽지 않은 메시지 수 증가
                     }
-    
+
                     messageItem.addEventListener('click', () => {
                         document.querySelector('#note_inbox').style.display = 'none';
                         const noteInboxCheck = document.querySelector('#note_inbox_check');
                         noteInboxCheck.style.display = 'block';
-    
+
                         // 현재 클릭된 messageId 설정
                         currentMessageId = message.messageId;
-    
+
                         // 메시지 상세 정보 가져오기
                         fetchMessageDetails(currentMessageId);
                     });
-    
+
                     // 기존의 메시지 목록에 추가
                     receiveMessage.appendChild(messageItem);
                 });
-    
+
+                // 모든 메시지를 처리한 후 unreadMessageCount 확인
+                if (unreadMessageCount > 0) {
+                    document.querySelector('.message').classList.add('new'); // 읽지 않은 메시지가 있을 때 new 클래스 추가
+                } else {
+                    document.querySelector('.message').classList.remove('new'); // 모든 메시지가 읽혔을 때 new 클래스 제거
+                }
+
                 pageNumber++; // 다음 페이지 번호 증가
             })
             .catch((error) => {
