@@ -279,7 +279,6 @@ public class SignService {
 
         // template 타입 지정
         Template< ? extends TypeData> template = templateRepository.findById(taskProgress.getDocumentId()).orElseThrow(() -> new IllegalArgumentException("임시저장 템플릿이 없음"));
-        DocType type = document.getType();
 
 
         // 임시파일 삭제

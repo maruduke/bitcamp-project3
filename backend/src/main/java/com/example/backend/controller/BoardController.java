@@ -2,6 +2,7 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.board.MyListDto;
 import com.example.backend.dto.board.WaitDto;
+import com.example.backend.dto.template.TemplateResponseDto;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.maria.enumData.DocState;
 import com.example.backend.entity.mongo.Template;
@@ -48,9 +49,12 @@ public class BoardController {
     }
 
     @GetMapping("/read")
-    public ResponseEntity<Template<? extends TypeData>> read(@RequestParam String documentId) {
+    public ResponseEntity<TemplateResponseDto<? extends TypeData>> read(@RequestParam String documentId) {
 
-        Template<? extends TypeData> template = boardService.getTemplate(documentId);
+
+        TemplateResponseDto<? extends TypeData> template = boardService.getTemplateResponseDto(documentId);
+
+        log.info(template);
 
         return ResponseEntity.ok(template);
     }

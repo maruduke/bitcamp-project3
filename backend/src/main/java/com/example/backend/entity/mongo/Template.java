@@ -1,5 +1,6 @@
 package com.example.backend.entity.mongo;
 
+import com.example.backend.dto.template.TemplateResponseDto;
 import com.example.backend.entity.maria.enumData.DocType;
 import lombok.Builder;
 import lombok.Getter;
@@ -53,4 +54,16 @@ public class Template<T> {
         this.approverCheckList = update;
     }
 
+    public TemplateResponseDto<T> toTemplateResponseDto(String writer, List<String> refList, List<String> approverList) {
+
+        TemplateResponseDto<T> templateResponseDto = TemplateResponseDto.<T>builder()
+                .writer(writer)
+                .type(this.type)
+                .refList(refList)
+                .createDate(this.createDate)
+                .approverList(approverList)
+                .typeData(typeData).build();
+
+        return templateResponseDto;
+    }
 }
