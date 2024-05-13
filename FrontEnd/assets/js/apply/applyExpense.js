@@ -1,4 +1,4 @@
-import { getApproveList, getReferenceList, initAsnc } from './applyCommon.js';
+import { getApproveList, getReferenceList, initAsnc, temporary } from './applyCommon.js';
 import { applyService } from '../apis/applyAPI.js';
 
 const element = {
@@ -6,7 +6,6 @@ const element = {
     category: document.querySelector('#category'),
     cost: document.querySelector('#cost'),
     expenseDate: document.querySelector('#expenseDate'),
-    reason: document.querySelector('#reason'),
     submit: document.querySelector('#submit'),
     tempStore: document.querySelector('#tempStore'),
 };
@@ -46,4 +45,14 @@ element.tempStore.addEventListener('click', () => {
     });
 });
 
+temporary(() => {
+    const tmpData = JSON.parse(localStorage.getItem('template'));
+
+    element.title.value = tmpData['typeData']['detail'];
+    element.category.value = tmpData['typeData']['category'];
+    element.cost.value = tmpData['typeData']['cost'];
+    element.expenseDate.value = tmpData['typeData']['expenseDate'];
+
+    localStorage.removeItem('template');
+});
 initAsnc();
