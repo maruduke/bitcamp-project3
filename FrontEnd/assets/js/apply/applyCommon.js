@@ -1,11 +1,5 @@
 import { applyService } from '../apis/applyAPI.js';
 
-if (!confirm('임시저장된 파일이 있습니다. 불러오시겠습니가?')) {
-    alert('왜 저장함?');
-} else {
-    alert('저장하거 불러옴');
-}
-
 const createSelect = (userList, containerId) => {
     const select = document.createElement('select');
     select.className = 'select';
@@ -59,6 +53,38 @@ export const getReferenceList = () => {
 
     return refs;
 };
+
+/**
+ * 임시 저장 다루기
+ */
+
+export async function temporary(callback) {
+    console.log('temporary 실행 됨');
+
+    if (localStorage.getItem('template') == null) {
+        console.log('임시파일 저장되어 있지 않음');
+        applyService.getTemporary((res) => {
+            if (res == null) return;
+
+            console.log(res);
+            if (!confirm('임시저장된 파일이 있습니다. 불러오시겠습니가?')) {
+                alert('왜 저장함?');
+            } else {
+                alert('저장하거 불러옴');
+                localStorage.setItem('template', JSON.stringify(res));
+
+                if (res['type'] == 'REPORT') location.href = 'http://localhost:3200/approve/apply/apply_report';
+                else if (res['type'] == 'VACATION') location.href = 'http://localhost:3200/approve/apply/apply_vac';
+                else if (res['type'] == 'BUSSINESSTRIP')
+                    location.href = 'http://localhost:3200/approve/apply/apply_business';
+                else if (res['type'] == 'ACCOUNTINGEXPENSE')
+                    location.href = 'http://localhost:3200/approve/apply/apply_expense';
+            }
+        });
+    } else {
+        callback();
+    }
+}
 
 /**
  * User 정보 DB에 가져와서 Select box생성

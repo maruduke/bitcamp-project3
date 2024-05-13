@@ -1,4 +1,4 @@
-import { getApproveList, getReferenceList, initAsnc } from './applyCommon.js';
+import { getApproveList, getReferenceList, initAsnc, temporary } from './applyCommon.js';
 import { applyService } from '../apis/applyAPI.js';
 
 const element = {
@@ -50,4 +50,14 @@ element.tempStore.addEventListener('click', () => {
     });
 });
 
+temporary(() => {
+    const tmpData = JSON.parse(localStorage.getItem('template'));
+
+    element.title.innerHTML = tmpData['typeData']['title'];
+    element.startDate.innerHTML = tmpData['typeData']['startDate'];
+    element.endDate.innerHTML = tmpData['typeData']['endDate'];
+    element.reason.innerHTML = tmpData['typeData']['reason'];
+
+    localStorage.removeItem();
+});
 initAsnc();

@@ -1,4 +1,4 @@
-import { getApproveList, getReferenceList, initAsnc } from './applyCommon.js';
+import { getApproveList, getReferenceList, initAsnc, temporary } from './applyCommon.js';
 import { applyService } from '../apis/applyAPI.js';
 
 const element = {
@@ -39,6 +39,15 @@ element.tempStore.addEventListener('click', () => {
         alert('임시 저장 되었습니다.');
         location.href = 'http://localhost:3200/approve/main';
     });
+});
+
+temporary(() => {
+    const tmpData = JSON.parse(localStorage.getItem('template'));
+
+    element.title.value = tmpData['typeData']['title'];
+    element.detail.value = tmpData['typeData']['detail'];
+
+    localStorage.removeItem('template');
 });
 
 initAsnc();
