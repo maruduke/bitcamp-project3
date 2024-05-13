@@ -103,7 +103,12 @@
 
 /* height */
 .h100p {height:100% !important;}
-
+.h600 {height: 600px !important;}
+.h500 {height: 500px !important;}
+.h400 {height: 400px !important;}
+.h320 {height: 320px !important;}
+.h260 {height: 260px !important;}
+.h180 {height: 180px !important;}
 
 /* scroll */
 .scroll {height: 500px; overflow-y: auto;}
@@ -166,7 +171,18 @@ footer em {font-size: 13px; font-weight:lighter; color: #000;}
 ::placeholder {color: #C1C5D4;}
 
 
-@media (max-width: 1400px){
-	
+@media (max-width: 1750px){
+	.h500-lg {height: 500px !important;}
+	.h480-lg {height: 480px !important;}
+	.h280-lg {height: 280px !important;}
+
+	.box {margin-bottom: 30px;}
+	.title-blue-box {height: 65px;}
+
+	main,
+	main.index-main {margin-top: 40px;}
+
+	.nav-index {padding: 70px 20px;}
+
 	footer {bottom: 20px;}
 }
