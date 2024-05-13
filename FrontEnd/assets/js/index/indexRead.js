@@ -51,6 +51,7 @@ function messageUnCheckList(receiveUnCheck) {
                         noteUserContent.textContent = message.message;
 
                         messageBox.appendChild(noteUserdName);
+                        messageBox.appendChild(document.createTextNode(' '));
                         messageBox.appendChild(noteUserPosition);
                         messageBox.appendChild(noteUserContent);
 
