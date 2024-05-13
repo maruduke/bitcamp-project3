@@ -16,61 +16,51 @@
                     <div class="w100p">
                         <div class="box" style="height: 517px">
                             <div class="title-blue-box">
-                                <h2>결재할 서류(제목: 내일 모레 돈 쓸거야)</h2>
+                                <h2 id="title"></h2>
                                 <div>
-                                    <span>홍길동 사원</span>
+                                    <span id="writer"></span>
                                     <span>경비 신청</span>
                                 </div>
                             </div>
                             <div class="content pdx55">
                                 <div class="time-box">
-                                    <span>2024-05-02 16:30</span>
+                                    <span id="createDate"></span>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>결재자</h2>
                                     <div>
-                                        <span>안슬기 팀장</span>
-                                        <span>유민진 과장</span>
-                                        <span>김융 사원</span>
+                                        <span id="approversList"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>참조자</h2>
                                     <div>
-                                        <span>이경석 사장</span>
-                                        <span>최병민 팀장</span>
-                                        <span>서주원 대리</span>
+                                        <span id="refList"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>항목</h2>
                                     <div>
-                                        <span>삼겹살 회식</span>
+                                        <span id="category"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>비용</h2>
                                     <div>
-                                        <span>500,000WON</span>
+                                        <span id="cost"></span>
                                     </div>
                                 </div>
                                 <div class="check-white-box">
                                     <h2>결제일</h2>
                                     <div>
-                                        <span>2024-05-03</span>
-                                    </div>
-                                </div>
-                                <div class="check-white-box">
-                                    <h2>목적</h2>
-                                    <div>
-                                        <span>단합</span>
+                                        <span id="expenseDate"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="check-btn row-direction">
-                            <a href="main" class="blue-btn">승인</a>
-                            <a href="main" class="blue-btn">반려</a>
+                            <button id="approve" class="blue-btn">승인</button>
+                            <button id="deny" class="blue-btn">반려</button>
                         </div>
                     </div>
                 </section>
@@ -85,5 +75,6 @@
 
         <div class="message" id="message">쪽지보내기</div>
         <script type="module" src="/js/common.js"></script>
+        <script type="module" src="/js/check/checkExpense.js"></script>
     </body>
 </html>

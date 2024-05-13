@@ -1,5 +1,6 @@
 export const init_header = () => {
     // header 코드
+
     // MEMBER 버튼 클릭 이벤트 처리
     document.getElementById('memberButton').addEventListener('click', () => {
         window.location.href = 'http://localhost:3200/member';
@@ -9,7 +10,6 @@ export const init_header = () => {
     document.getElementById('approveButton').addEventListener('click', () => {
         window.location.href = 'http://localhost:3200/approve/main';
     });
-
     // MY PAGE 버튼 클릭 이벤트 처리
     document.getElementById('myPageButton').addEventListener('click', () => {
         window.location.href = 'http://localhost:3200/mypage/mypage';
@@ -35,7 +35,31 @@ export const init_header = () => {
             })
             .catch((error) => {
                 console.error('Logout Error:', error);
+
+                // 로그아웃 처리 중에 오류가 발생했을 때 실행할 코드 작성
             });
     });
 
-}
+    const jwt = sessionStorage.getItem('jwt');
+    fetch('http://localhost:8080/login/header', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${jwt}`,
+        },
+    })
+        .then((response) => {
+            if (!response.ok) {
+                alert('로그인이 필요합니다.');
+                window.location.href = 'http://localhost:3200/login';
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data.name);
+            document.getElementById('username').textContent = data.name;
+        })
+        .catch((error) => {
+            console.error('Fetch Error:', error);
+        });
+};

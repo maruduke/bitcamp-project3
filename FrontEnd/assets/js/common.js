@@ -12,7 +12,7 @@ function includeHeader() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             document.querySelector('header').innerHTML = xhr.responseText;
 
-			init_header();
+            init_header();
         }
     };
     xhr.send();
@@ -27,7 +27,6 @@ function includeFooter() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             document.querySelector('footer').innerHTML = xhr.responseText;
             // js 코드 작성
-			
         }
     };
     xhr.send();
@@ -79,6 +78,7 @@ const jwt = sessionStorage.getItem('jwt');
                         console.error('Fetch Error:', error)
                     });
                 
+
 
 includeHeader();
 includeFooter();
