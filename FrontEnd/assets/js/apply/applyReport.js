@@ -24,7 +24,7 @@ const createTemplateData = () => {
 };
 
 element.submit.addEventListener('click', () => {
-    const template = createTemplate();
+    const template = createTemplateData();
 
     applyService.createTemplate(template, () => {
         alert('결재 신청이 완료되었습니다.');
@@ -33,7 +33,7 @@ element.submit.addEventListener('click', () => {
 });
 
 element.tempStore.addEventListener('click', () => {
-    const template = createTemplate();
+    const template = createTemplateData();
 
     applyService.tempStoreTemplate(template, () => {
         alert('임시 저장 되었습니다.');

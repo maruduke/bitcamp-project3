@@ -16,4 +16,15 @@ export const checkService = {
             .then((res) => res.json())
             .then((res) => callback(res));
     },
+
+    sign: (status, callback) => {
+        fetch('http://localhost:8080/sign/approve', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${jwt}`,
+            },
+            body: JSON.stringify(status),
+        });
+    },
 };

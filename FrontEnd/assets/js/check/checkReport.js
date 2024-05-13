@@ -1,6 +1,8 @@
 import { checkService } from '../apis/checkAPI.js';
 
 checkService.getTemplate((res) => {
+    console.log(res);
+
     let refs = '';
     let approvers = '';
 
@@ -16,11 +18,6 @@ checkService.getTemplate((res) => {
 
     document.querySelector('#title').innerHTML = res['typeData']['title'];
     document.querySelector('#writer').innerHTML = res['writer'];
-    document.querySelector('#createDate').innerHTML = res['createDate'];
     document.querySelector('#approversList').innerHTML = approvers.slice(0, -2);
     document.querySelector('#refList').innerHTML = refs.slice(0, -2);
-    document.querySelector('#startDate').innerHTML = res['typeData']['startDate'];
-    document.querySelector('#endDate').innerHTML = res['typeData']['endDate'];
-    document.querySelector('#location').innerHTML = res['typeData']['location'];
-    document.querySelector('#reason').innerHTML = res['typeData']['reason'];
 });
