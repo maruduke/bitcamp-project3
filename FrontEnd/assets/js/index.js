@@ -18,7 +18,6 @@ if (!jwt) {
             return response.json();
         })
         .then(data => {
-            console.log(data.name);
             document.getElementById('username').textContent = data.name;
         })
         .catch(error => {
@@ -26,35 +25,30 @@ if (!jwt) {
         });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const jwt = sessionStorage.getItem('jwt');
 
-    document.getElementById('joinbtn').addEventListener('click', () => {
-
-
-
-        fetch('http://localhost:8080/login/joinget', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': `Bearer ${jwt}`
+document.getElementById('joinbtn').addEventListener('click', () => {
+    fetch('http://localhost:8080/login/joinget', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': `Bearer ${jwt}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                alert('권한이 없습니다.')
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
+            alert('권한자입니다.');
+            window.location.href = 'http://localhost:3200/registration';
         })
-            .then(response => {
-                if (!response.ok) {
-                    alert('권한이 없습니다.')
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                alert('권한자입니다.');
-                window.location.href = 'http://localhost:3200/registration';
-            })
 
-            .catch(error => {
-                console.error('Fetch Error:', error);
-            });
-    });
+        .catch(error => {
+            console.error('Fetch Error:', error);
+        });
 });
 
+// 로그아웃 버튼 클릭 시 세션 스토리지 토큰 제거
 document.getElementById('logoutButton').addEventListener('click', () => {
     const jwt = sessionStorage.getItem('jwt');
     fetch('http://localhost:8080/login/logout', {
@@ -68,9 +62,9 @@ document.getElementById('logoutButton').addEventListener('click', () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            sessionStorage.removeItem('jwt'); // 세션 스토리지에서 토큰 제거
+            sessionStorage.removeItem('jwt');
             alert('로그아웃 되었습니다!');
-            window.location.href = 'http://localhost:3200/login'; // 로그인 페이지로 리다이렉트
+            window.location.href = 'http://localhost:3200/login';
         })
         .catch((error) => {
             console.error('Logout Error:', error);

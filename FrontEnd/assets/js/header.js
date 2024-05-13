@@ -56,7 +56,6 @@ export const init_header = () => {
             return response.json();
         })
         .then((data) => {
-            console.log(data.name);
             document.getElementById('username').textContent = data.name;
         })
         .catch((error) => {
