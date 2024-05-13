@@ -31,7 +31,7 @@
         }
 
         .index_notelist {
-            width: 350px;
+            width: 400px;
             height: 75px;
             border-bottom: 1px solid #CBC9D7;
             display: flex;
@@ -92,9 +92,16 @@
 
         .dept_phone {
             font-size: 16px;
+            margin-left: 10px;
         }
-        .notebox{
+
+        .notebox {
             height: 340px;
+        }
+
+        .box_container {
+            height: 500px;
+            width: 400px;
         }
     </style>
 </head>
@@ -138,7 +145,7 @@
 
                 <div class="w70p inline-flex">
                     <div class="w50p pdx20" style="width: 460px;">
-                        <div class="box" style="height: 500px; width: 400px;">
+                        <div class="box box_container">
                             <div class="titlebox">
                                 <h2>연락처</h2>
                             </div>
@@ -147,7 +154,7 @@
                                     <div class="dept_userbox">
                                         <span class="dept_username">홍길동 </span>
                                         <span class="dept_emp">대리 </span>
-                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <span class="dept_phone">01545640564</span>
                                         <p class="dept_email">aoklfgjl@nave.com</p>
                                     </div>
                                 </div>
@@ -155,7 +162,7 @@
                                     <div class="dept_userbox">
                                         <span class="dept_username">홍길동 </span>
                                         <span class="dept_emp">대리 </span>
-                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <span class="dept_phone">01545640564</span>
                                         <p class="dept_email">aoklfgjl@nave.com</p>
                                     </div>
                                 </div>
@@ -163,7 +170,7 @@
                                     <div class="dept_userbox">
                                         <span class="dept_username">홍길동 </span>
                                         <span class="dept_emp">대리 </span>
-                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <span class="dept_phone">01545640564</span>
                                         <p class="dept_email">aoklfgjl@nave.com</p>
                                     </div>
                                 </div>
@@ -171,7 +178,7 @@
                                     <div class="dept_userbox">
                                         <span class="dept_username">홍길동 </span>
                                         <span class="dept_emp">대리 </span>
-                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <span class="dept_phone">01545640564</span>
                                         <p class="dept_email">aoklfgjl@nave.com</p>
                                     </div>
                                 </div>
@@ -179,7 +186,7 @@
                                     <div class="dept_userbox">
                                         <span class="dept_username">홍길동 </span>
                                         <span class="dept_emp">대리 </span>
-                                        <span class="dept_phone" style="margin-left: 10px;">01545640564</span>
+                                        <span class="dept_phone">01545640564</span>
                                         <p class="dept_email">aoklfgjl@nave.com</p>
                                     </div>
                                 </div>
@@ -191,12 +198,12 @@
                         </div>
                     </div>
                     <div class="w50p pdx20" style="width: 460px;">
-                        <div class="box" style="height: 500px; width: 400px;">
+                        <div class="box box_container">
                             <div class="titlebox">
                                 <h2>쪽지</h2>
                             </div>
-                            <div class="notebox" style="overflow-y: scroll">
-                                
+                            <div class="notebox">
+
 
                             </div>
                         </div>
@@ -213,8 +220,10 @@
         </div>
     </footer>
 
-        <div class="message blind">쪽지보내기</div>
-        <script type="module" src="/js/index.js"></script>
-        <script src="/js/index/indexRead.js"></script>
-    </body>
+    <div class="message" id="message"></div>
+
+    <script type="module" src="/js/common.js"></script>
+    <script src="/js/mypage/myPage.js"></script>
+</body>
+
 </html>
