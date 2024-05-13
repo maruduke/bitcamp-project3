@@ -7,9 +7,13 @@ const element = {
     destination: document.querySelector('#destination'),
     reason: document.querySelector('#reason'),
     submit: document.querySelector('#submit'),
+    tempStore: document.querySelector('#tempStore'),
 };
 
-element.submit.addEventListener('click', () => {
+/**
+ * 전송 템플릿 데이터 직렬화
+ */
+const createTemplateData = () => {
     const approves = getApproveList();
     const references = getReferenceList();
 
@@ -23,10 +27,23 @@ element.submit.addEventListener('click', () => {
         reason: element.reason.value,
     };
 
-    console.log(template);
+    return template;
+};
+
+element.submit.addEventListener('click', () => {
+    const template = createTemplateData();
 
     applyService.createTemplate(template, () => {
         alert('결재 신청이 완료되었습니다.');
+        location.href = 'http://localhost:3200/approve/main';
+    });
+});
+
+element.tempStore.addEventListener('click', () => {
+    const template = createTemplateData();
+
+    applyService.tempStoreTemplate(template, () => {
+        alert('임시 저장 되었습니다.');
         location.href = 'http://localhost:3200/approve/main';
     });
 });

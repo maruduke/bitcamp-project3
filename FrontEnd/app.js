@@ -49,6 +49,16 @@ app.get('/message/:params', (req, res) => {
     res.sendFile(path.join(__dirname + `/message` + `/${params}`) + '.html');
 });
 
+app.get('/read', (req, res) => {
+    const { documentId, type } = req.query;
+
+    console.log(req.query);
+    if (type == 'VACATION') res.redirect(`/approve/check/check_vac?documentId=${documentId}`);
+    else if (type == 'BUSSINESSTRIP') res.redirect(`/approve/check/check_business?documentId=${documentId}`);
+    else if (type == 'REPORT') res.redirect(`/approve/check/check_report?documentId=${documentId}`);
+    else if (type == 'ACCOUNTINGEXPENSE') res.redirect(`/approve/check/check_expense?documentId=${documentId}`);
+});
+
 app.get('/:params', (req, res) => {
     const { params } = req.params;
     console.log(path.join(__dirname + `/${params}` + `/${params}`) + '.html');

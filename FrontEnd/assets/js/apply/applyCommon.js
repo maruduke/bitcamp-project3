@@ -27,15 +27,6 @@ const createSelectors = (containerId, userList) => {
 };
 
 /**
- * User 정보 DB에 가져와서 Select box생성
- */
-export async function initAsnc() {
-    const userList = await applyService.getUserList();
-    createSelectors('approvers', userList);
-    createSelectors('references', userList);
-}
-
-/**
  *
  * @returns 결재자 명단
  */
@@ -64,8 +55,17 @@ export const getReferenceList = () => {
 };
 
 /**
- * 돌아가기 버튼 eventListener 추가
+ * User 정보 DB에 가져와서 Select box생성
  */
-document.querySelector('#return').addEventListener('click', () => {
-    location.href = 'http://localhost:3200/approve/main';
-});
+export async function initAsnc() {
+    const userList = await applyService.getUserList();
+    createSelectors('approvers', userList);
+    createSelectors('references', userList);
+
+    /**
+     * 돌아가기 버튼 eventListener 추가
+     */
+    document.querySelector('#return').addEventListener('click', () => {
+        location.href = 'http://localhost:3200/approve/main';
+    });
+}
