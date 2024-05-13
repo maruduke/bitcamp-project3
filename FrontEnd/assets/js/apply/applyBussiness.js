@@ -53,11 +53,12 @@ element.tempStore.addEventListener('click', () => {
 temporary(() => {
     const tmpData = JSON.parse(localStorage.getItem('template'));
 
-    element.title.innerHTML = tmpData['typeData']['title'];
-    element.startDate.innerHTML = tmpData['typeData']['startDate'];
-    element.endDate.innerHTML = tmpData['typeData']['endDate'];
-    element.reason.innerHTML = tmpData['typeData']['reason'];
+    element.title.value = tmpData['typeData']['title'];
+    element.startDate.value = tmpData['typeData']['startDate'];
+    element.endDate.value = tmpData['typeData']['endDate'];
+    element.destination.value = tmpData['typeData']['location'];
+    element.reason.value = tmpData['typeData']['reason'];
 
-    localStorage.removeItem();
+    localStorage.removeItem('template');
 });
 initAsnc();
