@@ -49,6 +49,7 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
                 .where(document.writer.eq(user.getUserId()))
 //                .where(taskProgress.refUserId.eq(user.getUserId()))
                 .where(document.state.eq(taskProgress.state))
+                .orderBy(document.createDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageSize + 1)
                 .fetch();
@@ -85,8 +86,9 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
                 .from(document)
                 .leftJoin(ref).on(document.documentId.eq(ref.documentId))
                 .leftJoin(qUser).on(document.writer.eq(qUser.userId))
-                .where(ref.refUserId.eq(user.getUserId()))
-                .where(document.state.in(DocState.REFERENCE))
+                .where(ref.refUserId.eq(user.getUserId())
+                        .and(document.state.in(DocState.REFERENCE)))
+                .orderBy(document.createDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageSize + 1)
                 .fetch();
@@ -121,8 +123,9 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
                     .from(document)
                     .leftJoin(taskProgress).on(document.documentId.eq(taskProgress.documentId))
                     .leftJoin(qUser).on(document.writer.eq(qUser.userId))
-                    .where(taskProgress.refUserId.eq(user.getUserId()))
-                    .where(document.state.in(stateList))
+                    .where(taskProgress.refUserId.eq(user.getUserId())
+                            .and(document.state.in(stateList)))
+                    .orderBy(document.createDate.desc())
                     .offset(pageable.getOffset())
                     .limit(pageSize + 1)
                     .fetch();
