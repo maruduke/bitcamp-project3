@@ -2,6 +2,7 @@ import { getApproveList, getReferenceList, initAsnc } from './applyCommon.js';
 import { applyService } from '../apis/applyAPI.js';
 
 const element = {
+    title: document.querySelector('#title'),
     startDate: document.querySelector('#startDate'),
     endDate: document.querySelector('#endDate'),
     destination: document.querySelector('#destination'),
@@ -18,6 +19,7 @@ const createTemplateData = () => {
     const references = getReferenceList();
 
     const template = {
+        title: title,
         type: 'BUSSINESSTRIP',
         refList: references,
         approverList: approves,

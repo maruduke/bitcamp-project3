@@ -20,4 +20,5 @@ checkService.getTemplate((res) => {
     document.querySelector('#writer').innerHTML = res['writer'];
     document.querySelector('#approversList').innerHTML = approvers.slice(0, -2);
     document.querySelector('#refList').innerHTML = refs.slice(0, -2);
+    document.querySelector('#detail').innerHTML = res['typeData']['detail'];
 });
