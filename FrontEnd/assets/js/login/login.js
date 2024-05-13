@@ -28,11 +28,21 @@ const element = {
     login_button: document.querySelector('.btn'),
 };
 
-element.login_button.addEventListener('click', () => {
+const login = () => {
     const email = element.email.value;
     const password = element.password.value;
 
     loginService.login(new loginDto(email, password), () => {
         window.location.href = 'http://localhost:3200/';
     });
+};
+
+// 로그인 버튼 클릭 이벤트
+element.login_button.addEventListener('click', login);
+
+// Enter 키 누를 때 로그인 실행
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        login();
+    }
 });
