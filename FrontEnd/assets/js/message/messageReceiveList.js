@@ -70,7 +70,7 @@ function receiveMessageList(receiveMessage) {
                         currentMessageId = message.messageId;
     
                         // 메시지 상세 정보 가져오기
-                        fetchMessageDetails(message.messageId);
+                        fetchMessageDetails(currentMessageId);
                     });
     
                     // 기존의 메시지 목록에 추가

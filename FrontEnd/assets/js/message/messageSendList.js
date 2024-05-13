@@ -62,7 +62,7 @@ function sendMessageList(sendMessage) {
                         currentMessageId = message.messageId;
     
                         // 메세지 상세 정보 가져오기
-                        fetchSendMessageDetails(message.messageId);
+                        fetchSendMessageDetails(currentMessageId);
                     });
     
                     sendMessage.appendChild(messageItem);
