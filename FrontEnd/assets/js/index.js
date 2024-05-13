@@ -1,3 +1,9 @@
+import { initModal } from './message/messageModal.js';
+import { init_pagemove } from './message/message_pagemove.js';
+import { initHandler } from './message/messageHander.js';
+import { init_receiveList } from './message/messageReceiveList.js';
+import { init_sendList } from './message/messageSendList.js';
+
 const jwt = sessionStorage.getItem('jwt');
 if (!jwt) {
     // 로그인이 되어 있지 않은 경우 로그인 페이지로 이동
@@ -70,3 +76,25 @@ document.getElementById('logoutButton').addEventListener('click', () => {
             console.error('Logout Error:', error);
         });
 });
+
+function includeMessage() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:3200/message/message_inbox', true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.querySelector('#message').innerHTML = xhr.responseText;
+
+            // message 코드 작성
+            init_pagemove();
+            initHandler();
+            init_receiveList();
+            init_sendList();
+            initModal();
+        }
+    };
+    xhr.send();
+
+    return 'ok';
+}
+
+includeMessage();
