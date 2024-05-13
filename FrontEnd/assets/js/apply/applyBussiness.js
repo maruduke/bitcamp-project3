@@ -19,7 +19,7 @@ const createTemplateData = () => {
     const references = getReferenceList();
 
     const template = {
-        title: title,
+        title: element.title.value,
         type: 'BUSSINESSTRIP',
         refList: references,
         approverList: approves,
