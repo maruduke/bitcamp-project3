@@ -4,20 +4,13 @@ import com.example.backend.Jwt.JwtUtil;
 import com.example.backend.dto.user.*;
 import com.example.backend.entity.maria.User;
 import com.example.backend.entity.maria.enumData.Authority;
-import com.example.backend.repository.UserRepository;
-import com.example.backend.service.RedisService;
 import com.example.backend.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.coyote.BadRequestException;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @Log4j2
@@ -28,9 +21,6 @@ public class LogInController {
 
     private final UserService userService;
     private final JwtUtil jwtUtil;
-    private final RedisService redisService;
-    private final RedisTemplate redisTemplate;
-    private final UserRepository userRepository;
 
     @GetMapping("/header")
     public ResponseEntity<HeaderDto> getHeader(@AuthenticationPrincipal User user, @RequestHeader("Authorization") String token) {
@@ -39,7 +29,6 @@ public class LogInController {
         }
         log.info(userService.getName(user.getEmail()));
         return ResponseEntity.ok(userService.getName(user.getEmail()));
-
     }
 
     @GetMapping("/joinget")
@@ -59,8 +48,10 @@ public class LogInController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity loginGET(@RequestHeader("Authorization") String token) throws BadRequestException{
-
+    public ResponseEntity loginGET(@RequestHeader("Authorization") String token) {
+        if(!jwtUtil.validateToken(token)){
+            return ResponseEntity.status(401).build();
+        }
         return ResponseEntity.status(200).build();
     }
 
@@ -80,7 +71,6 @@ public class LogInController {
                 user.getAuthority());
         return ResponseEntity.ok(jwtUtil.reissueAtk(userResponse));
     }
-
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(@RequestHeader("Authorization") String token)  {
@@ -108,6 +98,5 @@ public class LogInController {
         userService.modifyInfo(email, infoDto);
         return ResponseEntity.ok("회원정보가 변경되었습니다.");
     }
-
 
 }
