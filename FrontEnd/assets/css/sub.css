@@ -1,5 +1,6 @@
 /* ========================================== 나의 신청 목록 보기 & 대기 중인 목록 보기 ============================================== */
 .list .title-white-box h2 {font-weight: 500;}
+.list .return-btn {display: flex; align-items: center;}
 .list .return-btn span {background: url(../images/return_btn.svg)no-repeat center; width: 20px; height: 20px; display: inline-block;}
 .list .list-box {border-bottom: 1px solid #cbcbcb; height: 80px; cursor: pointer;}
 .list .list-box-40 {height: 40px; border-bottom: 1px solid #cbcbcb; cursor: pointer;}
@@ -143,12 +144,6 @@
 
 
 
-
-
-
-
-
-
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 1720px) {
 	.apply-white-box {height:48px;}
 }

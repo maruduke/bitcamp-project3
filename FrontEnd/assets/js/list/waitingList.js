@@ -74,8 +74,6 @@ const listService = {
 
                     // 경석
                     let documentId = data.content[i].documentId;
-                    console.log(documentId);
-
                     listBox.addEventListener('click', () => {
                         window.location.href = `http://localhost:3200/read?documentId=${documentId}&type=${data.content[i].type}`;
                     });
@@ -149,8 +147,6 @@ const listService = {
 
                     // 경석
                     let documentId = data.content[i].documentId;
-                    console.log(documentId);
-
                     listBox.addEventListener('click', () => {
                         window.location.href = `http://localhost:3200/read?documentId=${documentId}&type=${data.content[i].type}`;
                     });
