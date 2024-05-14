@@ -14,7 +14,7 @@ let chkB = false;
 
 const listService = {
     referenceList: function (data) {
-        fetch(`http://localhost:8080/board/refList?pageNumber=${refPage}&DocState=REFERENCE`, {
+        fetch(`http://localhost:8080/board/refList?pageNumber=${refPage}&DocState=COMPLETE`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + sessionStorage.getItem('jwt') },
         })
@@ -219,5 +219,9 @@ function chgState(state) {
         return '승인 필요';
     } else if (state === 'REFERENCE') {
         return '참조';
+    } else if (state === 'DENY'){
+        return '반려';
+    } else if (state === 'COMPLETE'){
+        return '승인';
     }
 }
