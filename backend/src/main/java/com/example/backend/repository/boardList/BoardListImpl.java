@@ -89,7 +89,7 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
                 .where(ref.refUserId.eq(user.getUserId())
                         .and(document.state.in(stateList)))
 //                        .and(ref.refUserId.ne(document.writer)))
-                .orderBy(document.createDate.desc())
+                .orderBy(document.createDate.desc(), ref.documentId.desc())
                 .offset(pageable.getOffset())
                 .limit(pageSize + 1)
                 .fetch();
