@@ -67,7 +67,7 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
     }
 
     @Override
-    public Slice<WaitDto> findByState(User user, Pageable pageable, DocState state) {
+    public Slice<WaitDto> findByState(User user, Pageable pageable, List<DocState> stateList) {
         JPAQueryFactory query = new JPAQueryFactory(entityManager);
 
         QDocument document = QDocument.document;
@@ -87,8 +87,8 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
                 .leftJoin(ref).on(document.documentId.eq(ref.documentId))
                 .leftJoin(qUser).on(document.writer.eq(qUser.userId))
                 .where(ref.refUserId.eq(user.getUserId())
-                        .and(document.state.in(DocState.REFERENCE))
-                        .and(ref.refUserId.ne(document.writer)))
+                        .and(document.state.in(stateList)))
+//                        .and(ref.refUserId.ne(document.writer)))
                 .orderBy(document.createDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageSize + 1)

@@ -12,7 +12,7 @@ import java.util.List;
 public interface BoardList {
     Slice<MyListDto> findByWriter(User user, Pageable pageable);
 
-    Slice<WaitDto> findByState(User user, Pageable pageable, DocState state);
+    Slice<WaitDto> findByState(User user, Pageable pageable, List<DocState> stateList);
 
     Slice<WaitDto> findByStateIn(User user, Pageable pageable, List<DocState> stateList);
 }
