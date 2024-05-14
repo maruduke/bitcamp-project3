@@ -8,9 +8,13 @@ import com.example.backend.entity.mongo.Template;
 import com.example.backend.entity.mongo.TypeData;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.google.gson.Gson;
 import lombok.*;
+import org.springframework.boot.json.GsonJsonParser;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -53,6 +57,21 @@ public abstract class TemplateDto {
                 .createDate(createDate)
                 .build();
     }
+
+    public void setRefList(String ref) {
+        System.out.println(ref);
+        Gson gson = new Gson();
+        this.refList = gson.fromJson(ref, List.class);
+        System.out.println(refList.get(0)+" : " + refList.get(1)+ " : " + refList.get(2) + "----------");
+
+    }
+
+    public void setApproverList(String approver) {
+        Gson gson = new Gson();
+        this.approverList = gson.fromJson(approver, List.class);
+    }
+
+
 
 
 

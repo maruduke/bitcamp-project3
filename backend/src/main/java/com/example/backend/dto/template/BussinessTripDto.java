@@ -42,4 +42,6 @@ public class BussinessTripDto extends TemplateDto{
                 .typeData(bussinessTrip)
                 .build();
     }
+
+
 }
