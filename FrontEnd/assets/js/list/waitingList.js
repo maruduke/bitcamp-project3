@@ -14,7 +14,7 @@ let chkB = false;
 
 const listService = {
     referenceList: function (data) {
-        fetch(`http://localhost:8080/board/refList?pageNumber=${refPage}&DocState=COMPLETE`, {
+        fetch(`http://localhost:8080/board/refList?pageNumber=${refPage}&DocState=REFERENCE`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + sessionStorage.getItem('jwt') },
         })
