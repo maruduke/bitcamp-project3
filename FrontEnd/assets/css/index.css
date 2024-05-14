@@ -141,6 +141,7 @@ header .logo a {width: 100%; height: 100%; cursor: pointer;}
 .nav-index {padding: 100px 20px;}
 .nav-index ul li {margin-bottom: 80px;}
 .nav-index ul li a,button {font-size: 20px; font-weight: 500; color: #39435C;}
+i.xi-log-out {vertical-align: text-bottom;}
 
 /* main */
 main {margin-top: 100px;}
