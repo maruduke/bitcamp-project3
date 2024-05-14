@@ -58,6 +58,13 @@ public class MessageService {
                 .build();
     }
 
+    // 나에게 온 안 읽은 쪽지 리스트 count
+    public int getNotReadCountMessages(String receiverEmail){
+        User receiverId = userRepository.findByEmail(receiverEmail)
+                .orElseThrow(() -> new IllegalStateException("Receiver not found"));
+        return messageRepository.findByCountReceiverId(receiverId);
+    }
+
     // 나에게 온 받은 쪽지 리스트
     public Slice<ReceivedMessageDto> getReceivedMessages(String receiverEmail, int pageNumber, int pageSize) {
         User receiverId = userRepository.findByEmail(receiverEmail)

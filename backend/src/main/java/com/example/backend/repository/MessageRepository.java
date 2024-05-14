@@ -22,6 +22,10 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
     @Query("SELECT m FROM Message m WHERE m.senderId = :senderId AND m.senderDelete = false")
     Page<Message> findBySenderId(User senderId, Pageable pageable);
 
+    @Query("SELECT COUNT(m) FROM Message m WHERE m.receiverId = :receiverId AND m.readCheck = false AND m.receiverDelete = false")
+    int findByCountReceiverId(User receiverId);
+
+
     void deleteByMessageId(Long messageId);
 
 
