@@ -44,13 +44,35 @@ public class SignService {
 
         LocalDate createDate = LocalDate.now();
 
-        List<Long> refList = userRepository.findAllByEmailOrderByField(templateDto.getRefList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"))
-                .stream().map( (user) -> user.getUserId()).toList();
-        List<Long> approveList = userRepository.findAllByEmailOrderByField(templateDto.getApproverList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"))
-                .stream().map( (user) -> user.getUserId()).toList();;
+
+        List<User> refList = userRepository.findAllByEmailOrderByField(templateDto.getRefList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"));
+        List<User> approveList = userRepository.findAllByEmailOrderByField(templateDto.getApproverList()).orElseThrow(() -> new IllegalArgumentException("없는 참조가 있음"));
+
+        List<Long> sortedRefList = templateDto.getRefList().stream().map( (email) -> {
+            log.info(email);
+            for(User user : refList) {
+                log.info(user);
+                if(user.getEmail().equals(email))
+                    return user.getUserId();
+            }
+                    return null;
+                }
+        ).toList();
+
+        List<Long> sortedApproveList = templateDto.getApproverList().stream().map( (email) -> {
+                    for(User user : approveList) {
+                        if(user.getEmail().equals(email))
+                            return user.getUserId();
+                    }
+                    return null;
+                }
+        ).toList();
+
+
+        log.info(approveList);
 
         // mongodb 템플릿 저장
-        Template<? extends TypeData> template = templateDto.toTemplateEntity(approveList, refList);
+        Template<? extends TypeData> template = templateDto.toTemplateEntity(sortedApproveList, sortedRefList);
         templateRepository.save(template);
 
         log.info(template);
