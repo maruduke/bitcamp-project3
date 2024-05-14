@@ -33,13 +33,21 @@ public class UserListImpl extends QuerydslRepositorySupport implements UserList 
         QUser user = QUser.user;
         JPAQueryFactory query = new JPAQueryFactory(entityManager);
 
-        String emailIn = emails.stream().map(value -> value +", ").collect(Collectors.joining());
+        log.info(emails);
+
+        String emailIn = emails.stream().map(value -> "\'" + value+ "\'").collect(Collectors.joining(", "));
+
+        log.info(emailIn);
+
+        List<User> users =  query.from(user)
+                .where(user.email.in(emails))
+                .select(user)
+                .fetch();
+
+        users.stream().forEach((u) -> log.info("test: " + u.getName()));
+
         return Optional.of(
-                query.from(user)
-                        .where(user.email.in(emails))
-                        .select(user)
-                        .orderBy(Expressions.stringTemplate("FIELD({0}, {1})", user.email, emailIn)
-                                .asc()).fetch()
+            users
         );
     }
 }

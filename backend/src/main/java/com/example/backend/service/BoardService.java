@@ -70,26 +70,39 @@ public class BoardService {
         String writer = formatName(userRepository.findById(template.getWriter()).orElseThrow(() -> new IllegalArgumentException("error")));
 
 
-        List<String> refs = userRepository.findAllById(template.getRefList())
-                .stream().map((user) -> formatName(user)).toList();
+        List<User> refs = userRepository.findAllById(template.getRefList());
+
 
         log.info(refs);
 
-        List<String> approvers = userRepository.findAllById(template.getApproverList())
-                .stream().map((user) -> formatName(user)).toList();
+        List<User> approvers = userRepository.findAllById(template.getApproverList());
 
         log.info(approvers);
 
-        return template.toTemplateResponseDto(writer, refs, approvers);
-//        if(type == DocType.ACCOUNTINGEXPENSE)
-//            templateResponseDto = template.toTemplateResponseDto();
-//        if(type == DocType.BUSSINESSTRIP)
-//            null;
-//        if(type == DocType.REPORT)
-//            null;
-//        if(type == DocType.VACATION)
-//            null;
-//        return null;
+        List<String> sortedRefList = template.getRefList().stream().map( (email) -> {
+                    log.info(email);
+                    for(User user : refs) {
+                        log.info(user);
+                        if(user.getEmail().equals(email))
+                            return formatName(user);
+                    }
+                    return null;
+                }
+        ).toList();
+
+        List<String> sortedApproveList = template.getApproverList().stream().map( (email) -> {
+                    for(User user : approvers) {
+                        if(user.getEmail().equals(email))
+                            return formatName(user);
+                    }
+                    return null;
+                }
+        ).toList();
+
+
+
+        return template.toTemplateResponseDto(writer, sortedRefList, sortedApproveList);
+
     }
 
     public String formatName(User user) {

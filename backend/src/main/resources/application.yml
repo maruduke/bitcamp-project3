@@ -11,9 +11,14 @@ spring:
 logging:
   level:
     org:
+      hibernate:
+        SQL: DEBUG
+        type: trace
       springframework:
         data:
           mongodb:
             core:
               MongoTemplate: DEBUG
+
+
 
