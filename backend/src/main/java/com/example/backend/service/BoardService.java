@@ -35,7 +35,9 @@ public class BoardService {
 
     public Slice<WaitDto> getRefList(User user, Pageable pageable, DocState state){
 
-        return documentRepository.findByState(user, pageable, state);
+        List<DocState> stateList = Arrays.asList(DocState.REFERENCE, DocState.DENY, DocState.COMPLETE);
+
+        return documentRepository.findByState(user, pageable, stateList);
     }
 
     public Slice<WaitDto> getApproveList(User user, Pageable pageable, DocState state){
