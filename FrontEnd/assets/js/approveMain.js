@@ -1,4 +1,5 @@
-const scroll = document.querySelector(".scroll");
+const appScroll = document.querySelector("#app");
+const myListScroll = document.querySelector("#myList");
 const myListContent = document.querySelector(".content.myList");
 const approveContent = document.querySelector(".content.approve");
 let isFetching = false;
@@ -145,18 +146,25 @@ let appPage = 0;
 	listService.myList();
 	listService.approveList();
 
-	// 무한스크롤
-	scroll.addEventListener("scroll", ()=>{
-		if(isFetching || !hasNext) {
+	appScroll.addEventListener('scroll', () => {
+		if (isFetching || !hasNext) {
 			return;
 		}
-				
-		if((scroll.scrollTop + scroll.clientHeight + 50) >= scroll.scrollHeight) {
-		
-			listService.myList();
-			// listService.approveList();
+	
+		if (appScroll.scrollTop + appScroll.clientHeight + 50 >= appScroll.scrollHeight) {
+			listService.approveList();
 		}
-	})
+	});
+	
+	myListScroll.addEventListener('scroll', () => {
+		if (isFetching || !hasNext) {
+			return;
+		}
+	
+		if (refScroll.scrollTop + refScroll.clientHeight + 50 >= refScroll.scrollHeight) {
+			listService.myList();
+		}
+	});
 
 
 function chgType(type) {
