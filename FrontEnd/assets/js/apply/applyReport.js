@@ -20,6 +20,7 @@ const createTemplateData = () => {
         detail: detail.value,
     };
 
+    console.log(JSON.stringify(template));
     return template;
 };
 

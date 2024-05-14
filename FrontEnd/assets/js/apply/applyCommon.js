@@ -37,7 +37,7 @@ export const getApproveList = () => {
         if (app.value != '') approves.push(app.value);
     });
 
-    return approves;
+    return JSON.stringify(approves);
 };
 
 /**
@@ -51,7 +51,7 @@ export const getReferenceList = () => {
         if (ref.value != '') refs.push(ref.value);
     });
 
-    return refs;
+    return JSON.stringify(refs);
 };
 
 /**
