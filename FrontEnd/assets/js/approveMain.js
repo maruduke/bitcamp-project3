@@ -1,5 +1,5 @@
-const myListScroll = document.querySelector("#myList");
 const appScroll = document.querySelector("#app");
+const myListScroll = document.querySelector("#myList");
 const myListContent = document.querySelector(".content.myList");
 const approveContent = document.querySelector(".content.approve");
 let isFetching = false;
@@ -30,7 +30,7 @@ let appPage = 0;
 					return;
 				}
 
-				for(let i = 0; i < 10; i++){
+				for(let i = 0; i < data.content.length; i++){
 					// div 생성
 					let listBox = document.createElement("div");
 					let listTitleBox = document.createElement("div");
@@ -65,7 +65,7 @@ let appPage = 0;
                     listBox.addEventListener('click', () => {
                         window.location.href = `http://localhost:3200/read?documentId=${documentId}&type=${data.content[i].type}`;
                     });
-                    // ----------------------------------------------------------------------------
+                    // ----------------------------------------------------------------------------	
 				}
 				pageNumber++;
 
@@ -128,12 +128,11 @@ let appPage = 0;
 					listState.innerHTML = state;
 
 					let documentId = data.content[i].documentId;
-
                     // 경석 =--------------------------------------------------------------------
                     listBox.addEventListener('click', () => {
                         window.location.href = `http://localhost:3200/read?documentId=${documentId}&type=${data.content[i].type}`;
                     });
-                    // ----------------------------------------------------------------------------
+                    // ----------------------------------------------------------------------------					
 				}
 
 				if(data == null || data == "null"){
@@ -146,6 +145,26 @@ let appPage = 0;
 
 	listService.myList();
 	listService.approveList();
+
+	appScroll.addEventListener('scroll', () => {
+		if (isFetching || !hasNext) {
+			return;
+		}
+	
+		if (appScroll.scrollTop + appScroll.clientHeight + 50 >= appScroll.scrollHeight) {
+			listService.approveList();
+		}
+	});
+	
+	myListScroll.addEventListener('scroll', () => {
+		if (isFetching || !hasNext) {
+			return;
+		}
+	
+		if (refScroll.scrollTop + refScroll.clientHeight + 50 >= refScroll.scrollHeight) {
+			listService.myList();
+		}
+	});
 
 
 function chgType(type) {
