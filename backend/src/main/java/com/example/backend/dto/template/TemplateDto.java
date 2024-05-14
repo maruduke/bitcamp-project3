@@ -59,10 +59,8 @@ public abstract class TemplateDto {
     }
 
     public void setRefList(String ref) {
-        System.out.println(ref);
         Gson gson = new Gson();
         this.refList = gson.fromJson(ref, List.class);
-        System.out.println(refList.get(0)+" : " + refList.get(1)+ " : " + refList.get(2) + "----------");
 
     }
 
