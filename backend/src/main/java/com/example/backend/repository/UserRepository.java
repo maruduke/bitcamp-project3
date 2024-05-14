@@ -2,6 +2,7 @@ package com.example.backend.repository;
 
 import com.example.backend.dto.user.HeaderDto;
 import com.example.backend.entity.maria.User;
+import com.example.backend.repository.userList.UserList;
 import io.jsonwebtoken.Header;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long>, UserList {
 
     boolean existsByEmail(String email);
 

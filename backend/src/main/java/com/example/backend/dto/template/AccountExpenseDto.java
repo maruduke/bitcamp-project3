@@ -10,6 +10,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -42,4 +43,5 @@ public class AccountExpenseDto extends TemplateDto{
                 .typeData(accountingExpense)
                 .build();
     }
+
 }
