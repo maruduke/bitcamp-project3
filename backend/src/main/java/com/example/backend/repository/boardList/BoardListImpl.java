@@ -55,7 +55,7 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
                 .fetch();
 
         boolean hasNext = false;
-        if(content.size() >= pageSize){
+        if(content.size() > pageSize){
             content.remove(pageSize);
             hasNext = true;
         }
@@ -64,6 +64,44 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
         Slice<MyListDto> result = new SliceImpl<>(content, pageable, hasNext);
 
         return result;
+    }
+
+    @Override
+    public Slice<WaitDto> findByStateIn(User user, Pageable pageable, List<DocState> stateList) {
+        JPAQueryFactory query = new JPAQueryFactory(entityManager);
+
+        QDocument document = QDocument.document;
+        QTaskProgress taskProgress = QTaskProgress.taskProgress;
+        QUser qUser = QUser.user;
+
+        int pageSize = pageable.getPageSize();
+
+        List<WaitDto> content = query
+                .select(Projections.constructor(WaitDto.class,
+                        document.documentId,
+                        qUser.name,
+                        document.type,
+                        document.state,
+                        document.createDate))
+                .from(document)
+                .leftJoin(taskProgress).on(document.documentId.eq(taskProgress.documentId))
+                .leftJoin(qUser).on(document.writer.eq(qUser.userId))
+                .where(taskProgress.refUserId.eq(user.getUserId())
+                        .and(document.state.in(stateList))
+                        .and(taskProgress.refUserId.ne(document.writer)))
+                .orderBy(document.createDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageSize + 1)
+                .fetch();
+
+        boolean hasNext = false;
+        if(content.size() > pageSize){
+            content.remove(pageSize);
+            hasNext = true;
+        }
+
+        // Slice 객체 변환
+        return new SliceImpl<>(content, pageable, hasNext);
     }
 
     @Override
@@ -87,53 +125,15 @@ public class BoardListImpl extends QuerydslRepositorySupport implements BoardLis
                 .leftJoin(ref).on(document.documentId.eq(ref.documentId))
                 .leftJoin(qUser).on(document.writer.eq(qUser.userId))
                 .where(ref.refUserId.eq(user.getUserId())
-                        .and(document.state.in(stateList)))
-//                        .and(ref.refUserId.ne(document.writer)))
+                        .and(document.state.in(stateList))
+                        .and(ref.refUserId.ne(document.writer)))
                 .orderBy(document.createDate.desc(), ref.documentId.desc())
                 .offset(pageable.getOffset())
                 .limit(pageSize + 1)
                 .fetch();
 
         boolean hasNext = false;
-        if(content.size() >= pageSize){
-            content.remove(pageSize);
-            hasNext = true;
-        }
-
-        // Slice 객체 변환
-        return new SliceImpl<>(content, pageable, hasNext);
-    }
-
-    @Override
-    public Slice<WaitDto> findByStateIn(User user, Pageable pageable, List<DocState> stateList) {
-        JPAQueryFactory query = new JPAQueryFactory(entityManager);
-
-        QDocument document = QDocument.document;
-        QTaskProgress taskProgress = QTaskProgress.taskProgress;
-        QUser qUser = QUser.user;
-
-        int pageSize = pageable.getPageSize();
-
-        List<WaitDto> content = query
-                    .select(Projections.constructor(WaitDto.class,
-                            document.documentId,
-                            qUser.name,
-                            document.type,
-                            document.state,
-                            document.createDate))
-                    .from(document)
-                    .leftJoin(taskProgress).on(document.documentId.eq(taskProgress.documentId))
-                    .leftJoin(qUser).on(document.writer.eq(qUser.userId))
-                    .where(taskProgress.refUserId.eq(user.getUserId())
-                            .and(document.state.in(stateList))
-                            .and(taskProgress.refUserId.ne(document.writer)))
-                    .orderBy(document.createDate.desc())
-                    .offset(pageable.getOffset())
-                    .limit(pageSize + 1)
-                    .fetch();
-
-        boolean hasNext = false;
-        if(content.size() >= pageSize){
+        if(content.size() > pageSize){
             content.remove(pageSize);
             hasNext = true;
         }
