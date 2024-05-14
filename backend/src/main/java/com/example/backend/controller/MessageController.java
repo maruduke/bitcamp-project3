@@ -54,7 +54,7 @@ public class MessageController {
         return ResponseEntity.ok(receivedMessageList);
     }
 
-    // 나에게 온 받은 쪽지 리스트
+    // 나에게 온 받은 안읽은 쪽지 페이지네이션 리스트
     @GetMapping("/noReadReceivedList")
     public ResponseEntity<Slice<ReceivedMessageDto>> getNoReadReceivedMessages(@AuthenticationPrincipal User user,
                                                                          @RequestParam(name = "pageNumber",
@@ -64,6 +64,14 @@ public class MessageController {
         String email = user.getEmail();
         Slice<ReceivedMessageDto> receivedMessageList = messageService.getNoReadReceivedMessages(email, pageNumber, pageSize);
         return ResponseEntity.ok(receivedMessageList);
+    }
+
+    // 나에게 온 안읽은 쪽지 리스트 count
+    @GetMapping("/noReadReceivedCount")
+    public ResponseEntity<Integer> getNoReadReceivedCount(@AuthenticationPrincipal User user) {
+        String email = user.getEmail();
+        int notReadCount = messageService.getNotReadCountMessages(email);
+        return ResponseEntity.ok(notReadCount);
     }
 
     // 나에게 온 선택한 쪽지 내용 가져오기
