@@ -69,6 +69,7 @@ public class BoardService {
 
         String writer = formatName(userRepository.findById(template.getWriter()).orElseThrow(() -> new IllegalArgumentException("error")));
 
+        log.info(template);
 
         List<User> refs = userRepository.findAllById(template.getRefList());
 
@@ -79,20 +80,20 @@ public class BoardService {
 
         log.info(approvers);
 
-        List<String> sortedRefList = template.getRefList().stream().map( (email) -> {
-                    log.info(email);
+        List<String> sortedRefList = template.getRefList().stream().map( (Id) -> {
+                    log.info(Id);
                     for(User user : refs) {
                         log.info(user);
-                        if(user.getEmail().equals(email))
+                        if(user.getUserId().equals(Id))
                             return formatName(user);
                     }
                     return null;
                 }
         ).toList();
 
-        List<String> sortedApproveList = template.getApproverList().stream().map( (email) -> {
+        List<String> sortedApproveList = template.getApproverList().stream().map( (Id) -> {
                     for(User user : approvers) {
-                        if(user.getEmail().equals(email))
+                        if(user.getUserId().equals(Id))
                             return formatName(user);
                     }
                     return null;
