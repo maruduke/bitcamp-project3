@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    include: db
+
+  jwt:
+    key: secret-key
+    live:
+      atk: 43200000
+      rtk: 43200000
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: trace
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+
+
+
