@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 직위가 유효한지 확인
-        const validPositions = ['CEO', '부장', '차장', '과장', '대리', '사원', '인턴'];
+        const validPositions = ['CEO', '팀장', '과장', '대리', '주임', '사원', '인턴'];
         if (!validPositions.includes(inputPosition)) {
             errorMessages.push('올바른 직위를 입력해주세요.');
         }

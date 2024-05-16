@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 `,
                 children: [
-                    { name: "운영팀", position: generateDepartmentPosition(data, "운영과") },
-                    { name: "인사팀", position: generateDepartmentPosition(data, "인사과") },
-                    { name: "디자인팀", position: generateDepartmentPosition(data, "디자인과") },
-                    { name: "개발팀", position: generateDepartmentPosition(data, "개발과") },
-                    { name: "영업팀", position: generateDepartmentPosition(data, "영업과") }
+                    { name: "인사팀", position: generateDepartmentPosition(data, "인사") },
+                    { name: "운영팀", position: generateDepartmentPosition(data, "운영") },
+                    { name: "디자인팀", position: generateDepartmentPosition(data, "디자인") },
+                    { name: "개발팀", position: generateDepartmentPosition(data, "개발") },
+                    { name: "영업팀", position: generateDepartmentPosition(data, "영업") }
                 ]
             };
 
