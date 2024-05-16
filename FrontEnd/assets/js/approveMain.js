@@ -161,7 +161,7 @@ let appPage = 0;
 			return;
 		}
 	
-		if (refScroll.scrollTop + refScroll.clientHeight + 50 >= refScroll.scrollHeight) {
+		if (myListScroll.scrollTop + myListScroll.clientHeight + 50 >= myListScroll.scrollHeight) {
 			listService.myList();
 		}
 	});

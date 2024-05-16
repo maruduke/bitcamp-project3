@@ -192,7 +192,7 @@ refScroll.addEventListener('scroll', () => {
     }
 
     if (refScroll.scrollTop + refScroll.clientHeight + 50 >= refScroll.scrollHeight) {
-        listService.refList();
+        listService.referenceList();
         console.log('scroll');
     }
 });
