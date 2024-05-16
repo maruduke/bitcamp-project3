@@ -201,3 +201,98 @@ footer em {font-size: 13px; font-weight:lighter; color: #000;}
 	main,
 	main.index-main {margin-top: 20px;}
 }
+
+/*index 페이지 css*/
+
+        .titlebox {
+            width: 400px;
+            height: 65px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            background-color: #5B718F;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dept_list,
+        .index_notelist {
+            /* width: 350px; */
+            height: 75px;
+            border-bottom: 1px solid #CBC9D7;
+            display: flex;
+            align-items: center;
+
+
+        }
+
+        .dept_userbox {
+            margin-left: 30px;
+            color: #39435C;
+        }
+
+        .index_notebox {
+            margin-left: 30px;
+            width: 340px;
+            font-size: 17px;
+        }
+
+        .note_username,
+        .dept_emp,
+        .note_emp {
+            font-weight: 500;
+        }
+
+        .index_notebox:not(.note_username) {
+            font-weight: lighter;
+        }
+
+        .dept_email {
+            margin-top: 12px;
+            color: #CBC9D7;
+        }
+
+        .index_notebox p {
+            margin-top: 12px;
+            color: #CBC9D7;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .dept_username {
+            font-size: 18px;
+
+            font-weight: normal;
+        }
+
+        .note_username {
+            font-size: 18px;
+        }
+
+        .dept_userbox:not(.dept_username) {
+            font-size: 17px;
+            font-weight: lighter;
+        }
+
+        .dept_phone {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .notebox,
+        .deptbox {
+            height: 435px;
+        }
+
+        .box_container {
+            height: 500px;
+            width: 400px;
+        }
+
+        .note_content,
+        .dept_email {
+            font-size: 15px;
+        }
