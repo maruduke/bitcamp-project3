@@ -162,7 +162,7 @@ footer {position: fixed; bottom: 50px; text-align: center; width: 100%;}
 footer em {font-size: 13px; font-weight:lighter; color: #000;}
 
 /* message */
-.message {position: fixed; bottom: 80px; right: 100px; background: url(../images/message.svg)no-repeat center/contain; width: 55px; height: 41px; display: inline-block;}
+.message {position: fixed; bottom: 80px; right: 100px; background: url(../images/message.svg)no-repeat center/contain; width: 55px; height: 41px; display: inline-block; cursor: pointer;}
 .message.new::after {content: ""; background: url(../images/new.svg)no-repeat center; width: 17px; height: 22px; display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
 
 
