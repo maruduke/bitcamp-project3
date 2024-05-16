@@ -1,0 +1,151 @@
+<!-- Moment.js 라이브러리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<div class="message_modal msg-box">
+    <div class="message_container">
+        <!-- 쪽지 메인 페이지 -->
+        <div class="page active" id="note_inbox">
+            <div class="message_top">
+                <div class="inbox">
+                    <button class="message_top_btn inbox_btn" style="color: #39435c">수신함</button>
+                </div>
+                <div class="outbox">
+                    <button class="message_top_btn outbox_btn" style="color: #c1c5d4">발신함</button>
+                    <!-- <a href="message_outbox.html">발신함</a> -->
+                </div>
+                <div class="send">
+                    <button class="message_top_btn send_btn" style="color: #c1c5d4">보내기</button>
+                </div>
+            </div>
+            <div class="message_body" style="overflow-y: scroll">
+                
+            </div>
+            <div class="message_bottom"></div>
+        </div>
+        <!-- 쪽지 수신 확인 -->
+        <div class="page" id="note_inbox_check">
+            <div class="message_top">
+                <div class="inbox">
+                    <button class="message_top_btn inbox_btn" style="color: #39435c">수신함</button>
+                </div>
+                <div class="outbox">
+                    <button class="message_top_btn outbox_btn" style="color: #c1c5d4">발신함</button>
+                    <!-- <a href="message_outbox.html">발신함</a> -->
+                </div>
+                <div class="send">
+                    <button class="message_top_btn send_btn" style="color: #c1c5d4">보내기</button>
+                </div>
+            </div>
+            <div class="message_body">
+                <div class="inbox_user_container">
+                    <div class="inbox_user">
+                        <span class="receiverDetailName"></span> <span class="receiverDetailPosition"></span>
+                    </div>
+                    <div class="inbox_date">
+                        <span class="receiverDetailTime"></span>
+                    </div>
+                </div>
+                <div class="inbox_content">
+                    <span class="receiverDetailContent"></span>
+                </div>
+            </div>
+            <div class="message_bottom">
+                <div class="check">
+                    <button class="message_bottom_btn check_btn">확인</button>
+                </div>
+                <div class="delete">
+                    <button class="message_bottom_btn delete_btn">삭제</button>
+                </div>
+                <div class="reply">
+                    <button class="message_bottom_btn reply_btn">답장</button>
+                </div>
+            </div>
+        </div>
+        <!-- 쪽지 발신 -->
+        <div class="page" id="note_outbox">
+            <div class="message_top">
+                <div class="inbox">
+                    <button class="message_top_btn inbox_btn" style="color: #c1c5d4">수신함</button>
+                </div>
+                <div class="outbox">
+                    <button class="message_top_btn outbox_btn" style="color: #39435c">발신함</button>
+                    <!-- <a href="message_outbox.html">발신함</a> -->
+                </div>
+                <div class="send">
+                    <button class="message_top_btn send_btn" style="color: #c1c5d4">보내기</button>
+                </div>
+            </div>
+            <div class="message_sendBody" style="overflow-y: scroll">
+               
+            </div>
+
+            <div class="message_bottom"></div>
+        </div>
+        <!-- 쪽지 발신 확인 -->
+        <div class="page" id="note_outbox_check">
+            <div class="message_top">
+                <div class="inbox">
+                    <button class="message_top_btn inbox_btn" style="color: #c1c5d4">수신함</button>
+                </div>
+                <div class="outbox">
+                    <button class="message_top_btn outbox_btn" style="color: #39435c">발신함</button>
+                    <!-- <a href="message_outbox.html">발신함</a> -->
+                </div>
+                <div class="send">
+                    <button class="message_top_btn send_btn" style="color: #c1c5d4">보내기</button>
+                </div>
+            </div>
+            <div class="message_body">
+                <div class="outbox_user_container">
+                    <div class="outbox_user">
+                        <span class="myReceiverDetailName"></span> <span class="myReceiverDetailPosition"></span>
+                    </div>
+                    <div class="outbox_date">
+                        <span class="myReceiverDetailTime"></span>
+                    </div>
+                </div>
+                <div class="outbox_content">
+                    <span class="myReceiverDetailContent"></span>
+                </div>
+            </div>
+            <div class="message_bottom">
+                <div class="delete">
+                    <button class="message_bottom_btn delete_btn" id="send_deletebtn">삭제</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 쪽지 보내기 -->
+        <div class="page" id="note_send">
+            <div class="message_top">
+                <div class="inbox">
+                    <button class="message_top_btn inbox_btn" style="color: #c1c5d4">수신함</button>
+                </div>
+                <div class="outbox">
+                    <button class="message_top_btn outbox_btn" style="color: #c1c5d4">발신함</button>
+                    <!-- <a href="message_outbox.html">발신함</a> -->
+                </div>
+                <div class="send">
+                    <button class="message_top_btn send_btn" style="color: #39435c">보내기</button>
+                </div>
+            </div>
+            <div class="message_body">
+                <div class="inbox_user_container">
+                    <div class="send_user_select">
+                        <select name="users" id="userSelect" class="select">
+                            <option value="" selected disabled>선택</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="send_content">
+                    <textarea class="send_content_area"></textarea>
+                </div>
+            </div>
+            <div class="message_bottom">
+                <div class="check">
+                    <button class="message_bottom_btn check_btn" id="sendBtn">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+/* ========================================== 나의 신청 목록 보기 & 대기 중인 목록 보기 ============================================== */
+.list .title-white-box h2 {font-weight: 500;}
+.list .return-btn {display: flex; align-items: center;}
+.list .return-btn span {background: url(../images/return_btn.svg)no-repeat center; width: 20px; height: 20px; display: inline-block;}
+.list .list-box {border-bottom: 1px solid #cbcbcb; height: 80px; cursor: pointer;}
+.list .list-box-40 {height: 40px; border-bottom: 1px solid #cbcbcb; cursor: pointer;}
+
+
+.list .list-box-40 .list-writer,
+.list .list-title-box .list-writer,
+.list .list-box-40 .list-title,
+.list .list-title-box .list-title {font-size: 15px; font-weight: 300; color: #39435c; margin-bottom: 15px;}
+.list .list-date,
+.list .list-box-40 span,
+.list .list-title-box span {font-size: 12px; font-weight: 300; color: #39435c;}
+.list .list-date {line-height: 1.6;}
+/* ========================================== 나의 신청 목록 보기 & 대기 중인 목록 보기 ============================================== */
+
+
+/* ========================================== apply ============================================== */
+/* 시간 박스*/
+.time-box{background: #fff; height: 15px; text-align: right; margin-top: 21px;}
+.time-box span {color: #000; font-size: 10px; font-weight: 300; position: relative;}
+
+/*확인서 내부 박스*/
+.check-white {background: #fff;color: #fff; font-size: 15px; font-weight: 300; text-align: left; height: 55px; line-height: 55px;}
+
+.check-white-box {background: #fff;height: 55px; border-bottom: 1px solid #CBC9D7; display: flex; align-items: center;}
+.check-white-box > div {width: calc(100% - 106px)}
+.check-white-box h2{color: #39435C; font-size: 20px; font-weight: 500; width: 106px;} 
+.check-white-box span {color: #000; font-size: 15px; font-weight: 300; padding-right: 10px; position: relative; word-break: keep-all;}
+.check-white-box span::after {content: "/"; position: absolute; top: 2px; right: 0; display: inline-block;}
+.check-white-box span:last-of-type::after {display: none;}
+.check-white-box:last-of-type {border-bottom: none;}
+
+/*신청서 내부 박스*/
+.apply-white {background: #fff;color: #fff; font-size: 15px; font-weight: 300; text-align: left; height: 55px; line-height: 55px;}
+
+.apply-white-box {background: #fff;height: 55px; display: flex; align-items: center;}
+.apply-white-box > div {width: calc(100% - 120px)}
+.apply-white-box h2{color: #39435C; font-size: 20px; font-weight: 500; width: 106px;} 
+/* .apply-white-box span {color: #000; font-size: 12px; font-weight: 300; padding-right: 10px; position: relative; word-break: keep-all;} */
+
+.apply-white-box input {color: #000;  border: none; outline: none; font-size: 14px; font-weight: 300; padding-right: 10px; position: relative; word-break: keep-all;   word-wrap: break-word; width: 100%;}
+.apply-white-box textarea {color: #000;border: none;outline: none;font-size: 14px;font-weight: 300;padding: 0px; resize: none; overflow: auto; /* 필요할 때만 스크롤바 표시 */width: 100%;height: 100%;}
+
+/*마지막 넓은 박스*/
+.apply-white-box .reason{height: 130px;}
+.apply-white-box.align-start {margin-top: 10px;}
+
+/*박스에 테두리 표현*/
+.inner-box {border: 1px solid #CBC9D7;padding: 6px;/* margin-bottom: 10px; */border-radius: 8px 8px 8px 8px; }
+/* ========================================== apply ============================================== */
+
+
+/* ========================================== member ============================================== */
+.member .employee {position: relative;cursor: pointer;padding: 8px;border-bottom: 1px solid #ccc;}
+.member .employee:hover {background-color: #f9f9f9;}
+.member .employee .name {font-weight: 500;margin-bottom: 5px; font-size: 14px;}
+
+.member .info {display: none;position: absolute;top: -15px;left: 100px;background-color: #f9f9f9;padding: 10px;border-radius: 5px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);z-index: 1;}
+.member .info div {margin-bottom: 5px;}
+
+/*-----------------------------------------------------------------------*/
+
+.orgchart .node .content {box-sizing: border-box;padding: 2px;font-size: .625rem;border: 1px solid rgba(217, 83, 79, .8);border-radius: 0 0 4px 4px;text-align: center;background-color: #fff;color: #333;white-space: nowrap;height: auto;}
+.orgchart {background-image: none; display: flex; justify-content: center; align-items: center;}
+.orgchart .node .content div {margin-top: 5px;margin-bottom: 5px;}
+.orgchart .lines .leftLine {border-left-color: #5B718F;}
+.orgchart .lines .rightLine {border-right-color: #5B718F; height: 30px !important;}
+.orgchart .lines .topLine {border-top-color: #5B718F;}
+
+.orgchart .lines .downLine {background-color: #5B718F; height: 40px;}
+.orgchart .node .title {background-color: #5B718F; padding: 10px 20px; height: auto; font-size: 15px; font-weight: normal;}
+
+.orgchart .node .content {border-color: #5B718F;}
+/* ========================================== member ============================================== */
+
+
+/* ========================================== mypage ============================================== */
+.mypage .userflex {display: flex;flex-wrap: wrap;justify-content: center;align-items: center;position: relative;}
+.mypage .userprofile {text-align: center;}
+.mypage .userimage {width: 230px;height: 230px;background-color: black;display: flex;flex-direction: column;position: relative;justify-content: center;margin-top: 125px;margin-right: 25px;position: relative;}
+.mypage .userinfo {margin-top: 70px;margin-left: 25px;}
+.mypage .usertext {position: flex;color: #62536D;margin-top: 20px;justify-content: center;margin-right: 25px;}
+.mypage .user_inputbox {width: 275px;height: 40px;background-color: #39435c;border-radius: 4px;margin-top: 22px;display: flex;/* justify-content: center; */align-items: center;color: #EFF3F6;padding-left: 20px;font-size: 14px;}
+.mypage .user_inputbox_modify{width: 275px;height: 40px;background-color: #EDEDED;border-radius: 4px;margin-top: 22px;display: flex;align-items: center;padding-left: 20px;font-size: 14px;}
+.mypage .user_inputbox_modify input{/* width: calc(100% - 100px); */height: 100%;border: none;background: none;outline: none;color: #39435c;padding: 0 10px;font-size: 16px;vertical-align: middle;display: inline-block;font-size: 13px;}
+.mypage span{margin-top: 3px;}
+/* ========================================== mypage ============================================== */
+
+
+/* ========================================== message ============================================== */
+.msg-box {cursor: pointer;}
+.msg-box .send_content {padding: 15px;width: 350px;height: 260px;}
+.msg-box .send_content_area {width: 100%;height: 100%;/* textarea의 너비를 100%로 설정하여 부모 요소에 맞춤 */position: relative;word-break: keep-all;border: none;}
+
+.msg-box .page {display: none;}
+.msg-box .page.active {display: block;}
+
+.msg-box .send_content_areabody{position: relative;}
+.msg-box .message_modal{position: absolute;display: none;}
+.msg-box .message_container{position: fixed; bottom: 140px; right: 102px;display: inline-block;width: 350px;background-color: white;border-radius: 8px;text-align: center;}
+.msg-box .message_top{height: 70px;border: 1px solid #C1C5D4;border-top-left-radius: 8px;border-top-right-radius: 8px;display: flex;align-items: center;}
+.msg-box .message_top_btn{color: #C1C5D4;font-size: 15px;}
+.msg-box .message_bottom_btn{color: #39435C;font-size: 15px;}
+
+#inbox_btn{color: #39435C;}
+.msg-box .inbox,
+.msg-box .outbox, 
+.msg-box .send {flex: 1;}
+
+.msg-box .message_body{height: 310px;border: 1px solid #C1C5D4;border-top: none;text-align: left;}
+.msg-box .message_list{padding: 15px;border-bottom: 1px solid #C1C5D4;cursor: pointer;}
+.msg-box .message_list:last-of-type {border-bottom: none;}
+
+.msg-box .message_content{font-size: 13px;color: #C1C5D4;margin-top: 10px;}
+.msg-box .message_sendBody{height: 310px;border: 1px solid #C1C5D4;border-top: none;text-align: left;}
+.msg-box .message_sendList{padding: 15px;border-bottom: 1px solid #C1C5D4;cursor: pointer;}
+.msg-box .message_sendList:last-of-type {border-bottom: none;}
+
+.msg-box .message_sendContent{font-size: 13px;color: #C1C5D4;margin-top: 10px;}
+.msg-box .message_bottom{border-bottom: 1px solid #C1C5D4;border-left: 1px solid #C1C5D4;border-right: 1px solid #C1C5D4;border-top: none;height: 70px;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;}
+.msg-box .inbox_user_container{height: 50px;border-bottom: 1px solid #C1C5D4;display: flex;align-items: center;padding-left: 15px;padding-top: 3px;font-size: 14px;}
+.msg-box .outbox_user_container{height: 50px;border-bottom: 1px solid #C1C5D4;display: flex;align-items: center;padding-left: 15px;padding-top: 3px;font-size: 14px;}
+.msg-box .inbox_user {flex: 1;}
+.msg-box .inbox_date {font-size: 10px;text-align: right;flex: 1;padding-right: 20px;color: #39435C;}
+
+.msg-box .outbox_user {flex: 1;}
+.msg-box .outbox_date {font-size: 10px;text-align: right;flex: 1;padding-right: 20px;color: #39435C;}
+
+.msg-box .inbox_content {padding: 15px;width: 350px;height: 260px;overflow: auto;white-space: normal;word-wrap: break-word;font-size: 14px;}
+.msg-box .outbox_content {padding: 15px;width: 350px;height: 260px;overflow: auto;white-space: normal;word-wrap: break-word;font-size: 14px;}
+
+.msg-box .message_bottom{display: flex;align-items: center;}
+.msg-box .message_top_btn{font-size: 15px;}
+.msg-box .check,
+.msg-box .delete,
+.msg-box .reply {flex: 1;}
+.msg-box .send_content {padding: 15px;}
+.msg-box .send_content_area {width: 100%;height: 230px;border: none;outline: none;resize: none;}
+/* ========================================== message ============================================== */
+
+
+
+
+@media screen and (max-height: 800px) {
+	.apply-white-box {height:48px;}
+}

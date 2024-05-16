@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 보고서작성</title>
+
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box h530 h480-lg">
+                            <div class="title-blue-box">
+                                <div>
+                                    <input type="text" id="title" placeholder="제목 입력" />
+                                </div>
+                                <h2>보고서 제출</h2>
+                            </div>
+                            <div class="content pdx55 mt10">
+                                <div class="apply-white-box">
+                                    <h2>결재자</h2>
+                                    <div class="space-between" id="approvers"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>참조자</h2>
+                                    <div class="space-between" id="references"></div>
+                                </div>
+
+                                <div class="apply-white-box align-start">
+                                    <h2 class="mt8">내용</h2>
+                                    <div class="inner-box reason h300 h270-lg">
+                                        <textarea placeholder="화장실 증축 및 세면대 설치" id="detail"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-btn row-direction">
+                            <button id="tempStore" class="blue-btn">임시저장</button>
+                            <button id="submit" class="blue-btn">상신</button>
+                            <button id="return" class="blue-btn">돌아가기</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer></footer>
+
+        <div class="message" id="message">쪽지보내기</div>
+        <script type="module" src="/js/common.js"></script>
+        <script type="module" src="/js/apply/applyReport.js"></script>
+    </body>
+</html>

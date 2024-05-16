@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 마이페이지</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <style></style>
+    </head>
+
+    <body>
+        <header></header>
+
+        <main class="mypage">
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box h500 h480-lg">
+                            <div class="userflex">
+                                <div class="userprofile">
+                                    <div class="userimage" style="background: white">
+                                        <img id="image" width="230" height="230" alt="" />
+                                    </div>
+                                    <div class="usertext">
+                                        <span class="username" id="userName"></span>
+                                        <span class="emp" id="userPosition"></span>
+                                    </div>
+                                </div>
+                                <div class="userinfo">
+                                    <div class="user_inputbox">
+                                        <span id="userDept">부서 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userId">사번 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userEmail">이메일 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userPhone">전화번호 : </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-btn row-direction">
+                            <a href="/mypage/mypage_modify" class="blue-btn">수정하기</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer></footer>
+
+        <div class="message" id="message"></div>
+
+        <script type="module" src="/js/common.js"></script>
+        <script src="/js/mypage/myPage.js"></script>
+    </body>
+</html>

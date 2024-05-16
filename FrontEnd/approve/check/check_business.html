@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 출장</title>
+
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box h500 h480-lg">
+                            <div class="title-blue-box">
+                                <h2 id="title"></h2>
+                                <div>
+                                    <span id="writer"></span>
+                                    <span>출장 신청</span>
+                                </div>
+                            </div>
+                            <div class="content pdx55">
+                                <div class="time-box">
+                                    <span id="createDate"></span>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>결재자</h2>
+                                    <div>
+                                        <span id="approversList"></span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>참조자</h2>
+                                    <div>
+                                        <span id="refList"></span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>시작일</h2>
+                                    <div>
+                                        <span id="startDate"></span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>종료일</h2>
+                                    <div>
+                                        <span id="endDate"></span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>출장지</h2>
+                                    <div>
+                                        <span id="location"></span>
+                                    </div>
+                                </div>
+                                <div class="check-white-box">
+                                    <h2>사유</h2>
+                                    <div>
+                                        <span id="reason"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-btn row-direction">
+                            <button id="approve" class="blue-btn">승인</button>
+                            <button id="deny" class="blue-btn">반려</button>
+                            <a href="/approve/main" class="blue-btn">
+                                돌아가기
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <div class="nav-container">
+                <em>회사 정보 어쩌구 저쩌구 어쩌라는건지 저쩌라는건지 어처구니가 없네 아주 고냥 웃겨>.0</em>
+            </div>
+        </footer>
+
+        <div class="message" id="message">쪽지보내기</div>
+        <script type="module" src="/js/common.js"></script>
+        <script type="module" src="/js/check/checkCommon.js"></script>
+        <script type="module" src="/js/check/checkBussiness.js"></script>
+    </body>
+</html>

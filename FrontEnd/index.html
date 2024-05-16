@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>(주)위계질서</title>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+    </style>
+</head>
+
+<body class="index-body">
+    <header>
+        <div class="nav-container pos-relative h100p">
+            <div class="flex flex-end align-center w100p h100p">
+                <h1 class="logo">
+                    <a href="/"></a>
+                </h1>
+
+                <div class="name-box">
+                    <h3 class="user">반갑습니다! <span id="username" class="user-name"></span>님</h3>
+                    <button id="logoutButton"><i class="xi-log-out"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="index-main">
+        <div class="nav-container">
+            <section class="flex">
+                <nav class="nav-index pdx20 w20p">
+                    <div class="nav-container">
+                        <ul>
+                            <li>
+                                <a href="/member">MEMBER</a>
+                            </li>
+                            <li>
+                                <a href="/approve/main">결재</a>
+                            </li>
+                            <li>
+                                <a href="/mypage/mypage">MY PAGE</a>
+                            </li>
+                            <li>
+                                <!-- <a href="/emp_registration">사원 등록</a> -->
+                                <button id="joinbtn">사원 등록</button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="w70p inline-flex">
+                    <div class="w50p pdx20" style="width: 460px;">
+
+                        <div class="box box_container">
+                            <div class="titlebox">
+                                <h2>연락처</h2>
+                            </div>
+                            <div class="deptbox scroll" style="height: 435px;">
+
+                            </div>
+
+                            <div class="content">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="w50p pdx20" style="width: 460px;">
+                        <div class="box box_container">
+                            <div class="titlebox">
+                                <h2>쪽지</h2>
+                            </div>
+                            <div class="notebox scroll" style="height: 435px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <em>&copy;2024. ALL RIGHTS RESERVED (주)위계질서</em>
+        </div>
+    </footer>
+
+    <div class="message new" id="message"></div>
+
+    <script type="module" src="/js/index.js"></script>
+    <script src="/js/message/messageRead.js"></script>
+    <script src="/js/member/myMembers.js"></script>
+
+</html>

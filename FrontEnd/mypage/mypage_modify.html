@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 내 정보 수정</title>
+
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+
+    <body>
+        <header></header>
+
+        <main class="mypage">
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box h500 h480-lg">
+                            <div class="userflex">
+                                <div class="userprofile">
+                                    <div class="userimage" style="background: white">
+                                        <img id="image" width="230" height="230" alt="" />
+                                    </div>
+                                    <div class="usertext">
+                                        <span class="username" id="userName"></span>
+                                        <span class="emp" id="userPosition"></span>
+                                    </div>
+                                </div>
+                                <div class="userinfo">
+                                    <div class="user_inputbox">
+                                        <span id="userDept">부서 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userId">사번 : </span>
+                                    </div>
+                                    <div class="user_inputbox">
+                                        <span id="userEmail">이메일 : </span>
+                                    </div>
+                                    <div class="user_inputbox_modify">
+                                        <span class="uesr_inpubox_text">전화번호 : </span>
+                                        <input type="tel" id="userPhone" placeholder="-없이 입력하세요" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-btn row-direction">
+                            <button class="blue-btn" id="saveChanges">수정하기</button>
+                            <a href="mypage" class="blue-btn">돌아가기</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer></footer>
+
+        <div id="message" class="message"></div>
+
+        <script type="module" src="/js/common.js"></script>
+        <script src="/js/mypage/myPageModify.js"></script>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 경비신청</title>
+
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box h530 h480-lg">
+                            <div class="title-blue-box">
+                                <div>
+                                    <input type="text" id="title" placeholder="제목 입력" />
+                                </div>
+                                <h2>경비 신청</h2>
+                            </div>
+                            <div class="content pdx55 mt10">
+                                <div class="apply-white-box">
+                                    <h2>결재자</h2>
+                                    <div class="space-between" id="approvers"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>참조자</h2>
+                                    <div class="space-between" id="references"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>항목</h2>
+                                    <div class="inner-box">
+                                        <input id="category" type="text" placeholder="팀 회식" />
+                                    </div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>비용</h2>
+                                    <div class="inner-box">
+                                        <input id="cost" type="text" placeholder="250,000 won" />
+                                    </div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>결제일</h2>
+                                    <div class="inner-box">
+                                        <input id="expenseDate" type="date" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-btn row-direction">
+                            <button id="tempStore" class="blue-btn">임시저장</button>
+                            <button id="submit" class="blue-btn">상신</button>
+                            <button id="return" class="blue-btn">돌아가기</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer></footer>
+
+        <div class="message" id="message">쪽지보내기</div>
+        <script type="module" src="/js/common.js"></script>
+        <script type="module" src="/js/apply/applyExpense.js"></script>
+    </body>
+</html>

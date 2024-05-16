@@ -1,0 +1,298 @@
+/* flex-layout */
+.inline-flex {display: inline-flex; flex-wrap: wrap;}
+.flex {display: flex; flex-wrap: wrap;}
+.justify-center {display: flex; justify-content: center;}
+.space-between {display: flex; justify-content: space-between;}
+.flex-end {display: flex; justify-content: flex-end;}
+.align-center {display: flex; align-items: center;}
+.align-start {display: flex; align-items: flex-start !important;}
+.column-direction {display: flex; flex-direction: column;}
+.row-direction {display: flex; flex-direction: row;}
+.flex-grow {flex: 1 1;}
+
+/* position-layout */
+.pos-relative {position: relative;}
+.pos-absolute {position: absolute;}
+
+/* box-layout */
+.box {background: #fff; border-radius: 8px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); height: 150px; margin-bottom: 40px;}
+
+/* color */
+.light-blue {background: #eff3f6;}
+.teal-blue {background-color: #5b718f;}
+
+/* font */
+.text-ellipsis {text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.text-center {text-align: center;}
+.text-right {text-align: right;}
+.title-blue {background: #5b718f;color: #fff; font-size: 20px; font-weight: 300; text-align: center; height: 50px; line-height: 50px; border-radius: 8px 8px 0 0;}
+.title-blue a {color: #fff; display: block; height: 100%;}
+
+.title-blue-box {background: #5b718f;border-radius: 8px 8px 0 0;height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 35px;}
+.title-blue-box h2,
+.title-white-box h2 {color: #fff; font-size: 20px; font-weight: 700;}
+.title-blue-box span {color: #fff; font-size: 15px; font-weight: 500; padding-left: 10px; position: relative;}
+.title-blue-box span::after {content: "/"; position: absolute; top: 2px; left: 0; display: inline-block;}
+.title-blue-box span:first-of-type::after {display: none;}
+.title-blue-box span.apply-font{font-size: 20px; font-weight: 700;}
+.title-blue-box input {width: 500px; color: #fff; font-size: 20px; font-weight: 700; background-color: inherit; padding: 8px; /* 내부 여백 예시 */}
+
+.title-white-box {border-bottom: 1px solid #CBC9D7; height: 65px; line-height: 65px; text-align: center;}
+.title-white-box h2 {color: #39435C;}
+
+.no-underline {border-bottom: 0px;}
+
+
+/* padding, margin */
+.pdx15 {padding: 0 15px;}
+.pdx20 {padding: 0 20px;}
+.pdx25 {padding: 0 25px;}
+.pdx30 {padding: 0 30px;}
+.pdx55 {padding: 0 55px;}
+
+.mt8 {margin-top: 8px;}
+.mt10 {margin-top: 10px;}
+.mb0 {margin-bottom: 0px !important;}
+.mb8 {margin-bottom: 8px;}
+.ml8 {margin-left: 8px;}
+
+
+/* button */
+.blue-btn {border-radius: 8px; font-weight: 500; font-size: 15px; color: #6d717c; padding: 10px 0px; text-align: center; width: 100px; background: #eff3f6;}
+.title-btn {font-size: 16px;font-weight: 500; text-align: center; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: #39435C;}
+.check-btn{background: #fff; height: 35px; justify-content: center; align-items: center;}
+.check-btn > .blue-btn{margin: 0px 17px;}
+
+
+/* 토글버튼 */
+.toggle-box {position: absolute; left: 24%; cursor: pointer;}
+.toggle-box .toggle-button-cover {position: relative;}
+.toggle-box .button {width: 61px;height: 28px;}
+.toggle-box .button-cover,
+.toggle-box .knobs,
+.toggle-box .layer {position: absolute;top: 0;right: 0;bottom: 0;left: 0;}
+.toggle-box .checkbox {position: relative;width: 100%;height: 100%;padding: 0;margin: 0;opacity: 0;cursor: pointer;z-index: 3;}
+.toggle-box .knobs {z-index: 2;}
+.toggle-box .layer {width: 100%;background-color: #ebf7fc;transition: 0.3s ease all;z-index: 1;}
+
+.toggle-box .button.r,
+.toggle-box .button.r .layer {border-radius: 100px;}
+  
+.toggle-box #button-3 .knobs:before {content: "대기";position: absolute;top: 3.5px;left: 4px;width: 29px;height: 11px;color: #fff;font-size: 11px;font-weight: 500;text-align: center;line-height: 1;padding: 5px 2px;background-color: #39435c;border-radius: 16px;transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);}
+.toggle-box #button-3 .checkbox:active + .knobs:before {width: 46px;border-radius: 100px;}
+.toggle-box #button-3 .checkbox:checked + .knobs:before {content: "확인";color: #39435c;left: 24px;background-color: #d7e3e3;}
+.toggle-box #button-3 .checkbox:checked ~ .layer {background-color: #39435c;}
+
+
+/* 접근권한 */
+.show {display: block !important;}
+.hide {display: none !important;}
+
+
+/* width */
+.w100p {width: 100% !important;}
+.w70p {width: 70% !important;}
+.w66p {width: 66.66% !important;}
+.w50p {width: 50% !important;}
+.w33p {width: 33.33% !important;}
+.w30p {width: 30% !important;}
+.w25p {width: 25% !important;}
+.w20p {width: 20% !important;}
+.w10p {width: 10% !important;}
+
+
+/* height */
+.h100p {height:100% !important;}
+.h600 {height: 600px !important;}
+.h530 {height: 530px !important;}
+.h500 {height: 500px !important;}
+.h400 {height: 400px !important;}
+.h320 {height: 320px !important;}
+.h300 {height: 300px !important;}
+.h260 {height: 260px !important;}
+.h190 {height: 190px !important;}
+
+/* scroll */
+.scroll {height: 500px; overflow-y: auto;}
+.scroll::-webkit-scrollbar {width: 11px; border-radius: 11px;}
+.scroll::-webkit-scrollbar-thumb {background: #ededed; border-radius: 11px;}
+
+
+/* select, input */
+select {-o-appearance: none; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+.select {width: 150px; height: 30px; border: 1px solid #CBC9D7; border-radius: 4px; font-size: 14px; font-weight: 300; padding: 0 8px; background: url(../images/down_arrow.svg)no-repeat 94% center; cursor: pointer;}
+.select option {font-size: 12px; font-weight: 300;}
+
+/* common */
+body::after {content: ""; position: absolute; top: 100px; left: 0; width: 100%; height: 380px; display: block; background: #eff3f6; z-index: -1;}
+body.index-body::after {top: 0;}
+.nav-container {max-width: 1320px; margin: 0 auto;}
+.main-container {max-width: 900px; margin: 0 auto;}
+.container {max-width: 700px; margin: 0 auto;}
+
+/* header */
+header {height: 100px; position: relative;}
+header .logo {background:url(../images/logo.png)no-repeat center/contain; width: 130px; height: 100px; position: absolute; top: 0px; left: 0;}
+header .logo a {width: 100%; height: 100%; cursor: pointer;}
+.nav ul {display: flex; width: 100%; height: 100px; justify-content: center; align-items: center;}
+.nav ul li {height: 100%; line-height: 100px;}
+.nav ul li button {display: inline-block; padding: 0 35px;font-size: 20px; font-weight: lighter; color: #39435C;}
+
+.nav-index {padding: 100px 20px;}
+.nav-index ul li {margin-bottom: 80px;}
+.nav-index ul li a,button {font-size: 20px; font-weight: 500; color: #39435C;}
+i.xi-log-out {vertical-align: text-bottom;}
+
+/* main */
+main {margin-top: 100px;}
+main.index-main {margin-top: 90px;}
+
+/* index-main */
+.user {font-size: 20px; font-weight: 500; color: #39435C;}
+
+.name-box {position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: flex; align-items: center;}
+.name-box .user {font-size: 17px; font-weight: 300;}
+.name-box .user-name {margin-left: 10px; font-weight: 500;}
+.name-box > button {margin-left: 10px;}
+.name-box > button i {font-size: 28px; margin-top: 2px;}
+
+
+/* footer */
+footer {position: fixed; bottom: 50px; text-align: center; width: 100%;}
+footer em {font-size: 13px; font-weight:lighter; color: #000;}
+
+/* message */
+.message {position: fixed; bottom: 80px; right: 100px; background: url(../images/message.svg)no-repeat center/contain; width: 55px; height: 41px; display: inline-block; cursor: pointer;}
+.message.new::after {content: ""; background: url(../images/new.svg)no-repeat center; width: 17px; height: 22px; display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+
+
+::-webkit-input-placeholder {color: #C1C5D4;}
+::-moz-placeholder {color: #C1C5D4;}
+:-ms-input-placeholder {color: #C1C5D4;}
+::-ms-input-placeholder {color: #C1C5D4;}
+::placeholder {color: #C1C5D4;}
+
+
+@media screen and (max-height: 800px){
+	.h500-lg {height: 500px !important;}
+	.h480-lg {height: 480px !important;}
+	.h270-lg {height: 270px !important;}
+	.h180-lg {height: 180px !important;}
+
+	.box {margin-bottom: 20px;}
+	.title-blue-box {height: 65px;}
+
+	header {height: 80px;}
+	header .logo {height: 80px;}
+
+	body::after {top: 80px;}
+
+	.nav ul {height: 80px;}
+	.nav ul li {line-height: 80px;}
+	.nav-index {padding: 70px 20px;}
+
+	footer {bottom: 20px;}
+
+	.message {bottom: 40px; right: 40px;}
+}
+
+@media screen and (max-height: 700px) {
+	main,
+	main.index-main {margin-top: 20px;}
+}
+
+/*index 페이지 css*/
+
+        .titlebox {
+            width: 400px;
+            height: 65px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            background-color: #5B718F;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dept_list,
+        .index_notelist {
+            /* width: 350px; */
+            height: 75px;
+            border-bottom: 1px solid #CBC9D7;
+            display: flex;
+            align-items: center;
+
+
+        }
+
+        .dept_userbox {
+            margin-left: 30px;
+            color: #39435C;
+        }
+
+        .index_notebox {
+            margin-left: 30px;
+            width: 340px;
+            font-size: 17px;
+        }
+
+        .note_username,
+        .dept_emp,
+        .note_emp {
+            font-weight: 500;
+        }
+
+        .index_notebox:not(.note_username) {
+            font-weight: lighter;
+        }
+
+        .dept_email {
+            margin-top: 12px;
+            color: #CBC9D7;
+        }
+
+        .index_notebox p {
+            margin-top: 12px;
+            color: #CBC9D7;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .dept_username {
+            font-size: 18px;
+
+            font-weight: normal;
+        }
+
+        .note_username {
+            font-size: 18px;
+        }
+
+        .dept_userbox:not(.dept_username) {
+            font-size: 17px;
+            font-weight: lighter;
+        }
+
+        .dept_phone {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .notebox,
+        .deptbox {
+            height: 435px;
+        }
+
+        .box_container {
+            height: 500px;
+            width: 400px;
+        }
+
+        .note_content,
+        .dept_email {
+            font-size: 15px;
+        }

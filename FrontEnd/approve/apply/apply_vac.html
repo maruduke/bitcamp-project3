@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 휴가신청</title>
+
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <section class="flex">
+                    <div class="w100p">
+                        <div class="box h530 h480-lg">
+                            <div class="title-blue-box">
+                                <div>
+                                    <input type="text" placeholder="제목 입력" id="title" />
+                                </div>
+                                <h2>휴가 신청</h2>
+                            </div>
+                            <div class="content pdx55 mt10">
+                                <div class="apply-white-box">
+                                    <h2>결재자</h2>
+                                    <div class="space-between" id="approvers"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>참조자</h2>
+                                    <div class="space-between" id="references"></div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>시작일</h2>
+                                    <div class="inner-box">
+                                        <input type="date" id="startDate" />
+                                    </div>
+                                </div>
+                                <div class="apply-white-box">
+                                    <h2>종료일</h2>
+                                    <div class="inner-box">
+                                        <input type="date" id="endDate" />
+                                    </div>
+                                </div>
+                                <div class="apply-white-box align-start">
+                                    <h2 class="mt8">사유</h2>
+                                    <div class="inner-box reason h190 h180-lg">
+                                        <textarea placeholder="여행" id="reason"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-btn row-direction">
+                            <button id="tempStore" class="blue-btn">임시저장</button>
+                            <button id="submit" href="main" class="blue-btn">상신</button>
+                            <button id="return" class="blue-btn">돌아가기</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer></footer>
+
+        <div class="message" id="message">쪽지보내기</div>
+        <script type="module" src="/js/common.js"></script>
+        <script type="module" src="/js/apply/applyVac.js"></script>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>(주)위계질서 - 결재메인</title>
+
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <header></header>
+
+        <main class="list">
+            <div class="main-container">
+                <section class="flex">
+                    <div class="pdx25 w50p">
+                        <div class="box h320">
+                            <h2 class="title-blue">
+                                <a href="list/myList"> 나의 신청 목록 </a>
+                            </h2>
+                            <div id="myList" class="scroll h260">
+                                <div class="content myList">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pdx25 w50p">
+                        <div class="box h320">
+                            <h2 class="title-blue">
+                                <a href="list/waitingList"> 대기 중인 목록 </a>
+                            </h2>
+                            <div id="app" class="scroll h260">
+                                <div class="content approve">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow pdx25">
+                        <div class="box">
+                            <a href="apply/apply_vac" class="title-btn">휴가 신청</a>
+                        </div>
+                    </div>
+                    <div class="flex-grow pdx25">
+                        <div class="box">
+                            <a href="apply/apply_business" class="title-btn">출장 신청</a>
+                        </div>
+                    </div>
+                    <div class="flex-grow pdx25">
+                        <div class="box">
+                            <a href="apply/apply_expense" class="title-btn">경비 신청</a>
+                        </div>
+                    </div>
+                    <div class="flex-grow pdx25">
+                        <div class="box">
+                            <a href="apply/apply_report" class="title-btn">보고서 제출</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer></footer>
+
+        <div id="message" class="message"></div>
+
+        <script type="module" src="/js/common.js"></script>
+        <script type="module" src="/js/approveMain.js"></script>
+    </body>
+</html>
