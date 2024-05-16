@@ -41,7 +41,8 @@ function fetchUsers() {
 function sendMessage() {
     const userSelect = document.getElementById('userSelect');
     const receiverEmail = userSelect.value;
-    const messageContent = document.querySelector('.send_content_area').value;
+    const messageContentInput = document.querySelector('.send_content_area');
+    const messageContent = messageContentInput.value;
 
 
     if (receiverEmail === '') {
@@ -76,7 +77,7 @@ function sendMessage() {
             }
             console.log('Message sent successfully!');
             alert('메세지가 성공적으로 전송되었습니다.');
-            location.reload();
+            messageContentInput.value = '';
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
