@@ -25,7 +25,7 @@ Welcome to 동치미회사 👋
 -   Spring boot 3.2.5
 
 -   mongoDB 4.2
--   mariaDB ver..
+-   mariaDB LTS
 
 ## 프로젝트 기간
 
